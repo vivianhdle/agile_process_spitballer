@@ -51,7 +51,7 @@ Hackathon project involving the combination of different data sources into an ap
   - jay samora
   
 - team 6
-  -joe delrossi
+  - joe delrossi
   - eric george
   - caroline pan
   - jaime kim
