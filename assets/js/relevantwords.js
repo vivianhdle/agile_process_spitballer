@@ -32,11 +32,15 @@ class RelevantWords{
         this.displayWords();
     }
     displayWords(){
+        debugger;
+        $('.synonyms').remove();
         for (let item in this.synonyms){
             let newWord = $('<div>',{
-                text:this.synonyms[item]
+                text:this.synonyms[item],
+                class: 'synonyms'
             })
             this.displayArea.append(newWord);
         }
+        this.synonyms = [];
     }
 }

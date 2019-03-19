@@ -10,5 +10,6 @@ function initializeApp(){
     // newApps.getRelatedApps();
 
     const mainController = new Controller;
-    mainController.createIdeaGenerator();
+    mainController.start();
+
 }
