@@ -91,13 +91,13 @@ body{
 .bottom-half{
     height:40%;
     background-color:lightgoldenrodyellow;
+    display:flex;
 }
 
 .images-container{
     background-color:lightcyan;
     height:100%;
     width:20%;
-    display:inline-block;
     border:1px solid black;
     box-sizing:border-box;
     vertical-align:top;
@@ -117,4 +117,31 @@ body{
     display:flex;
     align-items:center;
     justify-content: center;
+}
+
+.app-container{
+    background-color:lightgray;
+    height:100%;
+    width:40%;
+}
+.apps{
+    background-color:lightgreen;
+    height:100%;
+    width:100%;
+    border:1px solid black;
+    font-size:1rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+.app{
+    border:1px solid black;
+    width:33.33%;
+    height:60%;
+}
+.app>a>img{
+    height:10vw;
+    width:10vw;
+    border:1px solid black;
+    border-radius:20%;
 }
