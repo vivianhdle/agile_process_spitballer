@@ -3,7 +3,9 @@ class ImageGenerator{
     constructor(word){
         this.word = word;
         this.domElement = null;
+        this.getImage();
     }
+
 
     render = (imageURL) =>
     {
