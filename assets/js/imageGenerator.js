@@ -19,7 +19,7 @@ class ImageGenerator{
     getImage = () =>
     {
         debugger;
-        console.log("getImage was called")
+        console.log("getImage was called");
         $.ajax({
             url: "https://pixabay.com/api/",
             method: "get",
