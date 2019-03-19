@@ -1,0 +1,106 @@
+body{
+    margin:0;
+    font-size:0;
+}
+.hero-page{
+    height:100vh;
+    width:100vw;
+    background-color:yellow;
+}
+.top-half{
+    height:60%;
+    background-color:lime;
+}
+.spitboard-container,.idea-container{
+    display:inline-block;
+}
+.spitboard-container{
+    width:60%;
+    height:100%;
+    background-color:lightcoral;
+}
+.spit-board{
+    position:relative;
+    left:5%;
+    top:5%;
+    height:90%;
+    width:90%;
+    border:1px solid black;
+    background-image:url("https://cdn.pixabay.com/photo/2014/04/16/17/08/bulletin-board-325721_960_720.jpg");
+    background-size:cover;
+    background-position:center;
+}
+.idea-container{
+    width:40%;
+    height:100%;
+    background-color:lightblue;
+    vertical-align:top;
+}
+.ideas{
+    display:inline-block;
+    width: 50%;
+    height:100%;
+    background-color:lightseagreen;
+    display:inline-block;
+    vertical-align: top;
+}
+.ideas>button{
+    height:10%;
+    width:50%;
+    position:relative;
+    left:25%;
+}
+.ideas>div{
+    border:1px solid black;
+    height:18%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size:1rem;
+}
+.relevant{
+    display:inline-block;
+    background-color:yellow;
+    height:100%;
+    width:50%;
+}
+.relevant>div{
+    border:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size:1rem;
+    height:20%;
+}
+
+.bottom-half{
+    height:40%;
+    background-color:lightgoldenrodyellow;
+}
+
+.images-container{
+    background-color:lightcyan;
+    height:100%;
+    width:20%;
+    display:inline-block;
+    border:1px solid black;
+    box-sizing:border-box;
+    vertical-align:top;
+    font-size:1rem;
+}
+.images-container>.image{
+    height:80%;
+    width:100%;
+    background-color:white;
+    background-image:url('http://clipart-library.com/img/1775678.png');
+    background-size:cover;
+}
+.images-container>.word{
+    height:20%;
+    background-color:yellow;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
