@@ -1,10 +1,13 @@
 
 class IdeaGenerator
 {
-    constructor()
+    constructor(options)
     {
-        this.words = [];
+        // this.words = [];
         this.handleBtnClick();
+        this.callbacks = {
+            callBackFromController = options.callback
+        }
     }
 
     handleBtnClick = () => 
@@ -36,10 +39,14 @@ class IdeaGenerator
                 number: 5,
                 success: (response) =>{
                     console.log(response);
-                    this.words.length = 0;
+                    $(".ideas > div").remove();
+                    // this.words.length = 0;
+                    let newIdeaCard = null;
                     for(let index = 0; index < response.length; index++)
                     {
-                        this.words.push(response[index]);
+                        newIdeaCard = new ideaCard(response[index], this.callbacks.callBackFromController);
+                        $(".ideas").append(newIdeaCard.render());
+                        // this.words.push(newIdeaCard);
                         
                     }
                     console.log("words array: ", this.words);
@@ -51,3 +58,25 @@ class IdeaGenerator
     }
 }
 
+class ideaCard {
+    constructor(word, callback) {
+        this.word = word;
+        this.callback = callback;
+        this.domElement = null;
+        // this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick = () => {
+        // this.callback(this.word);
+        // this.selected = !this.selected;
+        this.domElement.remove();   // FOR TESTING
+    }
+
+    render = () => {
+        this.domElement = $('<div>').append(
+            $('<div>').text(this.word)
+        )
+        this.domElement.click(this.handleClick);
+        return this.domElement;
+    }
+}
