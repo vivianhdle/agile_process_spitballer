@@ -10,9 +10,7 @@ body{
 .top-half{
     height:60%;
     background-color:lime;
-}
-.spitboard-container,.idea-container{
-    display:inline-block;
+    display:flex;
 }
 .spitboard-container{
     width:60%;
@@ -35,13 +33,12 @@ body{
     height:100%;
     background-color:lightblue;
     vertical-align:top;
+    display:flex;
 }
 .ideas{
-    display:inline-block;
     width: 50%;
     height:100%;
     background-color:lightseagreen;
-    display:inline-block;
     vertical-align: top;
 }
 .ideas>button{
@@ -60,10 +57,11 @@ body{
     font-size:1rem;
 }
 .relevant{
-    display:inline-block;
     background-color:yellow;
+    display:flex;
     height:100%;
     width:50%;
+    flex-direction: column;
 }
 .relevant>div{
     border:1px solid black;
@@ -96,6 +94,7 @@ body{
     background-color:white;
     background-image:url('http://clipart-library.com/img/1775678.png');
     background-size:cover;
+    background-position:center;
 }
 .images-container>.word{
     height:20%;
