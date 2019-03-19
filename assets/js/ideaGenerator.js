@@ -6,7 +6,7 @@ class IdeaGenerator
         // this.words = [];
         this.handleBtnClick();
         this.callbacks = {
-            callBackFromController = options.callback
+            callbackFromController: options.callback
         }
     }
 
@@ -31,12 +31,17 @@ class IdeaGenerator
 
     generateWords = () =>
     {
+        console.log("generateWords called")
         $.ajax(
             {
-                url: "https://random-word-api.herokuapp.com/word?key=RC7UUADK&number=5",
+                url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
-                key: "RC7UUADK",
-                number: 5,
+                // key: "EFXD4P53",
+                // number: 5,
+                data: {
+                    key: "EFXD4P53",
+                    number: 5
+                },
                 success: (response) =>{
                     console.log(response);
                     $(".ideas > div").remove();
@@ -44,13 +49,13 @@ class IdeaGenerator
                     let newIdeaCard = null;
                     for(let index = 0; index < response.length; index++)
                     {
-                        newIdeaCard = new ideaCard(response[index], this.callbacks.callBackFromController);
+                        newIdeaCard = new ideaCard(response[index], this.callbacks.callbackFromController);
                         $(".ideas").append(newIdeaCard.render());
                         // this.words.push(newIdeaCard);
                         
                     }
                     console.log("words array: ", this.words);
-                    this.appendWordsToDom();
+                    // this.appendWordsToDom();
                 }
             }
         );
@@ -63,13 +68,11 @@ class ideaCard {
         this.word = word;
         this.callback = callback;
         this.domElement = null;
-        // this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick = () => {
-        // this.callback(this.word);
-        // this.selected = !this.selected;
-        this.domElement.remove();   // FOR TESTING
+        this.callback(this.word);
     }
 
     render = () => {

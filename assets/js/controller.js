@@ -2,12 +2,12 @@ class Controller{
     constructor(){
         this.newGenerator=null;
     }
-    putWordOnBoard(){
-
+    putWordOnBoard(word){
+        console.log(word);
     }
     createIdeaGenerator(){
         this.newGenerator = new IdeaGenerator({
-            callBack:this.putWordOnBoard
+            callback:this.putWordOnBoard
         }) 
     }
 }
