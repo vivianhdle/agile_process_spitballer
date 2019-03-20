@@ -53,6 +53,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 1.5rem;
 }
 .wordCloseButton {
     position: absolute;
@@ -121,7 +122,7 @@ body{
     border:2px solid black;
 }
 .title{
-    color:red;
+    color:lightgoldenrodyellow;
     font-size:1em;
 }
 /* .syn>div{
@@ -225,7 +226,7 @@ body{
 }
 
 .selected{
-    border: 5px solid red;
+    border: 10px solid lightgoldenrodyellow;
 }
 
 .instructions{

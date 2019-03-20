@@ -46,14 +46,6 @@ class IdeaGenerator
             }
         );
         $('.spit-board').show('slow');
-        const text = $('<div>',{
-            text:'CLICK AN IDEA',
-            class:'instructions',
-            css:{
-                "text-align":"center"
-            }
-        })
-        $('.spit-board').append(text);
     }
 }
 
@@ -67,7 +59,7 @@ class ideaCard {
 
     handleClick = () => {
         this.callback(this.word);
-        $('.spit-board > .instructions').hide();
+        $('.spit-board > .instructions').remove();
     }
 
     render = () => {

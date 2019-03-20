@@ -71,7 +71,15 @@ class Controller{
                 text:'CLICK AN IMAGE FOR RELATED APPS/WORDS',
                 class:'app-instructions'
                 })
-            ).hide();
+            )
+        $(".app-container>*").hide()
+        $('.spit-board').append($('<div>',{
+            text:'CLICK AN IDEA',
+            class:'instructions',
+            css:{
+                "text-align":"center"
+            }
+        }));
         this.addEventListeners();
     }
 }
