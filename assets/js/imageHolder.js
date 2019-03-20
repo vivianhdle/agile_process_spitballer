@@ -7,19 +7,46 @@ class imageHolder
         this.rejected = false;
         this.callbacks = {
             showApps:options.showApps,
-            showRelatedWords: options.showRelatedWords
+            showRelatedWords: options.showRelatedWords,
+            deleteImageFromArray: this.deleteImageFromArray
         }
     }
 
     handleWordClick = (word) =>
     {
-        if(this.imageCards.length < 3)
+        // debugger;
+
+        if(this.indexOfCard(word) === null)
         {
-            const newCard = new ImageGenerator(word, this.callbacks);
-            this.imageCards.push(newCard);
-        } else {
-            this.rejected = true;
+            if(this.imageCards.length < 3)
+            {
+                const newCard = new ImageGenerator(word, this.callbacks);
+                this.imageCards.push(newCard);
+            } else {
+                this.rejected = true;
+            } 
         }
+        
     }
+
+    deleteImageFromArray = (word) =>
+    {
+        let indexToBeDeleted = this.indexOfCard(word);
+        this.imageCards.splice(indexToBeDeleted, 1);
+    }
+
+    indexOfCard = (word) =>
+    {
+        let indexToBeDeleted = null;
+        for(let index = 0; index < this.imageCards.length; index++)
+        {
+            if(this.imageCards[index].word === word)
+            {
+                indexToBeDeleted = index;
+            }
+        }
+        return indexToBeDeleted;
+    }
+
 
 }
