@@ -1,24 +1,23 @@
 class Corkboard {
-    constructor() {
+    constructor(options) {
         this.words = [];
         this.domElement = null;
-        this.addWords(); // FOR TESTING
+        this.callbacks = {
+            sendToImageCallback: options.callback
+        }
+        // this.addWords(); // FOR TESTING
     }
 
-    // FOR TESTING
-    addWords() {
-        let word;
-        for (let i = 0; i < 20; i ++) {
-            word = new CorkboardWord('giraffle', null);
+    addWord(word) {
+        if(this.words.length < 20) {
             this.words.push(word);
+            const newWord = new CorkboardWord(word, this.callbacks.sendToImageCallback);
+            this.domElement.append(newWord.render());
         }
     }
 
     render() {
         this.domElement = $('<div>', {'class': 'spit-board'});
-        for(let index in this.words) {
-            this.domElement.append(this.words[index].render());
-        }
         return this.domElement;
     }
 
@@ -35,9 +34,9 @@ class CorkboardWord {
     }
 
     handleClick() {
-        // this.callback(this.word);
+        this.callback(this.word);
         // this.selected = !this.selected;
-        this.domElement.remove();   // FOR TESTING
+        // this.domElement.remove();   // FOR TESTING
     }
 
     render() {
