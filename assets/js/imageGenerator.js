@@ -15,7 +15,7 @@ class ImageGenerator{
         imageContainer.append(imageDiv, wordDiv);
 
         this.domElement = imageContainer;
-        $(".bottom-half").append(imageContainer);
+        $(".image-wrapper").append(imageContainer);
     }
 
     getImage = () =>

@@ -11,6 +11,7 @@ class imageHolder
         if(this.imageCards.length < 3)
         {
             const newCard = new ImageGenerator(word);
+            this.imageCards.push(newCard);
         }
     }
 }
