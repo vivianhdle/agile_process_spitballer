@@ -1,11 +1,17 @@
 
 class ImageGenerator{
-    constructor(word){
+    constructor(word, callback){
         this.word = word;
         this.domElement = null;
+        this.callback = callback;
         this.getImage();
     }
 
+    handleClick = () =>
+    {
+        console.log("handleClick in ImageGenerator");
+        this.callback(this.word);
+    }
 
     render = (imageURL) =>
     {
@@ -16,6 +22,7 @@ class ImageGenerator{
 
         this.domElement = imageContainer;
         $(".image-wrapper").append(imageContainer);
+        $(this.domElement).on("click", this.handleClick);
     }
 
     getImage = () =>
