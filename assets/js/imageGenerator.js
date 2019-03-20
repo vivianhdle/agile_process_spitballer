@@ -5,7 +5,8 @@ class ImageGenerator{
         this.domElement = null;
         this.callbacks = {
             showApps:callback.showApps,
-            showRelatedWords:callback.showRelatedWords
+            showRelatedWords:callback.showRelatedWords,
+            deleteImageFromArray: callback.deleteImageFromArray
         }
         this.getImage();
     }
@@ -25,7 +26,9 @@ class ImageGenerator{
         let imageContainer = $("<div>",{class: "images-container selected"});
         let imageDiv = $("<div>",{class: "image"}).css("background-image", `url(${imageURL})`);
         let wordDiv = $("<div>", {class: "word"}).text(this.word);
-        imageContainer.append(imageDiv, wordDiv);
+
+        let deleteButton = $('<div>', {'class': 'wordCloseButton'}).text('X').click(this.deleteSelf)
+        imageContainer.append(imageDiv, wordDiv, deleteButton);
 
         this.domElement = imageContainer;
         $(".image-wrapper").append(imageContainer);
@@ -52,6 +55,13 @@ class ImageGenerator{
                 this.render(imageURL);
             }
         });
+    }
+
+    deleteSelf = () =>
+    {
+        this.domElement.remove();
+        this.callbacks.deleteImageFromArray(this.word);
+
     }
 }
 

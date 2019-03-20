@@ -138,6 +138,7 @@ body{
 }
 
 .images-container{
+    position:relative;
     background-color:lightcyan;
     height:100%;
     width:33.33%;
@@ -160,6 +161,10 @@ body{
     display:flex;
     align-items:center;
     justify-content: center;
+}
+
+.images-container:hover .wordCloseButton {
+    opacity: 1;
 }
 
 .app-container{
