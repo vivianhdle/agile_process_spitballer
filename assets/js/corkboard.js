@@ -64,7 +64,7 @@ class CorkboardWord {
 
     handleClick() {
         this.sendToImageCallback(this.word);
-        // $(".app-instructions").show();
+        $(".app-instructions").show();
     }
 
     render() {

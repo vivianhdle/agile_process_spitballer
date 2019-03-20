@@ -19,7 +19,8 @@ class ImageGenerator{
         $(".image-wrapper > div").removeClass("selected");
         this.domElement.addClass("selected");
         $('.relevant').show('slow');
-        $('.app-instructions').hide();
+        $('.app-instructions').remove();
+        $(".app-container>*").show();
     }
 
     render = (imageURL) =>
