@@ -36,10 +36,8 @@ class IdeaGenerator
             {
                 url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
-                // key: "EFXD4P53",
-                // number: 5,
                 data: {
-                    key: "EFXD4P53",
+                    key: "SL5GDWCQ",
                     number: 5
                 },
                 success: (response) =>{
