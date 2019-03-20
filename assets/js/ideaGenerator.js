@@ -11,9 +11,14 @@ class IdeaGenerator
 
     handleBtnClick = () => 
     {
+       
         $(".word-generator-button").on("click", this.generateWords);
         console.log("words: ", this.words)
-        
+        const text = $('<div>',{
+            text:'CLICK AN IDEA FROM BOARD',
+            class:'instructions'
+        })
+        $('.image-wrapper').append(text).hide();
     }
 
     generateWords = () =>
@@ -40,7 +45,15 @@ class IdeaGenerator
                 }
             }
         );
-        
+        $('.spit-board').show('slow');
+        const text = $('<div>',{
+            text:'CLICK AN IDEA',
+            class:'instructions',
+            css:{
+                "text-align":"center"
+            }
+        })
+        $('.spit-board').append(text);
     }
 }
 
@@ -54,6 +67,7 @@ class ideaCard {
 
     handleClick = () => {
         this.callback(this.word);
+        $('.spit-board > .instructions').hide();
     }
 
     render = () => {
