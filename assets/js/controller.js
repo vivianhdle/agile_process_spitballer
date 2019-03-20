@@ -4,6 +4,7 @@ class Controller{
         this.relevantWords = null;
         this.board = null;
         this.imageHolder = null;
+        this.relatedApps = null;
     }
     putWordOnBoard = (word) => {
         console.log(word);
@@ -13,6 +14,8 @@ class Controller{
 
     sendToImageCard = (word) => {
         this.imageHolder.handleWordClick(word);
+
+        this.relatedApps.getRelatedApps(word);
     }
 
     start() {
@@ -27,5 +30,9 @@ class Controller{
         });
         $('.spitboard-container').append(this.board.render());
         this.imageHolder = new imageHolder;
+
+        this.relatedApps = new RelatedApps({
+            displayArea:'.apps'
+        });
     }
 }
