@@ -90,6 +90,8 @@ body{
     width:50%;
     position:relative;
     left:25%;
+    margin:10px auto;
+    border-radius:10px;
 }
 .ideas>div{
     height:18%;
@@ -97,7 +99,7 @@ body{
     align-items:center;
     justify-content: center;
     box-sizing: border-box;
-    font-size:1rem;
+    font-size:1.5rem;
     background-color: rgba(25,25,25,.3);
     border-radius: 10px;
     transform: scale(.9);
@@ -143,6 +145,7 @@ body{
 }
 
 .images-container{
+    position:relative;
     height:100%;
     width:33.33%;
     border:1px solid black;
