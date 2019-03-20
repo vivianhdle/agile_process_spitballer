@@ -14,6 +14,7 @@ class Controller{
         console.log(word);
         if(this.board.addWord(word)) {
             this.relevantWords.getAllData(word);
+            $('.image-wrapper').show();
         }
     }
     addEventListeners = () => {
@@ -31,9 +32,10 @@ class Controller{
 
     sendToImageCard = word => {
         this.imageHolder.handleWordClick(word);
-        if(!this.imageHolder.rejected) {
-            this.relatedApps.getRelatedApps(word);
-        }
+        $('.instructions').hide();
+        // const instructions = $('<div>',{
+
+        // })
     }
     showApps = (word) =>
     {
@@ -48,20 +50,28 @@ class Controller{
             callback:this.putWordOnBoard
         });
         this.relevantWords = new RelevantWords({
-
         });
+        $('.relevant').hide();
         this.board = new Corkboard({
             callback: this.sendToImageCard
         });
         $('.spitboard-container').append(this.board.render());
+        $('.spit-board').hide();
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords
         });
-
+        
         this.relatedApps = new RelatedApps({
             displayArea:'.apps'
         });
+
+        $(".app-container").append(
+            $('<div>',{
+                text:'CLICK AN IMAGE FOR RELATED APPS/WORDS',
+                class:'app-instructions'
+                })
+            ).hide();
         this.addEventListeners();
     }
 }

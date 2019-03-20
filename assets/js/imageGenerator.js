@@ -18,12 +18,14 @@ class ImageGenerator{
         this.callbacks.showRelatedWords(this.word);
         $(".image-wrapper > div").removeClass("selected");
         this.domElement.addClass("selected");
+        $('.relevant').show('slow');
+        $('.app-instructions').hide();
     }
 
     render = (imageURL) =>
     {
         $(".image-wrapper > div").removeClass("selected");
-        let imageContainer = $("<div>",{class: "images-container selected"});
+        let imageContainer = $("<div>",{class: "images-container"});
         let imageDiv = $("<div>",{class: "image"}).css("background-image", `url(${imageURL})`);
         let wordDiv = $("<div>", {class: "word"}).text(this.word);
 
