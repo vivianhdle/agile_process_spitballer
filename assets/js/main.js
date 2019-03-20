@@ -1,15 +1,11 @@
 $(document).ready(initializeApp);
 
+var mainController;
+
 function initializeApp(){
-    // // let newWords = new RelevantWords()
-    // // newWords.getSynonyms('aquarium');
-    // let newApps = new RelatedApps({
-    //     word:'kittens',
-    //     displayArea:'.apps'
-    // });
-    // newApps.getRelatedApps();
-
-    const mainController = new Controller;
+    mainController = new Controller({
+        relatedWordsButton:'.syn>.title',
+        adjectiveWordsButton:'.adj>.title'
+    });
     mainController.start();
-
 }
