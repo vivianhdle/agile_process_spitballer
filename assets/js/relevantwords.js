@@ -32,7 +32,6 @@ class RelevantWords{
         this.displayWords();
     }
     displayWords(){
-        debugger;
         $('.synonyms').remove();
         for (let item in this.synonyms){
             let newWord = $('<div>',{

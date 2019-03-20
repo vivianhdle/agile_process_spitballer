@@ -4,6 +4,7 @@ class imageHolder
     constructor()
     {
         this.imageCards = [];
+        this.rejected = false;
     }
 
     handleWordClick = (word) =>
@@ -12,6 +13,9 @@ class imageHolder
         {
             const newCard = new ImageGenerator(word);
             this.imageCards.push(newCard);
+        } else {
+            this.rejected = true;
         }
     }
+
 }
