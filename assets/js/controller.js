@@ -19,6 +19,11 @@ class Controller{
         }
     }
 
+    showApps = (word) =>
+    {
+        this.relatedApps.getRelatedApps(word);
+    }
+
     start() {
         this.newGenerator = new IdeaGenerator({
             callback:this.putWordOnBoard
@@ -30,7 +35,9 @@ class Controller{
             callback: this.sendToImageCard
         });
         $('.spitboard-container').append(this.board.render());
-        this.imageHolder = new imageHolder;
+        this.imageHolder = new imageHolder({
+            callback: this.showApps
+        });
 
         this.relatedApps = new RelatedApps({
             displayArea:'.apps'
