@@ -50,9 +50,15 @@ class ImageGenerator{
             success: (response) => 
             {
                 console.log(response);
-                let imageURL = response.hits[0].largeImageURL;
-                console.log(`imageURL is: ${imageURL}`);
+                let imageURL;
+                if (response.totalHits>0){
+                    imageURL=response.hits[0].largeImageURL;
+                    console.log(`imageURL is: ${imageURL}`);
+                } else {
+                    imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtmmtPDV4ur79uSO4C2H9fiIgVqU340Uqxy_WF-a21Fg8V6A9Z"
+                }
                 this.render(imageURL);
+                
             }
         });
     }
