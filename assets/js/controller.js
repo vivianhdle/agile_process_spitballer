@@ -8,8 +8,9 @@ class Controller{
     }
     putWordOnBoard = (word) => {
         console.log(word);
-        this.relevantWords.getSynonyms(word);
-        this.board.addWord(word);
+        if(this.board.addWord(word)) {
+            this.relevantWords.getSynonyms(word);
+        }
     }
 
     sendToImageCard = (word) => {
