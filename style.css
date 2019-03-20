@@ -24,7 +24,7 @@ body{
     height:90%;
     width:90%;
     border:1px solid black;
-    /*background-image:url("https://cdn.pixabay.com/photo/2014/04/16/17/08/bulletin-board-325721_960_720.jpg");*/
+    background-image:url("assets/images/bulletin-board-325721_960_720.jpg");
     background-size:cover;
     background-position:center;
 }
