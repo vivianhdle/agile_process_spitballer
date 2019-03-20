@@ -1,6 +1,5 @@
 class RelatedApps{
     constructor(options){
-        this.word = options.word;
         this.displayArea = $(options.displayArea);
         this.domElements = [];
         this.data = {
@@ -14,15 +13,15 @@ class RelatedApps{
         this.gotRelatedApps = this.gotRelatedApps.bind(this)
         //=======================================
     }
-    getRelatedApps(){
+    getRelatedApps(word){
         var ajaxOptions = {
             url:"https://itunes.apple.com/search?",
             method:"post",
             dataType:"json",
             data:{
-                term:this.word,
+                term: word,
                 entity:'software',
-                limit:3,
+                limit: 3,
                 media:'software'
             },
             success:this.gotRelatedApps
@@ -31,6 +30,7 @@ class RelatedApps{
     }
     gotRelatedApps(response){
         console.log(response.results);
+        $(".apps").empty();
         for (let appIndex in response.results){
             this.data.trackName = response.results[appIndex].trackName;
             this.data.artWork = response.results[appIndex].artworkUrl512;
