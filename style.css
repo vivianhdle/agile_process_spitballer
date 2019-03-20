@@ -1,6 +1,7 @@
 body{
     margin:0;
     font-size:0;
+    user-select: none;
 }
 .hero-page{
     height:100vh;
@@ -49,6 +50,7 @@ body{
     background-color:lightblue;
     vertical-align:top;
     display:flex;
+    box-sizing:border-box;
 }
 .ideas{
     width: 50%;
@@ -138,21 +140,35 @@ body{
     background-color:lightgray;
     height:100%;
     width:40%;
+    font-size:1rem;
 }
 .apps{
     background-color:lightgreen;
-    height:100%;
+    height:60%;
     width:100%;
     border:1px solid black;
-    font-size:1rem;
     display:flex;
     align-items:center;
     justify-content: center;
+    text-align: center;
+}
+.names{
+    background-color:lightslategray;
+    height:30%;
+    border:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
 }
 .app{
     border:1px solid black;
     width:33.33%;
-    height:60%;
+    height:100%;
+}
+.app-title{
+    height:20%;
+    width:33.33%;
 }
 .app>a>img{
     height:10vw;
