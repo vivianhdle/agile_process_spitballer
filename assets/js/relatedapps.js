@@ -31,6 +31,7 @@ class RelatedApps{
     gotRelatedApps(response){
         console.log(response.results);
         $(".apps").empty();
+        $(".names").empty();
         for (let appIndex in response.results){
             this.data.trackName = response.results[appIndex].trackName;
             this.data.artWork = response.results[appIndex].artworkUrl512;
