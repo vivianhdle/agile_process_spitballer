@@ -20,7 +20,6 @@ class ImageGenerator{
 
     getImage = () =>
     {
-        debugger;
         console.log("getImage was called");
         $.ajax({
             url: "https://pixabay.com/api/",
@@ -33,7 +32,6 @@ class ImageGenerator{
             dataType: "jsonp",
             success: (response) => 
             {
-                debugger;
                 console.log(response);
                 let imageURL = response.hits[0].largeImageURL;
                 console.log(`imageURL is: ${imageURL}`);

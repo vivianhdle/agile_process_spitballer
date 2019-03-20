@@ -14,8 +14,9 @@ class Controller{
 
     sendToImageCard = (word) => {
         this.imageHolder.handleWordClick(word);
-
-        this.relatedApps.getRelatedApps(word);
+        if(!this.imageHolder.rejected) {
+            this.relatedApps.getRelatedApps(word);
+        }
     }
 
     start() {
