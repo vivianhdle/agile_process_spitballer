@@ -12,8 +12,9 @@ class Controller{
     }
     putWordOnBoard = (word) => {
         console.log(word);
-        this.relevantWords.getAllData(word);
-        this.board.addWord(word);
+        if(this.board.addWord(word)) {
+            this.relevantWords.getAllData(word);
+        }
     }
     addEventListeners = () => {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
