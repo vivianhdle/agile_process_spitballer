@@ -24,7 +24,7 @@ class IdeaGenerator
                 url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
                 data: {
-                    key: "0BE4B6XI",
+                    key: "JFMYNGEN",
                     number: 5
                 },
                 success: (response) =>{

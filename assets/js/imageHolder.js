@@ -5,14 +5,17 @@ class imageHolder
     {
         this.imageCards = [];
         this.rejected = false;
-        this.callback = options.callback;
+        this.callbacks = {
+            showApps:options.showApps,
+            showRelatedWords: options.showRelatedWords
+        }
     }
 
     handleWordClick = (word) =>
     {
         if(this.imageCards.length < 3)
         {
-            const newCard = new ImageGenerator(word, this.callback);
+            const newCard = new ImageGenerator(word, this.callbacks);
             this.imageCards.push(newCard);
         } else {
             this.rejected = true;

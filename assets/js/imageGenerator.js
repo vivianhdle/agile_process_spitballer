@@ -3,21 +3,26 @@ class ImageGenerator{
     constructor(word, callback){
         this.word = word;
         this.domElement = null;
-        this.callback = callback;
+        this.callbacks = {
+            showApps:callback.showApps,
+            showRelatedWords:callback.showRelatedWords
+        }
         this.getImage();
     }
 
     handleClick = () =>
     {
         console.log("handleClick in ImageGenerator");
-        this.callback(this.word);
+        this.callbacks.showApps(this.word);
+        this.callbacks.showRelatedWords(this.word);
         $(".image-wrapper > div").removeClass("selected");
         this.domElement.addClass("selected");
     }
 
     render = (imageURL) =>
     {
-        let imageContainer = $("<div>",{class: "images-container"});
+        $(".image-wrapper > div").removeClass("selected");
+        let imageContainer = $("<div>",{class: "images-container selected"});
         let imageDiv = $("<div>",{class: "image"}).css("background-image", `url(${imageURL})`);
         let wordDiv = $("<div>", {class: "word"}).text(this.word);
         imageContainer.append(imageDiv, wordDiv);

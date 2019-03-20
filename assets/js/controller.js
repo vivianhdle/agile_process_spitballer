@@ -29,7 +29,7 @@ class Controller{
         $('.adjectives').toggle();
     }
 
-    sendToImageCard = (word) => {
+    sendToImageCard = word => {
         this.imageHolder.handleWordClick(word);
         if(!this.imageHolder.rejected) {
             this.relatedApps.getRelatedApps(word);
@@ -38,6 +38,9 @@ class Controller{
     showApps = (word) =>
     {
         this.relatedApps.getRelatedApps(word);
+    }
+    showRelatedWords = word => {
+        this.relevantWords.getAllData(word);
     }
 
     start() {
@@ -52,7 +55,8 @@ class Controller{
         });
         $('.spitboard-container').append(this.board.render());
         this.imageHolder = new imageHolder({
-            callback: this.showApps
+            showApps: this.showApps,
+            showRelatedWords: this.showRelatedWords
         });
 
         this.relatedApps = new RelatedApps({
