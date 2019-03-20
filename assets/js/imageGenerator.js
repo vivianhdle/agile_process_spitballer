@@ -11,6 +11,8 @@ class ImageGenerator{
     {
         console.log("handleClick in ImageGenerator");
         this.callback(this.word);
+        $(".image-wrapper > div").removeClass("selected");
+        this.domElement.addClass("selected");
     }
 
     render = (imageURL) =>
