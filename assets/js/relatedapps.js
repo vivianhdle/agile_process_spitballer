@@ -42,7 +42,8 @@ class RelatedApps{
         var container = $('<div>',{
             'class':'app'
         })
-        var title = $('<span>',{
+        var title = $('<div>',{
+            class:'app-title',
             'text':this.data.trackName
         })
         var anchorTag = $('<a>',{
@@ -52,8 +53,9 @@ class RelatedApps{
         var image = $('<img>',{
             'src':this.data.artWork
         })
+        $('.names').append(title);
         anchorTag.append(image);
-        container.append(title,anchorTag);
+        container.append(anchorTag);
         return container
     }
 }
