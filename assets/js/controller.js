@@ -15,7 +15,8 @@ class Controller{
         this.relatedApps = null;
         this.buttons={
             relatedWords: $(options.relatedWordsButton),
-            adjectiveWords: $(options.adjectiveWordsButton)
+            adjectiveWords: $(options.adjectiveWordsButton),
+            startButton: $(options.startButton)
         }
     }
 
@@ -36,6 +37,15 @@ class Controller{
     addEventListeners = () => {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
+        this.buttons.startButton.on('click',this.startButton)
+    }
+
+    /**
+     * hides landing page and makes an API call 
+     */
+    startButton = () => {
+        $('.landing-page').hide()
+        this.newGenerator.generateWords();
     }
 
     /**

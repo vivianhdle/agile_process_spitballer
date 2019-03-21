@@ -8,6 +8,33 @@ body{
     font-family: 'Walter Turncoat';
     background-image:url('https://ih1.redbubble.net/image.191255259.5112/pp,550x550.u1.jpg');
 }
+.landing-page{
+    height:100vh;
+    width:100vw;
+    position:fixed;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-image:url('https://ih1.redbubble.net/image.191255259.5112/pp,550x550.u1.jpg');
+}
+.landing-page>button{
+    position:relative;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    font-size:3rem;
+    font-family: 'Walter Turncoat';
+    border-radius:20px;
+    border:none;
+    color:white;
+    background-color:rgba(25,25,25,.3);
+}
+
+.landing-page>button:hover{
+    cursor: pointer;
+    background-color: rgba(25,25,25,.5);
+    border:1px solid lightgoldenrodyellow;
+}
 .hero-page{
     height:100vh;
     width:100vw;
@@ -153,7 +180,7 @@ body{
     border:1px solid black;
     box-sizing:border-box;
     vertical-align:top;
-    font-size:1rem;
+    font-size:1.5rem;
 }
 .images-container>.image{
     height:80%;
