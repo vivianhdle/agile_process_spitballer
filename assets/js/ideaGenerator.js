@@ -1,26 +1,41 @@
-
+/**
+ * Class representing an Idea Generator
+ */
 class IdeaGenerator
 {
+    /**
+     * Create an Idea Generator
+     * @param {object} options - Object containing callbacks from Controller
+     */
     constructor(options)
     {
-        this.handleBtnClick();
+        this.addEventHandler();
         this.callbacks = {
             callbackFromController: options.callback
         }
     }
 
-    handleBtnClick = () => 
+
+    /**
+     * Adds event habdler on Generate Random Ideas button.
+     * On click calls generateWords function.
+     */
+    addEventHandler = () => 
     {
        
         $(".word-generator-button").on("click", this.generateWords);
         console.log("words: ", this.words)
-        const text = $('<div>',{
-            text:'CLICK AN IDEA FROM BOARD',
-            class:'instructions'
-        })
-        $('.image-wrapper').append(text).hide();
+        // const text = $('<div>',{
+        //     text:'CLICK AN IDEA FROM BOARD',
+        //     class:'instructions'
+        // })
+        // $('.image-wrapper').append(text).hide();
     }
 
+    /**
+     * Makes ajax call to request 5 random words from random-word-api.
+     * On success creates 5 instances of ideaCard and renders them to the DOM.
+     */
     generateWords = () =>
     {
         console.log("generateWords called");
@@ -49,7 +64,15 @@ class IdeaGenerator
     }
 }
 
+/**
+ * Class representing an idea card with a random word.
+ */
 class ideaCard {
+    /**
+     * Creates a an idea card object.
+     * @param {string} word - Random word returned from API call.
+     * @param {object} callback - callback pased from succesful API call which was passed from controller.
+     */
     constructor(word, callback) {
         this.word = word;
         this.callback = callback;
@@ -57,11 +80,20 @@ class ideaCard {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    /**
+     * Clickhandler for when an idea card is clicked.
+     * Sends the clicked word to the callback function and then to Controller.
+     * Controller will send the clicked word to cork board object.
+     */
     handleClick = () => {
         this.callback(this.word);
         $('.spit-board > .instructions').remove();
     }
 
+    /**
+     * @return {null} this.domElement 
+     * this.domElement is a new div element that has the random word from API call.
+     */
     render = () => {
         this.domElement = $('<div>').append(
             $('<div>').text(this.word)
