@@ -36,7 +36,7 @@ class IdeaGenerator
                 url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
                 data: {
-                    key: "JFMYNGEN",
+                    key: "NDKRRMLM",
                     number: 5
                 },
                 success: (response) =>{

@@ -15,10 +15,12 @@ body{
     z-index: 1;
     background-repeat: no-repeat;
     background-size:cover;
+    font-size:5rem;
+    text-align:center;
     background-image:url('https://ih1.redbubble.net/image.191255259.5112/pp,550x550.u1.jpg');
 }
 .landing-page>button{
-    position:relative;
+    position:absolute;
     left:50%;
     top:50%;
     transform: translate(-50%,-50%);
@@ -146,23 +148,18 @@ body{
     font-size:1rem;
     align-items:center;
     box-sizing:border-box;
-    border:2px solid black;
+    border:2px solid lightgoldenrodyellow;
 }
 .title{
     color:lightgoldenrodyellow;
     font-size:1em;
 }
-/* .syn>div{
-    background-color:white;
-}
-.adj>div{
-    background-color:lime;;
-} */
 .syn>div,.adj>div{
     display:flex;
     align-items:center;
     justify-content: center;
     box-sizing: border-box;
+    font-size:1.25rem;
 }
 .syn,.adj{
     width:100%;
