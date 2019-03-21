@@ -21,10 +21,8 @@ class IdeaGenerator
      * On click calls generateWords function.
      */
     addEventHandler = () => 
-    {
-       
+    { 
         $(".word-generator-button").on("click", this.generateWords);
-        console.log("words: ", this.words)
     }
 
     /**
@@ -33,7 +31,6 @@ class IdeaGenerator
      */
     generateWords = () =>
     {
-        console.log("generateWords called");
         $.ajax(
             {
                 url: "https://random-word-api.herokuapp.com/word",
@@ -43,7 +40,6 @@ class IdeaGenerator
                     number: 5
                 },
                 success: (response) =>{
-                    console.log(response);
                     $(".ideas > div").remove();
                     let newIdeaCard = null;
                     for(let index = 0; index < response.length; index++)

@@ -25,7 +25,6 @@ class Controller{
      * @param {string} word - the word to be added to the Board
      */
     putWordOnBoard = (word) => {
-        console.log(word);
         if(this.board.addWord(word)) {
             $('.image-wrapper').show();
         }

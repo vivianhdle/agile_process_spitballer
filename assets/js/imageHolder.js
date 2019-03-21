@@ -24,8 +24,6 @@ class imageHolder
      */
     handleWordClick = (word) =>
     {
-        // debugger;
-
         if(this.indexOfCard(word) === null)
         {
             if(this.imageCards.length < 3)
@@ -64,6 +62,4 @@ class imageHolder
         }
         return indexToBeDeleted;
     }
-
-
 }

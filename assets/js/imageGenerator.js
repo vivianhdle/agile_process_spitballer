@@ -25,7 +25,6 @@ class ImageGenerator{
      */
     handleClick = () =>
     {
-        console.log("handleClick in ImageGenerator");
         this.callbacks.showApps(this.word);
         this.callbacks.showRelatedWords(this.word);
         $(".image-wrapper > div").removeClass("selected");
@@ -59,7 +58,6 @@ class ImageGenerator{
      */
     getImage = () =>
     {
-        console.log("getImage was called");
         $.ajax({
             url: "https://pixabay.com/api/",
             method: "get",
@@ -71,16 +69,13 @@ class ImageGenerator{
             dataType: "jsonp",
             success: (response) => 
             {
-                console.log(response);
                 let imageURL;
                 if (response.totalHits>0){
                     imageURL=response.hits[0].largeImageURL;
-                    console.log(`imageURL is: ${imageURL}`);
                 } else {
                     imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtmmtPDV4ur79uSO4C2H9fiIgVqU340Uqxy_WF-a21Fg8V6A9Z"
                 }
                 this.render(imageURL);
-                
             }
         });
     }
