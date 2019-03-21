@@ -1,7 +1,7 @@
 /**
  * Class representing the individual images on the page
  */
-class ImageGenerator{
+class Image{
     /**
      * Creates an Image object and calls the Image API
      * @param {string} word - the word associated with the Image

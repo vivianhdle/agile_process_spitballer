@@ -87,16 +87,20 @@ class Controller{
         this.newGenerator = new IdeaGenerator({
             callback:this.putWordOnBoard
         });
+
         this.relevantWords = new RelevantWords({
             synonymArea:$('.syn'),
             adjectiveArea:$('.adj')
         });
+
         $('.relevant').hide();
-        this.board = new Corkboard({
+        this.board = new Board({
             callback: this.sendToImageCard
         });
+
         $('.spitboard-container').append(this.board.render());
         $('.spit-board').hide();
+
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords
@@ -106,6 +110,9 @@ class Controller{
             displayArea:'.apps'
         });
 
+        /*========================================
+            Instructions elements to guide user
+        =========================================*/
         $('.image-wrapper').append(
             $('<div>',{
                 text:'CLICK AN IDEA FROM BOARD',
@@ -128,6 +135,7 @@ class Controller{
                 "text-align":"center"
             }
         }));
+
         this.addEventListeners();
     }
 }
