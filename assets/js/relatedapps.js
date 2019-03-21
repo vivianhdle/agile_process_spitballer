@@ -44,7 +44,6 @@ class RelatedApps{
      * @param {object} response 
      */
     gotRelatedApps(response){
-        console.log(response.results);
         $(".apps").empty();
         $(".names").empty();
         for (let appIndex in response.results){

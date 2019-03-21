@@ -47,7 +47,6 @@ class Corkboard {
         if(wordIndex >= 0) {
             this.words.splice(wordIndex, 1);
         }
-        console.log(this.words);
     }
 
     /**
