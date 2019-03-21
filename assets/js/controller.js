@@ -1,3 +1,4 @@
+
 class Controller{
     constructor(options){
         this.newGenerator=null;
@@ -10,10 +11,12 @@ class Controller{
             adjectiveWords: $(options.adjectiveWordsButton)
         }
     }
+
+    
     putWordOnBoard = (word) => {
         console.log(word);
         if(this.board.addWord(word)) {
-            this.relevantWords.getAllData(word);
+            // this.relevantWords.getAllData(word);
             $('.image-wrapper').show();
         }
     }
@@ -33,9 +36,6 @@ class Controller{
     sendToImageCard = word => {
         this.imageHolder.handleWordClick(word);
         $('.instructions').hide();
-        // const instructions = $('<div>',{
-
-        // })
     }
     showApps = (word) =>
     {
@@ -65,6 +65,12 @@ class Controller{
         this.relatedApps = new RelatedApps({
             displayArea:'.apps'
         });
+
+        const text = $('<div>',{
+            text:'CLICK AN IDEA FROM BOARD',
+            class:'instructions'
+        })
+        $('.image-wrapper').append(text).hide();
 
         $(".app-container").append(
             $('<div>',{
