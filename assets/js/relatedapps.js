@@ -46,12 +46,23 @@ class RelatedApps{
     gotRelatedApps(response){
         $(".apps").empty();
         $(".names").empty();
-        for (let appIndex in response.results){
+        if (response.resultCount>0){
+            $('app-instructions').remove();
+            for (let appIndex in response.results){
             this.data.trackName = response.results[appIndex].trackName;
             this.data.artWork = response.results[appIndex].artworkUrl512;
             this.data.link = response.results[appIndex].trackViewUrl;
             this.displayArea.append(this.render());
+            }
+        } else {
+            $(".app-container").append(
+                $('<div>',{
+                    text:'NO APPS FOUND',
+                    class:'app-instructions'
+                    })
+                );
         }
+        
     }
     /**
      * creates dom elements(container,title,anchortag,image) grabs data from constructor to display on the DOM
