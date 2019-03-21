@@ -1,4 +1,11 @@
+/**
+ * Class representing apps related to a specific word
+ */
 class RelatedApps{
+    /**
+     * Makes storage for dom elements and app data
+     * @param {object} options - displayArea 
+     */
     constructor(options){
         this.displayArea = $(options.displayArea);
         this.domElements = [];
@@ -7,12 +14,16 @@ class RelatedApps{
             artWork:null,
             link:null
         }
-        //=======================================
+        //====================================================
         //BINDING
         this.getRelatedApps = this.getRelatedApps.bind(this)
         this.gotRelatedApps = this.gotRelatedApps.bind(this)
-        //=======================================
+        //====================================================
     }
+    /**
+     * makes an API call to search for related apps relating to a word passed in
+     * @param {string} word - a string that will be pumped into the itunes app store search
+     */
     getRelatedApps(word){
         var ajaxOptions = {
             url:"https://itunes.apple.com/search?",
@@ -28,6 +39,10 @@ class RelatedApps{
         }
         $.ajax(ajaxOptions)
     }
+    /**
+     * success function, gets all the related apps and saves them in the contructor for future use
+     * @param {object} response 
+     */
     gotRelatedApps(response){
         console.log(response.results);
         $(".apps").empty();
@@ -39,6 +54,10 @@ class RelatedApps{
             this.displayArea.append(this.render());
         }
     }
+    /**
+     * creates dom elements(container,title,anchortag,image) grabs data from constructor to display on the DOM
+     * @returns a DOM element that has not been appended to the DOM
+     */
     render(){
         var container = $('<div>',{
             'class':'app'

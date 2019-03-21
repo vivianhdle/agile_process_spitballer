@@ -50,6 +50,8 @@ class Controller{
             callback:this.putWordOnBoard
         });
         this.relevantWords = new RelevantWords({
+            synonymArea:$('.syn'),
+            adjectiveArea:$('.adj')
         });
         $('.relevant').hide();
         this.board = new Corkboard({
