@@ -1,10 +1,10 @@
 /**
- * Class representing the cork board on the page, which holds idea words selected by the user
+ * Class representing the board on the page, which holds idea words selected by the user
  */
-class Corkboard {
+class Board {
     /**
-     * Creates a corkboard object
-     * @param options - object that holds the callbacks for Corkboard and CorkBoardWord
+     * Creates a board object
+     * @param options - object that holds the callbacks for board and BoardWord
      */
     constructor(options) {
         this.words = [];
@@ -23,7 +23,7 @@ class Corkboard {
      */
     addWord(word) {
         if(this.words.length < 20 && this.wordIsOnBoard(word) === -1) {
-            const newWord = new CorkboardWord({
+            const newWord = new BoardWord({
                 word: word,
                 callbacks: {
                     sendToImage: this.callbacks.sendToImageCallback,
@@ -64,7 +64,7 @@ class Corkboard {
     }
 
     /**
-     * Creates the cork board DOM element
+     * Creates the board DOM element
      * @returns {null} - the selector for the board's DOM element
      */
     render() {
@@ -77,7 +77,7 @@ class Corkboard {
 /**
  * Class representing individual words on the board
  */
-class CorkboardWord {
+class BoardWord {
     /**
      * Creates a word object
      * @param options - object holding callback functions

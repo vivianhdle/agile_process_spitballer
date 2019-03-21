@@ -28,7 +28,7 @@ class imageHolder
         {
             if(this.imageCards.length < 3)
             {
-                const newCard = new ImageGenerator(word, this.callbacks);
+                const newCard = new Image(word, this.callbacks);
                 this.imageCards.push(newCard);
             }
         }
