@@ -25,11 +25,6 @@ class IdeaGenerator
        
         $(".word-generator-button").on("click", this.generateWords);
         console.log("words: ", this.words)
-        // const text = $('<div>',{
-        //     text:'CLICK AN IDEA FROM BOARD',
-        //     class:'instructions'
-        // })
-        // $('.image-wrapper').append(text).hide();
     }
 
     /**

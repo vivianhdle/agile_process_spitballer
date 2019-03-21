@@ -1,5 +1,12 @@
-
+/**
+ * Class representing the individual images on the page
+ */
 class ImageGenerator{
+    /**
+     * Creates an Image object and calls the Image API
+     * @param {string} word - the word associated with the Image
+     * @param callback - object holding callback functions
+     */
     constructor(word, callback){
         this.word = word;
         this.domElement = null;
@@ -11,6 +18,11 @@ class ImageGenerator{
         this.getImage();
     }
 
+    /**
+     * Click handler for the image
+     * Shows the apps and words associated with the Image's word
+     * Highlights the last Image that was clicked on
+     */
     handleClick = () =>
     {
         console.log("handleClick in ImageGenerator");
@@ -23,6 +35,10 @@ class ImageGenerator{
         $(".app-container>*").show();
     }
 
+    /**
+     * Creates the DOM element and its children, adds click handlers, and appends it to the DOM
+     * @param {string} imageURL - the URL of the image received from the image API
+     */
     render = (imageURL) =>
     {
         $(".image-wrapper > div").removeClass("selected");
@@ -38,6 +54,9 @@ class ImageGenerator{
         $(this.domElement).on("click", this.handleClick);
     }
 
+    /**
+     * Calls the image API and sends the image URL to the render function
+     */
     getImage = () =>
     {
         console.log("getImage was called");
@@ -66,6 +85,9 @@ class ImageGenerator{
         });
     }
 
+    /**
+     * Deletes the DOM element and calls an ImageHolder function, removing it from the image array
+     */
     deleteSelf = () =>
     {
         this.domElement.remove();

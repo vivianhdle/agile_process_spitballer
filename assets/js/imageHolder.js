@@ -1,6 +1,12 @@
-
+/**
+ * Class representing the entire images section
+ */
 class imageHolder
 {
+    /**
+     * Creates an ImageHolder object
+     * @param options - object that holds callbacks for it and child objects
+     */
     constructor(options)
     {
         this.imageCards = [];
@@ -11,6 +17,11 @@ class imageHolder
         }
     }
 
+    /**
+     * Handler for clicks on word objects on the board
+     * If there is room, create a new Image and add it to the image array
+     * @param {string} word - the word used to create a new Image
+     */
     handleWordClick = (word) =>
     {
         // debugger;
@@ -26,12 +37,21 @@ class imageHolder
         
     }
 
+    /**
+     * Deletes an Image from the image array
+     * @param {string} word - the word associated with the Image to be deleted
+     */
     deleteImageFromArray = (word) =>
     {
         let indexToBeDeleted = this.indexOfCard(word);
         this.imageCards.splice(indexToBeDeleted, 1);
     }
 
+    /**
+     * Searches the image array for an image associated with a given word
+     * @param {string} word - the word associated with the Image to search for
+     * @returns {number} - the index of the Image whose word matches the given word, or -1 if none is found
+     */
     indexOfCard = (word) =>
     {
         let indexToBeDeleted = null;
