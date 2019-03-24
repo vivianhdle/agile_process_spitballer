@@ -7,7 +7,11 @@ class RelatedApps{
      * @param {object} options - displayArea 
      */
     constructor(options){
-        this.displayArea = $(options.displayArea);
+        this.displayAreas = {
+            appArea: $(options.appArea),
+            titleArea: $(options.titleArea),
+            appContainer:$(options.appContainer)
+        }
         this.domElements = [];
         this.data = {
             trackName:null,
@@ -44,18 +48,18 @@ class RelatedApps{
      * @param {object} response 
      */
     gotRelatedApps(response){
-        $(".apps").empty();
-        $(".names").empty();
+        this.displayAreas.appArea.empty();
+        this.displayAreas.titleArea.empty();
         if (response.resultCount>0){
-            $('app-instructions').remove();
+            $('.app-instructions').remove();
             for (let appIndex in response.results){
             this.data.trackName = response.results[appIndex].trackName;
             this.data.artWork = response.results[appIndex].artworkUrl512;
             this.data.link = response.results[appIndex].trackViewUrl;
-            this.displayArea.append(this.render());
+            this.displayAreas.appArea.append(this.render());
             }
         } else {
-            $(".app-container").append(
+            this.displayAreas.appContainer.append(
                 $('<div>',{
                     text:'NO APPS FOUND',
                     class:'app-instructions'
@@ -69,18 +73,18 @@ class RelatedApps{
      * @returns a DOM element that has not been appended to the DOM
      */
     render(){
-        var container = $('<div>',{
+        const container = $('<div>',{
             'class':'app'
         })
-        var title = $('<div>',{
+        const title = $('<div>',{
             class:'app-title',
             'text':this.data.trackName
         })
-        var anchorTag = $('<a>',{
+        const anchorTag = $('<a>',{
             'href':this.data.link,
             'target':'_blank'
         })
-        var image = $('<img>',{
+        const image = $('<img>',{
             'src':this.data.artWork
         })
         $('.names').append(title);

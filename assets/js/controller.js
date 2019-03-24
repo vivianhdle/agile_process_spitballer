@@ -117,7 +117,9 @@ class Controller{
         });
         
         this.relatedApps = new RelatedApps({
-            displayArea:'.apps'
+            appArea:'.apps',
+            titleArea:'.names',
+            appContainer:'.app-container'
         });
 
         /*========================================
