@@ -7,10 +7,9 @@ class RelevantWords{
      * @param {object} options - display areas for synonyms/adjectives
      */
     constructor(options){
-        this.synonymArea = options.synonymArea;
-        this.adjectiveArea = options.adjectiveArea;
-        this.domElements={
-            synonyms:null
+        this.displayAreas = {
+            synonymArea: options.synonymArea,
+            adjectiveArea:options.adjectiveArea
         }
         this.synonyms = [];
         this.adjectives = [];
@@ -92,7 +91,7 @@ class RelevantWords{
                 text:this.synonyms[item],
                 class: 'synonyms'
             })
-            this.synonymArea.append(newWord);
+            this.displayAreas.synonymArea.append(newWord);
         }
         this.synonyms = [];
     }
@@ -109,7 +108,7 @@ class RelevantWords{
                     'display':'none'
                 }
             })
-            this.adjectiveArea.append(newWord);
+            this.displayAreas.adjectiveArea.append(newWord);
         }
         this.adjectives = [];
     }
