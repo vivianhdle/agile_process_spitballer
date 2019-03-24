@@ -52,6 +52,8 @@ class Controller{
      * Shows the related words div and hides the adjective words div
      */
     toggleRelatedWords(){
+        $('.syn i').toggleClass('flipped');
+        $('.adj i').removeClass('flipped');
         $('.adjectives').hide();
         $('.synonyms').toggle();
     }
@@ -60,6 +62,8 @@ class Controller{
      * Hides the related words div and shows the adjective words div
      */
     toggleAdjectives(){
+        $('.adj i').toggleClass('flipped');
+        $('.syn i').addClass('flipped');
         $('.synonyms').hide();
         $('.adjectives').toggle();
     }

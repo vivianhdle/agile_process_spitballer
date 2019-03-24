@@ -36,7 +36,7 @@ class IdeaGenerator
                 url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
                 data: {
-                    key: "MHXUDGCF",
+                    key: "IZB24MSO",
                     number: 5
                 },
                 success: (response) =>{
