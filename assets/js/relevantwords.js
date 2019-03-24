@@ -86,12 +86,17 @@ class RelevantWords{
      */
     displaySynonyms(){
         $('.synonyms').remove();
-        for (let item in this.synonyms){
+        if(this.synonyms.length === 0){
+            this.displayNoneFound('synonyms')
+        } else {
+            for (let item in this.synonyms){
             let newWord = $('<div>',{
                 text:this.synonyms[item],
                 class: 'synonyms'
             })
             this.displayAreas.synonymArea.append(newWord);
+        }
+        
         }
         this.synonyms = [];
     }
@@ -100,7 +105,10 @@ class RelevantWords{
      */
     displayAdjectives(){
         $('.adjectives').remove();
-        for (let item in this.adjectives){
+        if (this.adjectives.length === 0){
+            this.displayNoneFound('adjectives')
+        } else {
+            for (let item in this.adjectives){
             let newWord = $('<div>',{
                 text:this.adjectives[item],
                 class: 'adjectives',
@@ -110,6 +118,20 @@ class RelevantWords{
             })
             this.displayAreas.adjectiveArea.append(newWord);
         }
+
+        }
+        
         this.adjectives = [];
+    }
+    displayNoneFound(type){
+        const noWord = $('<div>',{
+            class:type,
+            text:`NO ${type.toUpperCase()} FOUND`
+        })
+        if (type==='synonyms'){
+            this.displayAreas.synonymArea.append(noWord);
+        }else {
+            this.displayAreas.adjectiveArea.append(noWord);
+        }
     }
 }

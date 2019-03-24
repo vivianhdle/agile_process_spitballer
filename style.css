@@ -156,6 +156,7 @@ body{
 .title{
     color:lightgoldenrodyellow;
     font-size:1em;
+    cursor: pointer;
 }
 .syn>div,.adj>div{
     display:flex;
@@ -163,6 +164,7 @@ body{
     justify-content: center;
     box-sizing: border-box;
     font-size:1.25rem;
+    text-align:center;
 }
 .syn,.adj{
     width:100%;
@@ -236,7 +238,8 @@ body{
 }
 .app-title{
     height:35%;
-    width:33.33%;
+    width:28%;
+    margin:0 4%;
     text-overflow: ellipsis; 
     overflow: hidden;
     white-space: nowrap;
@@ -277,6 +280,9 @@ body{
     text-align: center;
     font-size: 1.5rem;
 }
+
+.flipped{
+    transform:rotate(180deg);
 
 @keyframes spinn {
     0%   {transform: rotate(0deg)}
