@@ -10,6 +10,7 @@ class IdeaGenerator
     constructor(options)
     {
         this.addEventHandler();
+        this.apiKey = new IdeaAPIKey('KXB5F7RJ'); // API key to start with
         this.callbacks = {
             callbackFromController: options.callback
         }
@@ -17,7 +18,7 @@ class IdeaGenerator
 
 
     /**
-     * Adds event habdler on Generate Random Ideas button.
+     * Adds event handler on Generate Random Ideas button.
      * On click calls generateWords function.
      */
     addEventHandler = () => 
@@ -31,29 +32,84 @@ class IdeaGenerator
      */
     generateWords = () =>
     {
+        $(".word-generator-button > i").addClass('spinn');
         $.ajax(
             {
                 url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
                 data: {
-                    key: "IZB24MSO",
+                    key: this.apiKey.getKey(),
                     number: 5
                 },
-                success: (response) =>{
-                    $(".ideas > div").remove();
-                    let newIdeaCard = null;
-                    for(let index = 0; index < response.length; index++)
-                    {
-                        newIdeaCard = new ideaCard(response[index], this.callbacks.callbackFromController);
-                        $(".ideas").append(newIdeaCard.render());
-                        
+                success: (response) => {
+                    if (response === "wrong API key") {
+                        this.apiKey.generateNewKey(this.generateWords);
+                    } else {
+                        $(".ideas > div").remove();
+                        let newIdeaCard = null;
+                        for(let index = 0; index < response.length; index++)
+                        {
+                            newIdeaCard = new ideaCard(response[index], this.callbacks.callbackFromController);
+                            $(".ideas").append(newIdeaCard.render());
+
+                        }
                     }
+                },
+                complete: () => {
+                    $(".word-generator-button > i").removeClass('spinn');
                 }
             }
         );
         $('.spit-board').show('slow');
     }
 }
+
+/**
+ * Class object used for storing and retrieving the API key for the random word API
+ */
+class IdeaAPIKey {
+    /**
+     * Creates the key object and stores the initial api key
+     * @param key -
+     */
+    constructor(key = null) {
+        if (key) {
+            this.key = key;
+        } else {
+            this.generateNewKey();
+        }
+    }
+
+    /**
+     * Calls the key generator API and stores the new key
+     * Then optionally runs a callback function (used when IdeaGenerator's key has expired)
+     * @param callback - function to call after generating a new key
+     */
+    generateNewKey(callback = null) {
+        $.ajax({
+            url: "https://cors.io/?https://random-word-api.herokuapp.com/key",
+            method: 'get',
+            datatype: 'text',
+            success: response => {
+                this.key = response;
+                console.log('Got a new key: ' + this.key);
+                if(callback) {
+                    callback();
+                }
+            }
+        })
+    }
+
+    /**
+     * Returns the current api key
+     * @returns {string} - the API key that is stored
+     */
+    getKey() {
+        return this.key;
+    }
+
+}
+
 
 /**
  * Class representing an idea card with a random word.
@@ -79,6 +135,7 @@ class ideaCard {
     handleClick = () => {
         this.callback(this.word);
         $('.spit-board > .instructions').remove();
+        this.domElement.remove();
     }
 
     /**

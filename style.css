@@ -283,4 +283,12 @@ body{
 
 .flipped{
     transform:rotate(180deg);
+
+@keyframes spinn {
+    0%   {transform: rotate(0deg)}
+    100% {transform: rotate(359deg)}
+}
+
+.spinn {
+    animation: spinn .4s infinite;
 }
