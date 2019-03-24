@@ -110,7 +110,6 @@ class Controller{
 
         $('.spitboard-container').append(this.board.render());
         $('.spit-board').hide();
-
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords

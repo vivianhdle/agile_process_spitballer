@@ -12,7 +12,6 @@ class RelatedApps{
             titleArea: $(options.titleArea),
             appContainer:$(options.appContainer)
         }
-        this.domElements = [];
         this.data = {
             trackName:null,
             artWork:null,

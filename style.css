@@ -205,13 +205,14 @@ body{
 .app-container{
     height:95%;
     width:40%;
-    font-size:1rem;
+    font-size:3vmin;
     background-repeat: no-repeat;
     background-size:cover;
     color:white;
+    top:5%;
     font-family: 'Walter Turncoat';
     box-sizing: border-box;
-    position: relative
+    position: relative;
 }
 .apps{
     height:60%;
@@ -228,17 +229,17 @@ body{
     align-items:center;
     justify-content: center;
     text-align: center;
-    text-overflow: hidden; 
-    overflow: hidden;
 }
 .app{
     width:33.33%;
     height:100%;
 }
 .app-title{
-    height:50;
+    height:35%;
     width:33.33%;
-    
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
 }
 .app>a>img{
     height:8vw;
