@@ -17,20 +17,22 @@ class Controller{
             relatedWords: $(options.relatedWordsButton),
             adjectiveWords: $(options.adjectiveWordsButton),
             startButton: $(options.startButton),
-            random3: $(options.random3Button)
+            random3: $(options.random3Button),
+            randomizeBoard: $(options.randomizeBoardButton)
         }
     }
 
     /**
      * Takes a word from IdeaGenerator callback and attempts to put the word on the Board object
-     *
      * @param {string} word - the word to be added to the Board
      */
     putWordOnBoard = (word) => {
         if(this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
+            return true;
         }
+        return false;
     }
 
     /**
@@ -39,8 +41,9 @@ class Controller{
     addEventListeners = () => {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
-        this.buttons.startButton.on('click',this.startButton),
-        this.buttons.random3.on('click', this.select3Images)
+        this.buttons.startButton.on('click',this.startButton);
+        this.buttons.random3.on('click', this.select3Images);
+        this.buttons.randomizeBoard.on('click', this.shuffleBoard);
     }
 
     /**
@@ -104,6 +107,10 @@ class Controller{
             this.imageHolder.handleWordClick(imagesToAdd[index]);
         }
     }
+
+    shuffleBoard = () => {
+        this.board.randomFillBoard(this.select3Images);
+    };
 
     /**
      * Instantiates all the page objects and calls the addEventListeners function

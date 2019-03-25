@@ -134,9 +134,10 @@ class ideaCard {
      * Controller will send the clicked word to cork board object.
      */
     handleClick = () => {
-        this.callback(this.word);
-        $('.spit-board > .instructions').remove();
-        this.domElement.remove();
+        if(this.callback(this.word)) {
+            $('.spit-board > .instructions').remove();
+            this.domElement.remove();
+        }
     }
 
     /**

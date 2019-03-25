@@ -7,7 +7,8 @@ function initializeApp(){
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
         startButton:'.landing-page>button',
-        random3Button:'.random3'
+        random3Button:'.random3',
+        randomizeBoardButton: '.random-fill-button'
     });
     mainController.start();
     particlesJS.load('particles-js', 'assets/particles.json', function() {

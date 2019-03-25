@@ -14,15 +14,6 @@ class Board {
         };
 
         this.deleteWord = this.deleteWord.bind(this);
-
-        this.addEventHandlers();
-    }
-
-    /**
-     * Adds click handlers for board buttons
-     */
-    addEventHandlers() {
-        $('.random-fill-button').click(this.randomFillBoard);
     }
 
     /**
@@ -90,7 +81,7 @@ class Board {
     }
 
 
-    randomFillBoard = () =>
+    randomFillBoard = (callback = null) =>
     {
         $(".word-generator-button > i").addClass('spinn');
         $.ajax(
@@ -109,6 +100,9 @@ class Board {
                         for(let index = 0; index < response.length; index++)
                         {
                             this.addWord(response[index]);
+                        }
+                        if(callback) {
+                            callback();
                         }
                     }
                 },
