@@ -10,7 +10,7 @@ class IdeaGenerator
     constructor(options)
     {
         this.addEventHandler();
-        this.apiKey = new IdeaAPIKey('KXB5F7RJ'); // API key to start with
+        this.apiKey = new IdeaAPIKey('COMH5PUQ'); // API key to start with
         this.callbacks = {
             callbackFromController: options.callback
         }
@@ -45,7 +45,7 @@ class IdeaGenerator
                     if (response === "wrong API key") {
                         this.apiKey.generateNewKey(this.generateWords);
                     } else {
-                        $(".ideas > div").remove();
+                        $(".ideaCard").remove();
                         let newIdeaCard = null;
                         for(let index = 0; index < response.length; index++)
                         {
@@ -56,6 +56,7 @@ class IdeaGenerator
                     }
                 },
                 complete: () => {
+                    localStorage.setItem('wordAPIKey', this.apiKey.getKey());
                     $(".word-generator-button > i").removeClass('spinn');
                 }
             }
@@ -87,7 +88,7 @@ class IdeaAPIKey {
      */
     generateNewKey(callback = null) {
         $.ajax({
-            url: "https://cors.io/?https://random-word-api.herokuapp.com/key",
+            url: "https://yacdn.org/proxy/https://random-word-api.herokuapp.com/key",
             method: 'get',
             datatype: 'text',
             success: response => {
@@ -143,7 +144,7 @@ class ideaCard {
      * this.domElement is a new div element that has the random word from API call.
      */
     render = () => {
-        this.domElement = $('<div>').append(
+        this.domElement = $('<div>', {class: 'ideaCard'}).append(
             $('<div>').text(this.word)
         )
         this.domElement.click(this.handleClick);

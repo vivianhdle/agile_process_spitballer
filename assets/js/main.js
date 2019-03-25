@@ -6,7 +6,8 @@ function initializeApp(){
     mainController = new Controller({
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
-        startButton:'.landing-page>button'
+        startButton:'.landing-page>button',
+        random3Button:'.random3'
     });
     mainController.start();
     particlesJS.load('particles-js', 'assets/particles.json', function() {

@@ -5,8 +5,8 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
     color:white;
-    font-family: 'Walter Turncoat';
-    background-image:url('https://ih1.redbubble.net/image.191255259.5112/pp,550x550.u1.jpg');
+    font-family: 'Walter Turncoat', sans-serif;
+    background-image:url('assets/images/chalkboard.jpg');
 }
 .landing-page{
     height:100vh;
@@ -17,7 +17,7 @@ body{
     background-size:cover;
     font-size:5rem;
     text-align:center;
-    background-image:url('https://ih1.redbubble.net/image.191255259.5112/pp,550x550.u1.jpg');
+    background-image:url('assets/images/chalkboard.jpg');
 }
 .landing-page>button{
     position:absolute;
@@ -25,7 +25,7 @@ body{
     top:50%;
     transform: translate(-50%,-50%);
     font-size:3rem;
-    font-family: 'Walter Turncoat';
+    font-family: 'Walter Turncoat', sans-serif;
     border-radius:20px;
     border:none;
     color:white;
@@ -116,17 +116,33 @@ body{
     vertical-align: top;
     padding-right: 8%;
 }
-.ideas>button{
-    height:10%;
-    width:50%;
-    position:relative;
-    left:25%;
-    margin:10px auto;
+.buttons {
+    margin: 10px auto;;
+    height: 10%;
+    position: relative;
+}
+.buttons > button{
+    height:100%;
+    width: 35%;
+    margin: auto 10px;
+    position:absolute;
     border-radius:10px;
     border: none;
     cursor: pointer;
+    line-height: 100%;
+    transition: all .10s linear;
 }
-.ideas>div{
+.buttons > button:hover {
+    background-color: black;
+    color: white;
+}
+.random-fill-button {
+    left: 8%
+}
+.word-generator-button {
+    right: 8%
+}
+.ideaCard{
     height:16%;
     display:flex;
     align-items:center;
@@ -139,7 +155,7 @@ body{
     transition: all .25s ease-in-out;
     cursor: pointer;
 }
-.ideas>div:hover{
+.ideaCard:hover{
     transform: scale(1);
 }
 .relevant{
@@ -188,7 +204,6 @@ body{
 .images-container>.image{
     height:80%;
     width:100%;
-    background-image:url('http://clipart-library.com/img/1775678.png');
     background-size:cover;
     background-position:center;
 }
@@ -212,7 +227,7 @@ body{
     background-size:cover;
     color:white;
     top:5%;
-    font-family: 'Walter Turncoat';
+    font-family: 'Walter Turncoat', sans-serif;
     box-sizing: border-box;
     position: relative;
 }
@@ -223,7 +238,7 @@ body{
     align-items:center;
     justify-content: center;
     text-align: center;
-    
+
 }
 .names{
     height:30%;
@@ -240,7 +255,7 @@ body{
     height:35%;
     width:28%;
     margin:0 4%;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -253,8 +268,39 @@ body{
     top:15%;
 }
 
+.image-random-div {
+    width: 5%;
+    height: 100%;
+    position: relative;
+}
+
+.random3 {
+    height:40%;
+    width: 80%;
+    /*     margin: auto 10px; */
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius:10px;
+    border: none;
+    cursor: pointer;
+    /*     line-height: 100%; */
+    word-wrap: break-word;
+    background-color: green;
+    color: white;
+    transition: all .15s ease-in-out;
+    font-size: 2rem
+}
+.random3:hover {
+    background-color: black;
+    color: white;
+}
+.random3:hover i {
+    animation: barrelRoll .5s ;
+}
 .image-wrapper{
-    width: 60%;
+    width: 55%;
     height: 100%;
     display: flex;
     position: relative;
@@ -283,12 +329,18 @@ body{
 
 .flipped{
     transform:rotate(180deg);
+}
 
 @keyframes spinn {
     0%   {transform: rotate(0deg)}
     100% {transform: rotate(359deg)}
 }
 
+@keyframes barrelRoll {
+    0% {transform: rotateX(0deg)}
+    100% {transform: rotateX(360deg)}
+}
+
 .spinn {
-    animation: spinn .4s infinite;
+    animation: spinn .4s infinite linear;
 }
