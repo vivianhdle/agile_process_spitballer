@@ -1,18 +1,32 @@
+/**
+ * Class representing apps related to a specific word
+ */
 class RelatedApps{
+    /**
+     * Makes storage for dom elements and app data
+     * @param {object} options - displayArea 
+     */
     constructor(options){
-        this.displayArea = $(options.displayArea);
-        this.domElements = [];
+        this.displayAreas = {
+            appArea: $(options.appArea),
+            titleArea: $(options.titleArea),
+            appContainer:$(options.appContainer)
+        }
         this.data = {
             trackName:null,
             artWork:null,
             link:null
         }
-        //=======================================
+        //====================================================
         //BINDING
         this.getRelatedApps = this.getRelatedApps.bind(this)
         this.gotRelatedApps = this.gotRelatedApps.bind(this)
-        //=======================================
+        //====================================================
     }
+    /**
+     * makes an API call to search for related apps relating to a word passed in
+     * @param {string} word - a string that will be pumped into the itunes app store search
+     */
     getRelatedApps(word){
         var ajaxOptions = {
             url:"https://itunes.apple.com/search?",
@@ -28,32 +42,53 @@ class RelatedApps{
         }
         $.ajax(ajaxOptions)
     }
+    /**
+     * success function, gets all the related apps and saves them in the contructor for future use
+     * @param {object} response 
+     */
     gotRelatedApps(response){
-        console.log(response.results);
-        $(".apps").empty();
-        for (let appIndex in response.results){
+        this.displayAreas.appArea.empty();
+        this.displayAreas.titleArea.empty();
+        if (response.resultCount>0){
+            $('.app-instructions').remove();
+            for (let appIndex in response.results){
             this.data.trackName = response.results[appIndex].trackName;
             this.data.artWork = response.results[appIndex].artworkUrl512;
             this.data.link = response.results[appIndex].trackViewUrl;
-            this.displayArea.append(this.render());
+            this.displayAreas.appArea.append(this.render());
+            }
+        } else {
+            this.displayAreas.appContainer.append(
+                $('<div>',{
+                    text:'NO APPS FOUND',
+                    class:'app-instructions'
+                    })
+                );
         }
+        
     }
+    /**
+     * creates dom elements(container,title,anchortag,image) grabs data from constructor to display on the DOM
+     * @returns a DOM element that has not been appended to the DOM
+     */
     render(){
-        var container = $('<div>',{
+        const container = $('<div>',{
             'class':'app'
         })
-        var title = $('<span>',{
+        const title = $('<div>',{
+            class:'app-title',
             'text':this.data.trackName
         })
-        var anchorTag = $('<a>',{
+        const anchorTag = $('<a>',{
             'href':this.data.link,
             'target':'_blank'
         })
-        var image = $('<img>',{
+        const image = $('<img>',{
             'src':this.data.artWork
         })
+        $('.names').append(title);
         anchorTag.append(image);
-        container.append(title,anchorTag);
+        container.append(anchorTag);
         return container
     }
 }

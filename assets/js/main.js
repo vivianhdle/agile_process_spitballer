@@ -1,15 +1,16 @@
 $(document).ready(initializeApp);
 
+var mainController;
+
 function initializeApp(){
-    // // let newWords = new RelevantWords()
-    // // newWords.getSynonyms('aquarium');
-    // let newApps = new RelatedApps({
-    //     word:'kittens',
-    //     displayArea:'.apps'
-    // });
-    // newApps.getRelatedApps();
-
-    const mainController = new Controller;
+    mainController = new Controller({
+        relatedWordsButton:'.syn>.title',
+        adjectiveWordsButton:'.adj>.title',
+        startButton:'.landing-page>button',
+        random3Button:'.random3'
+    });
     mainController.start();
-
+    particlesJS.load('particles-js', 'assets/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+      });
 }
