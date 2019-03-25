@@ -30,6 +30,9 @@ class Controller{
         if(this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
+            return true;
+        } else {
+            return false;
         }
     }
 
