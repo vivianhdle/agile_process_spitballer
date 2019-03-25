@@ -149,8 +149,9 @@ class Synonym{
      * When clicked, put word on board and remove the dom element 
      */
     handleClick(){
-        this.putWordOnBoard(this.word);
-        this.domElement.remove();
+        if (this.putWordOnBoard(this.word)){
+            this.domElement.remove();
+        }
     }
     /**
      * Create a dom element for the word, save the dom element, and give it a click handler
@@ -183,8 +184,9 @@ class Adjective{
      * When clicked, put word on board and remove the dom element 
      */
     handleClick(){
-        this.putWordOnBoard(this.word);
-        this.domElement.remove();
+        if(this.putWordOnBoard(this.word)){
+            this.domElement.remove()
+        }
     }
     /**
      * Create a dom element for the word, save the dom element, and give it a click handler
@@ -192,7 +194,10 @@ class Adjective{
     render(){
         this.domElement = $('<div>',{
             text:this.word,
-            class: 'adjectives'
+            class: 'adjectives',
+            css:{
+                display:'none'
+            }
         })
         this.domElement.on('click',this.handleClick);
         return this.domElement

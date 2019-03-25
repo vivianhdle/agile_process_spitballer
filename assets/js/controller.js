@@ -31,8 +31,9 @@ class Controller{
             $('.image-wrapper').show();
             $('.image-random-div').show();
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
