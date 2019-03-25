@@ -1,7 +1,6 @@
 /**
  * looks for related words/related adjectives to a specific word
  */
-
 class RelevantWords{
     /**will take in display areas, and create storage for our synonym/adjective list and dom elements
      * @param {object} options - display areas for synonyms/adjectives
@@ -10,6 +9,9 @@ class RelevantWords{
         this.displayAreas = {
             synonymArea: options.synonymArea,
             adjectiveArea:options.adjectiveArea
+        }
+        this.callbacks={
+            putWordOnBoard:options.callbacks.putWordOnBoard
         }
         this.synonyms = [];
         this.adjectives = [];
@@ -82,7 +84,7 @@ class RelevantWords{
         this.displayAdjectives();
     }
     /**
-     * clears the display,loops through synonym list, and appends a new div with a class of synonyms to the display area and empties the list
+     * clears the display,loops through synonym list, and makes a new Synonym class and displays it and empties the list.
      */
     displaySynonyms(){
         $('.synonyms').remove();
@@ -90,13 +92,9 @@ class RelevantWords{
             this.displayNoneFound('synonyms')
         } else {
             for (let item in this.synonyms){
-            let newWord = $('<div>',{
-                text:this.synonyms[item],
-                class: 'synonyms'
-            })
-            this.displayAreas.synonymArea.append(newWord);
-        }
-        
+                let newWord = new Synonym(this.synonyms[item],this.callbacks.putWordOnBoard)
+                this.displayAreas.synonymArea.append(newWord.render());
+            }
         }
         this.synonyms = [];
     }
@@ -109,20 +107,17 @@ class RelevantWords{
             this.displayNoneFound('adjectives')
         } else {
             for (let item in this.adjectives){
-            let newWord = $('<div>',{
-                text:this.adjectives[item],
-                class: 'adjectives',
-                css: {
-                    'display':'none'
-                }
-            })
-            this.displayAreas.adjectiveArea.append(newWord);
-        }
-
+                let newWord = new Adjective(this.adjectives[item],this.callbacks.putWordOnBoard)
+                this.displayAreas.adjectiveArea.append(newWord.render());
+            }
         }
         
         this.adjectives = [];
     }
+    /**
+     * if no adjectives/synonyms are found, let user know by appending a div with text
+     * @param {string} type 
+     */
     displayNoneFound(type){
         const noWord = $('<div>',{
             class:type,
@@ -133,5 +128,73 @@ class RelevantWords{
         }else {
             this.displayAreas.adjectiveArea.append(noWord);
         }
+    }
+}
+/**
+ * A synonym that can be clicked and sent to the board
+ */
+class Synonym{
+    /**
+     * Creates a Synonym
+     * @param {string} word - the synonym word
+     * @param {function} callback - the callback to put the word on the controller
+     */
+    constructor(word,callback){
+        this.word = word
+        this.putWordOnBoard = callback
+        this.domElement = null;
+        this.handleClick = this.handleClick.bind(this);
+    }
+    /**
+     * When clicked, put word on board and remove the dom element 
+     */
+    handleClick(){
+        this.putWordOnBoard(this.word);
+        this.domElement.remove();
+    }
+    /**
+     * Create a dom element for the word, save the dom element, and give it a click handler
+     */
+    render(){
+        this.domElement = $('<div>',{
+            text:this.word,
+            class: 'synonyms'
+        })
+        this.domElement.on('click',this.handleClick);
+        return this.domElement
+    }
+}
+/**
+ * An adjective that can be clicked and sent to the board
+ */
+class Adjective{
+    /**
+     * Creates an Adjective
+     * @param {string} word - the adjective word
+     * @param {function} callback - the callback to put the word on the controller
+     */
+    constructor(word,callback){
+        this.word = word;
+        this.putWordOnBoard = callback
+        this.domElement = null;
+        this.handleClick=this.handleClick.bind(this);
+    }
+    /**
+     * When clicked, put word on board and remove the dom element 
+     */
+    handleClick(){
+        this.putWordOnBoard(this.word);
+        this.domElement.remove();
+    }
+    /**
+     * Create a dom element for the word, save the dom element, and give it a click handler
+     */
+    render(){
+        this.domElement = $('<div>',{
+            text:this.word,
+            class: 'adjectives'
+        })
+        this.domElement.on('click',this.handleClick);
+        return this.domElement
     }
 }

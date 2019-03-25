@@ -41,7 +41,6 @@ class Controller{
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
         this.buttons.startButton.on('click',this.startButton),
         this.buttons.random3.on('click', this.select3Images)
-
     }
 
     /**
@@ -71,7 +70,6 @@ class Controller{
         $('.synonyms').hide();
         $('.adjectives').toggle();
     }
-
     /**
      * Takes a word from the Board and sends it to ImageHolder to be made into an Image
      * @param word - the word to make an Image off of
@@ -117,7 +115,10 @@ class Controller{
 
         this.relevantWords = new RelevantWords({
             synonymArea:$('.syn'),
-            adjectiveArea:$('.adj')
+            adjectiveArea:$('.adj'),
+            callbacks:{
+                putWordOnBoard:this.putWordOnBoard
+            }
         });
 
         $('.relevant').hide();
