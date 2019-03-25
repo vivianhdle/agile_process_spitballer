@@ -15,6 +15,7 @@ class Image {
             showRelatedWords: callback.showRelatedWords,
             deleteImageFromArray: callback.deleteImageFromArray
         }
+        this.images = [];
         this.getImage();
     }
 
@@ -44,6 +45,10 @@ class Image {
         let wordDiv = $("<div>", { class: "word" }).text(this.word);
 
         let deleteButton = $('<div>', { 'class': 'wordCloseButton' }).text('X').click(this.deleteSelf);
+        let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click(this.refreshImage);
+        let refreshIcon = $("<i>", { "class": "fas fa-redo" });
+        refreshButton.append(refreshIcon);
+        wordDiv.append(refreshButton);
         imageContainer.append(imageDiv, wordDiv, deleteButton);
 
         this.domElement = imageContainer;
@@ -61,7 +66,7 @@ class Image {
             data: {
                 key: "11924912-d50c8a58952636b33dd8589d6",
                 q: this.word,
-                per_page: 15,
+                per_page: 50,
             },
             dataType: "jsonp",
             success: (response) => {
@@ -72,8 +77,17 @@ class Image {
                     imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtmmtPDV4ur79uSO4C2H9fiIgVqU340Uqxy_WF-a21Fg8V6A9Z"
                 }
                 this.render(imageURL);
+                this.images = response.hits;
             }
         });
+    }
+
+    /**
+     * Refreshes the image of the DOM element
+     */
+    refreshImage = () => {
+        let image = $(this.domElement).find(".image");
+        image.css("background-image", `url(${this.images[Math.floor(Math.random() * this.images.length)].largeImageURL})`);
     }
 
     /**
