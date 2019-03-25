@@ -62,4 +62,12 @@ class imageHolder
         }
         return indexToBeDeleted;
     }
+
+    /**
+     * Clears the images on page and the image storage array
+     */
+    clear = () => {
+        this.imageCards = [];
+        $('.images-container').remove();
+    }
 }

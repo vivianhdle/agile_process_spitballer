@@ -14,6 +14,15 @@ class Board {
         };
 
         this.deleteWord = this.deleteWord.bind(this);
+
+        this.addEventHandlers();
+    }
+
+    /**
+     * Adds click handlers for board buttons
+     */
+    addEventHandlers() {
+        $('.random-fill-button').click(this.randomFillBoard);
     }
 
     /**
@@ -64,6 +73,14 @@ class Board {
     }
 
     /**
+     * Clears the board elements and storage array
+     */
+    clearBoard() {
+        $(".spit-board-word").remove();
+        this.words = [];
+    }
+
+    /**
      * Creates the board DOM element
      * @returns {null} - the selector for the board's DOM element
      */
@@ -72,6 +89,51 @@ class Board {
         return this.domElement;
     }
 
+
+    randomFillBoard = () =>
+    {
+        $(".word-generator-button > i").addClass('spinn');
+        $.ajax(
+            {
+                url: "https://random-word-api.herokuapp.com/word",
+                method: "get",
+                data: {
+                    key: localStorage.getItem('wordAPIKey'),
+                    number: 25
+                },
+                success: (response) => {
+                    if (response === "wrong API key") {
+                        console.log('key failed');
+                    } else {
+                        this.clearBoard();
+                        for(let index = 0; index < response.length; index++)
+                        {
+                            this.addWord(response[index]);
+                        }
+                    }
+                },
+                complete: () => {
+                    $('.spit-board > .instructions').remove();
+                    $(".app-instructions").show();
+                    $('.image-wrapper').show();
+                    $(".word-generator-button > i").removeClass('spinn');
+                }
+            }
+        );
+    }
+
+    selectAtRandom = () => {
+        let limit = Math.min(3, this.words.length);
+        let results = [];
+        let words = this.words.slice();
+
+        for (let index = 0; index < limit; index++) {
+            let choice = Math.floor(Math.random() * words.length);
+            results.push(words.splice(choice, 1)[0].word);
+        }
+
+        return results;
+    }
 }
 
 /**
