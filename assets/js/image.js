@@ -32,6 +32,7 @@ class Image {
         $('.relevant').show('slow');
         $('.app-instructions').remove();
         $(".app-container>*").show();
+        $('.syn i').removeClass('flipped');
     }
 
     /**
