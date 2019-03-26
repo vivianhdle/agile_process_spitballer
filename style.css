@@ -83,7 +83,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.5rem;
+    font-size: 3.5vmin;
 }
 .wordCloseButton {
     position: absolute;
@@ -148,7 +148,7 @@ body{
     align-items:center;
     justify-content: center;
     box-sizing: border-box;
-    font-size:1.5rem;
+    font-size:4vmin;
     background-color: rgba(25,25,25,.3);
     border-radius: 10px;
     transform: scale(.9);
@@ -164,14 +164,12 @@ body{
     width:50%;
     flex-direction: column;
     overflow-y: scroll;
-    font-size:1rem;
     align-items:center;
     box-sizing:border-box;
     border:2px solid lightgoldenrodyellow;
 }
 .title{
     color:lightgoldenrodyellow;
-    font-size:1em;
     cursor: pointer;
 }
 .syn>div,.adj>div{
@@ -179,11 +177,18 @@ body{
     align-items:center;
     justify-content: center;
     box-sizing: border-box;
-    font-size:1.25rem;
+    font-size:3.75vmin;
     text-align:center;
 }
 .syn,.adj{
     width:100%;
+}
+.synonyms,.adjectives{
+    transform:scale(.9);
+}
+.synonyms:hover,.adjectives:hover{
+    transform:scale(1);
+    cursor: pointer;
 }
 
 .bottom-half{
@@ -198,7 +203,7 @@ body{
     border:1px solid black;
     box-sizing:border-box;
     vertical-align:top;
-    font-size:1.5rem;
+    font-size:4.5vmin;
     cursor: pointer;
 }
 .images-container>.image{

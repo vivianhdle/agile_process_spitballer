@@ -156,7 +156,7 @@ class BoardWord {
     handleClick() {
         if(this.sendToImageCallback(this.word)){
             $(".app-instructions").show();
-        };
+        }
     }
 
     /**
