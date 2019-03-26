@@ -101,14 +101,14 @@ class Board {
                         {
                             this.addWord(response[index]);
                         }
-                        if(callback) {
-                            callback();
-                        }
+                        // if(callback) {
+                        //     callback();
+                        // } //ASK TEAM
                     }
                 },
                 complete: () => {
                     $('.spit-board > .instructions').remove();
-                    $(".app-instructions").show();
+                    // $(".app-instructions").show();//ASK TEAM
                     $('.image-wrapper').show();
                     $(".word-generator-button > i").removeClass('spinn');
                 }
@@ -154,8 +154,9 @@ class BoardWord {
      * Passes the word to a callback in Controller to be made into an Image
      */
     handleClick() {
-        this.sendToImageCallback(this.word);
-        $(".app-instructions").show();
+        if(this.sendToImageCallback(this.word)){
+            $(".app-instructions").show();
+        };
     }
 
     /**

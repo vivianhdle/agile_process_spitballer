@@ -30,7 +30,12 @@ class imageHolder
             {
                 const newCard = new Image(word, this.callbacks);
                 this.imageCards.push(newCard);
+                return true;
+            }else {
+                return false;
             }
+        }else {
+            return false;
         }
         
     }

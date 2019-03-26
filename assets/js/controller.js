@@ -13,6 +13,14 @@ class Controller{
         this.board = null;
         this.imageHolder = null;
         this.relatedApps = null;
+        this.displayAreas = {
+            relevant:options.displayAreas.relevant,
+            synonymArea:options.displayAreas.synonymArea,
+            adjectiveArea:options.displayAreas.adjectiveArea,
+            appArea:options.displayAreas.appArea,
+            appTitleArea:options.displayAreas.appTitleArea,
+            appContainer:options.displayAreas.appContainer,
+        }
         this.buttons={
             relatedWords: $(options.relatedWordsButton),
             adjectiveWords: $(options.adjectiveWordsButton),
@@ -79,8 +87,12 @@ class Controller{
      * @param word - the word to make an Image off of
      */
     sendToImageCard = word => {
-        this.imageHolder.handleWordClick(word);
-        $('.instructions').hide();
+        if(this.imageHolder.handleWordClick(word)){
+            $('.instructions').hide();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -107,10 +119,12 @@ class Controller{
         for (let index in imagesToAdd) {
             this.imageHolder.handleWordClick(imagesToAdd[index]);
         }
+        $(".app-instructions").show();
     }
 
     shuffleBoard = () => {
         this.board.randomFillBoard(this.select3Images);
+        $('.image-random-div').show();
     };
 
     /**
@@ -129,7 +143,7 @@ class Controller{
             }
         });
 
-        $('.relevant').hide();
+        $(this.displayAreas.relevant).hide();
         this.board = new Board({
             callback: this.sendToImageCard
         });
@@ -142,9 +156,9 @@ class Controller{
         });
         
         this.relatedApps = new RelatedApps({
-            appArea:'.apps',
-            titleArea:'.names',
-            appContainer:'.app-container'
+            appArea:this.displayAreas.appArea,
+            titleArea:this.displayAreas.appTitleArea,
+            appContainer:this.displayAreas.appContainer
         });
 
         $('.image-random-div').hide();
@@ -158,7 +172,7 @@ class Controller{
                 class:'instructions'
             })).hide();
 
-        $(".app-container").append(
+        $(this.displayAreas.appContainer).append(
             $('<div>',{
                 text:'CLICK AN IMAGE FOR RELATED APPS/WORDS',
                 class:'app-instructions'

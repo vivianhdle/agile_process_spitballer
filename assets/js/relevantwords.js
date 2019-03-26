@@ -126,7 +126,8 @@ class RelevantWords{
         if (type==='synonyms'){
             this.displayAreas.synonymArea.append(noWord);
         }else {
-            this.displayAreas.adjectiveArea.append(noWord);
+            this.displayAreas.adjectiveArea.append(noWord.css('display','none'));
+            
         }
     }
 }
