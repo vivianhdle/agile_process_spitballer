@@ -137,7 +137,7 @@ class ideaCard {
         if(this.callback(this.word)) {
             $('.spit-board > .instructions').remove();
             this.domElement.remove();
-        }
+        }    
     }
 
     /**
