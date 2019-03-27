@@ -74,7 +74,7 @@ class Image{
                 if (response.totalHits>0){
                     imageURL=response.hits[0].largeImageURL;
                 } else {
-                    imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtmmtPDV4ur79uSO4C2H9fiIgVqU340Uqxy_WF-a21Fg8V6A9Z"
+                    imageURL = "https://t4.ftcdn.net/jpg/01/39/16/63/240_F_139166369_NdTDXc0lM57N66868lC66PpsaMkFSwaf.jpg"
                 }
                 this.render(imageURL);
             }

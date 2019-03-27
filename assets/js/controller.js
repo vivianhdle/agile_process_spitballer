@@ -59,7 +59,15 @@ class Controller{
      * hides landing page and makes an API call 
      */
     startButton = () => {
-        $('.landing-page').hide()
+        $('.landing-page').remove();
+        particlesJS.load('particles-js', 'assets/particles.json', function() {
+            console.log('callback - particles.js config loaded');
+            var canvas = $('canvas').css({
+                'position':'absolute',
+                'z-index':-1
+            });
+            canvas.prependTo('.hero-page');
+        });
         this.newGenerator.generateWords();
     }
 
