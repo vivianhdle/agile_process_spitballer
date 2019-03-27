@@ -31,17 +31,15 @@ class Controller{
     }
 
     /**
-     * Takes a word from IdeaGenerator callback and attempts to put the word on the Board object
+     * Takes a word from IdeaGenerator callback and attempts to put the word on the Board object.
+     * Refreshes new words when list of words is empty.
      * @param {string} word - the word to be added to the Board
      */
     putWordOnBoard = (word) => {
         if(this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
-            // debugger;
-            console.log("word clicked!");
             let ideaslength = $(".ideaCard").length;
-            console.log(".ideas length is", ideaslength);
             if(ideaslength === 1)
             {
                 this.newGenerator.generateWords();
