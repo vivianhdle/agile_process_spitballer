@@ -138,6 +138,8 @@ class ideaCard {
             $('.spit-board > .instructions').remove();
             this.domElement.remove();
         }
+        
+        
     }
 
     /**

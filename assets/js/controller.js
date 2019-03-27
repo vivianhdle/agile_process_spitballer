@@ -38,6 +38,14 @@ class Controller{
         if(this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
+            // debugger;
+            console.log("word clicked!");
+            let ideaslength = $(".ideaCard").length;
+            console.log(".ideas length is", ideaslength);
+            if(ideaslength === 1)
+            {
+                this.newGenerator.generateWords();
+            }
             return true;
         } else {
             return false;
