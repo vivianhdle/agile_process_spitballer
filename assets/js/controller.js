@@ -164,6 +164,7 @@ class Controller{
 
         $('.spitboard-container').append(this.board.render());
         $('.spit-board').hide();
+        $('.spit-board').sortable();
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords

@@ -112,7 +112,7 @@ body{
     right: 5px;
     border-radius: 20%;
     color: white;
-    background-color: darkgreen;
+    background-color: rgb(80, 124, 168);
     border: 1px solid white;
     padding: 5px;
     opacity: 0;
@@ -120,7 +120,7 @@ body{
 }
 
 .image-refresh-button:hover{
-    background-color: green;
+    background-color: black;
 }
 
 .idea-container{
@@ -186,11 +186,11 @@ body{
     overflow-y: scroll;
     align-items:center;
     box-sizing:border-box;
-    border:2px solid lightgoldenrodyellow;
+    background-color:rgba(236, 220, 147, 0.473);
     color:rgb(112, 112, 109);
 }
 .title{
-    color:rgb(112, 112, 109);
+    color:rgb(80, 124, 168);
     cursor: pointer;
 }
 .syn>div,.adj>div{
@@ -287,6 +287,7 @@ body{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    color:rgb(51, 83, 116);
 }
 .app>a>img{
     height:8vw;
@@ -314,7 +315,7 @@ body{
     border: none;
     cursor: pointer;
     word-wrap: break-word;
-    background-color: green;
+    background-color: rgb(80, 124, 168);
     color: white;
     transition: all .15s ease-in-out;
     font-size: 2rem
@@ -334,7 +335,7 @@ body{
 }
 
 .selected{
-    border: 8px solid rgb(80, 124, 168);
+    border: 5px solid rgb(80, 124, 168);
 }
 
 .instructions{
