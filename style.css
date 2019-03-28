@@ -51,14 +51,31 @@ body{
     width:60%;
     height:100%;
 }
+.clear-board,.randomize-board{
+    position:absolute;
+    height:5.5%;
+    width:3%;
+    font-size:3.75vmin;
+    background-color:rgb(80, 124, 168);
+    border:none;
+    border-radius:15%;
+    color:white;
+    text-align:center;
+    left:1%;
+
+}
+.randomize-board{
+    top:24.5%;
+}
+.clear-board{
+    top:31%;
+}
 .spit-board{
     position:relative;
-    left:5%;
+    left:8%;
     top:5%;
     height:90%;
     width:90%;
-    /* border:1px solid black; */
-    /* background-image:url("assets/images/bulletin-board-325721_960_720.jpg"); */
     background-size:cover;
     background-position:center;
 }
@@ -72,7 +89,7 @@ body{
     display: inline-block;
     box-sizing: border-box;
     transform: scale(.9);
-    transition: all .15s ease-in-out;
+    transition: transform .15s ease-in-out;
     cursor: pointer;
     border-radius:10px;
 }
@@ -133,7 +150,7 @@ body{
     width: 50%;
     height:100%;
     vertical-align: top;
-    padding-right: 8%;
+    padding-right:5%;
 }
 .buttons {
     margin: 10px auto;;
@@ -155,11 +172,8 @@ body{
     background-color: black;
     color: white;
 }
-.random-fill-button {
-    left: 8%
-}
 .word-generator-button {
-    right: 8%
+    left:25%;
 }
 .ideaCard{
     height:16%;
@@ -186,8 +200,25 @@ body{
     overflow-y: scroll;
     align-items:center;
     box-sizing:border-box;
-    background-color:rgba(236, 220, 147, 0.473);
+    background-color:rgba(241, 188, 163, 0.473);
     color:rgb(112, 112, 109);
+    border-radius:30px;
+    border:1px solid black;
+    overflow-x:hidden;
+}
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius:30px;
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 .title{
     color:rgb(80, 124, 168);
@@ -305,7 +336,7 @@ body{
 }
 
 .random3 {
-    height:40%;
+    height:25%;
     width: 80%;
     position:absolute;
     top: 50%;
@@ -318,13 +349,13 @@ body{
     background-color: rgb(80, 124, 168);
     color: white;
     transition: all .15s ease-in-out;
-    font-size: 2rem
+    font-size: 5vmin;
 }
-.random3:hover {
+.random3:hover,.randomize-board:hover,.clear-board:hover {
     background-color: black;
     color: white;
 }
-.random3:hover i {
+.random3:hover i,.randomize-board:hover i,.clear-board:hover i {
     animation: barrelRoll .5s ;
 }
 .image-wrapper{

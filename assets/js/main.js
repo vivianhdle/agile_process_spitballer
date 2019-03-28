@@ -4,11 +4,19 @@ var mainController;
 
 function initializeApp(){
     mainController = new Controller({
+        buttons:{
+            relatedWords:'.syn>.title',
+            adjectiveWords:'.adj>.title',
+            start:'.landing-page>button',
+            random3:'.random3',
+            randomizeBoard: '.randomize-board',
+            clearBoard:'.clear-board'
+        },
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
         startButton:'.landing-page>button',
         random3Button:'.random3',
-        randomizeBoardButton: '.random-fill-button',
+        randomizeBoardButton: '.randomize-board',
         displayAreas:{
             relevant:'.relevant',
             synonymArea:'.syn',
@@ -21,5 +29,5 @@ function initializeApp(){
     mainController.start();
     particlesJS.load('particles-js', 'assets/particles.json', function() {
         console.log('callback - particles.js config loaded');
-      });
+    });
 }
