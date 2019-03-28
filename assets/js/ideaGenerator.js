@@ -12,7 +12,8 @@ class IdeaGenerator
         this.addEventHandler();
         this.apiKey = new IdeaAPIKey('COMH5PUQ'); // API key to start with
         this.callbacks = {
-            callbackFromController: options.callback
+            putWordOnBoard: options.putWordOnBoard,
+            checkIfEmpty:options.checkIfEmpty
         }
     }
 
@@ -49,7 +50,13 @@ class IdeaGenerator
                         let newIdeaCard = null;
                         for(let index = 0; index < response.length; index++)
                         {
-                            newIdeaCard = new ideaCard(response[index], this.callbacks.callbackFromController);
+                            newIdeaCard = new ideaCard({
+                                word:response[index],
+                                callbacks:{
+                                    putWordOnBoard:this.callbacks.putWordOnBoard,
+                                    checkIfEmpty:this.callbacks.checkIfEmpty
+                                }
+                            })
                             $(".ideas").append(newIdeaCard.render());
 
                         }
@@ -118,12 +125,14 @@ class IdeaAPIKey {
 class ideaCard {
     /**
      * Creates a an idea card object.
-     * @param {string} word - Random word returned from API call.
-     * @param {object} callback - callback pased from succesful API call which was passed from controller.
+     * @param {object} options - an object of callbacks and the word from API call
      */
-    constructor(word, callback) {
-        this.word = word;
-        this.callback = callback;
+    constructor(options) {
+        this.word = options.word;
+        this.callbacks = {
+            putWordOnBoard:options.callbacks.putWordOnBoard,
+            checkIfEmpty:options.callbacks.checkIfEmpty
+        }
         this.domElement = null;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -134,8 +143,8 @@ class ideaCard {
      * Controller will send the clicked word to cork board object.
      */
     handleClick = () => {
-        if(this.callback(this.word)) {
-            $('.spit-board > .instructions').remove();
+        if(this.callbacks.putWordOnBoard(this.word)) {
+            this.callbacks.checkIfEmpty();
             this.domElement.remove();
         }    
     }

@@ -10,12 +10,12 @@ class Board {
         this.words = [];
         this.domElement = null;
         this.callbacks = {
-            sendToImageCallback: options.callback
+            sendToImageCard: options.sendToImageCard,
+            checkIfEmpty:options.checkIfEmpty
         };
 
         this.deleteWord = this.deleteWord.bind(this);
     }
-
     /**
      * Add a word to the board if there is room and it isn't already on the board
      * @param {string} word - the word to be added to the board
@@ -26,7 +26,7 @@ class Board {
             const newWord = new BoardWord({
                 word: word,
                 callbacks: {
-                    sendToImage: this.callbacks.sendToImageCallback,
+                    sendToImage: this.callbacks.sendToImageCard,
                     deleteWord: this.deleteWord
                 }
             });
@@ -69,6 +69,7 @@ class Board {
     clearBoard() {
         $(".spit-board-word").remove();
         this.words = [];
+        this.callbacks.checkIfEmpty();
     }
 
     /**
@@ -101,14 +102,10 @@ class Board {
                         {
                             this.addWord(response[index]);
                         }
-                        // if(callback) {
-                        //     callback();
-                        // } //ASK TEAM
                     }
                 },
                 complete: () => {
-                    $('.spit-board > .instructions').remove();
-                    // $(".app-instructions").show();//ASK TEAM
+                    this.callbacks.checkIfEmpty();
                     $('.image-wrapper').show();
                     $(".word-generator-button > i").removeClass('spinn');
                 }

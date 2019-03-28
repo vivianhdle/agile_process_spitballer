@@ -151,12 +151,21 @@ class Controller{
         this.board.clearBoard();
     }
 
+
+    checkIfEmpty=()=>{
+        if (this.board.words.length === 0){
+            $('.spit-board>.instructions').show();
+        } else {
+            $('.spit-board>.instructions').hide();
+        }
+    }
     /**
      * Instantiates all the page objects and calls the addEventListeners function
      */
     start() {
         this.newGenerator = new IdeaGenerator({
-            callback:this.putWordOnBoard
+            putWordOnBoard:this.putWordOnBoard,
+            checkIfEmpty:this.checkIfEmpty
         });
 
         this.relevantWords = new RelevantWords({
@@ -169,7 +178,8 @@ class Controller{
 
         $(this.displayAreas.relevant).hide();
         this.board = new Board({
-            callback: this.sendToImageCard
+            sendToImageCard: this.sendToImageCard,
+            checkIfEmpty:this.checkIfEmpty
         });
 
         $('.spitboard-container').append(this.board.render());
