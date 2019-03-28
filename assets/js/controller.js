@@ -22,11 +22,12 @@ class Controller{
             appContainer:options.displayAreas.appContainer,
         }
         this.buttons={
-            relatedWords: $(options.relatedWordsButton),
-            adjectiveWords: $(options.adjectiveWordsButton),
-            startButton: $(options.startButton),
-            random3: $(options.random3Button),
-            randomizeBoard: $(options.randomizeBoardButton)
+            relatedWords: $(options.buttons.relatedWords),
+            adjectiveWords: $(options.buttons.adjectiveWords),
+            startButton: $(options.buttons.start),
+            random3: $(options.buttons.random3),
+            randomizeBoard: $(options.buttons.randomizeBoard),
+            clearBoard:$(options.buttons.clearBoard)
         }
     }
 
@@ -59,6 +60,7 @@ class Controller{
         this.buttons.startButton.on('click',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
+        this.buttons.clearBoard.on('click',this.clearBoard);
     }
 
     /**
@@ -125,7 +127,9 @@ class Controller{
     showRelatedWords = word => {
         this.relevantWords.getAllData(word);
     }
-
+    /**
+     * Clears the images and selects 3 random words from the board to pin
+     */
     select3Images = () => {
         this.imageHolder.clear();
         $('.instructions').hide();
@@ -140,6 +144,12 @@ class Controller{
         this.board.randomFillBoard(this.select3Images);
         $('.image-random-div').show();
     };
+    /**
+     * calls the clear board method in board, will clear the dom elements, and array
+     */
+    clearBoard = () => {
+        this.board.clearBoard();
+    }
 
     /**
      * Instantiates all the page objects and calls the addEventListeners function
@@ -164,6 +174,7 @@ class Controller{
 
         $('.spitboard-container').append(this.board.render());
         $('.spit-board').hide();
+        $('.spit-board').sortable();
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords
