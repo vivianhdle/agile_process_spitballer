@@ -19,7 +19,7 @@ function initializeApp(){
         }
     });
     mainController.start();
-    particlesJS.load('particles-js', 'assets/particles.json', function() {
+    particlesJS.load('particles-js', 'assets/particles_landing.json', function() {
         console.log('callback - particles.js config loaded');
       });
 }

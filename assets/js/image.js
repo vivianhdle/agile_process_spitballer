@@ -23,12 +23,17 @@ class Image {
      * Click handler for the image
      * Shows the apps and words associated with the Image's word
      * Highlights the last Image that was clicked on
+     * Reveals refresh button on hover
      */
     handleClick = () => {
         this.callbacks.showApps(this.word);
         this.callbacks.showRelatedWords(this.word);
         $(".image-wrapper > div").removeClass("selected");
         this.domElement.addClass("selected");
+        
+        $(".image-refresh-button").css("visibility", "hidden");
+        this.domElement.find(".image-refresh-button").css("visibility", "visible");
+        
         $('.relevant').show('slow');
         $('.app-instructions').remove();
         $(".app-container>*").show();
@@ -43,15 +48,13 @@ class Image {
         $(".image-wrapper > div").removeClass("selected");
         let imageContainer = $("<div>", { class: "images-container" });
         let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
-        let wordDiv = $("<div>", { class: "word" }).text(this.word);
-
+        let wordDiv = $("<div>", { class: "word" }).text(this.word).css({"border-top": "1px solid black"});
         let deleteButton = $('<div>', { 'class': 'wordCloseButton' }).text('X').click(this.deleteSelf);
         let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click(this.refreshImage);
         let refreshIcon = $("<i>", { "class": "fas fa-redo" });
         refreshButton.append(refreshIcon);
-        wordDiv.append(refreshButton);
-        imageContainer.append(imageDiv, wordDiv, deleteButton);
-
+        imageContainer.append(imageDiv, wordDiv, refreshButton, deleteButton);
+        refreshButton.css("visibility", "hidden");
         this.domElement = imageContainer;
         $(".image-wrapper").append(imageContainer);
         $(this.domElement).on("click", this.handleClick);
