@@ -163,10 +163,12 @@ body{
     margin: auto 10px;
     position:absolute;
     border-radius:10px;
+    color:white;
     border: none;
     cursor: pointer;
     line-height: 100%;
     transition: all .10s linear;
+    background-color:rgb(80, 124, 168);
 }
 .buttons > button:hover {
     background-color: black;
@@ -366,7 +368,7 @@ body{
 }
 
 .selected{
-    border: 5px solid rgb(80, 124, 168);
+    border: 8px solid rgb(80, 124, 168);
 }
 
 .instructions{
