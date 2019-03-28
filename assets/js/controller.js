@@ -66,7 +66,7 @@ class Controller{
      */
     startButton = () => {
         $('.landing-page').remove();
-        particlesJS.load('particles-js', 'assets/particles.json', function() {
+        particlesJS.load('particles-js', 'assets/particles_main.json', function() {
             console.log('callback - particles.js config loaded');
             var canvas = $('canvas').css({
                 'position':'absolute',
@@ -182,13 +182,13 @@ class Controller{
         =========================================*/
         $('.image-wrapper').append(
             $('<div>',{
-                text:'CLICK AN IDEA FROM BOARD',
+                text:'CLICK AN IDEA FROM THE BOARD',
                 class:'instructions'
             })).hide();
 
         $(this.displayAreas.appContainer).append(
             $('<div>',{
-                text:'CLICK AN IMAGE FOR RELATED APPS/WORDS',
+                text:'CLICK AN IMAGE FOR RELATED APPS / WORDS',
                 class:'app-instructions'
                 })
             );
@@ -196,7 +196,7 @@ class Controller{
         $(".app-container>*").hide();
 
         $('.spit-board').append($('<div>',{
-            text:'CLICK AN IDEA',
+            text:'CLICK AN IDEA FROM THE WORD LIST',
             class:'instructions',
             css:{
                 "text-align":"center"
