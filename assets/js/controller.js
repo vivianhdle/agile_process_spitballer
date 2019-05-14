@@ -61,6 +61,15 @@ class Controller{
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
+
+        $(window).on('load resize',this.checkForPortrait)
+    }
+
+    checkForPortrait = () => {
+        var window = $(window);
+
+        console.log('width: ', $(window).width());
+        console.log('height: ', $(window).height());
     }
 
     /**
