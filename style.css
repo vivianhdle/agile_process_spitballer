@@ -417,16 +417,18 @@ body{
 
 /* MODAL  */  
   .add-button {
+    width: 100%;
+    margin-top: 5%;
     padding: 1rem 1.5rem;
     border-radius: 2px;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: green;
+    background-color:rgb(80, 124, 168);
     color: #ffffff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   .add-button:hover {
-    background-color: lightgreen;
+    background-color: black;
   }
   
   .modal {
@@ -441,7 +443,9 @@ body{
     justify-content: center;
     align-items: center;
     transition: all 0.3s;
+    z-index: 1;
   }
+
   .modal_inner {
     font-size: 2rem;
     max-width: 32rem;
@@ -452,6 +456,12 @@ body{
     opacity: 0;
     transform: scale(0.8);
     transition: all 0.3s;
+    border-radius: 5%;
+  }
+
+  .modal_inner > input{
+      width: 90%;
+      padding: .5rem;
   }
   .modal.-open {
     visibility: visible;
