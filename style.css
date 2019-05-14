@@ -8,6 +8,39 @@ body{
     font-family: 'Walter Turncoat', sans-serif;
     background-image:url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/videoblocks-light-grey-tech-minimal-abstract-geometric-motion-background-seamless-looping-video-animation-ultra-hd-4k-3840x2160_sbqqppslq_thumbnail-full01.png');
 }
+.portrait-warning{
+    display: none;
+    height:100vh;
+    width:100vw;
+    position:fixed;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-align:center;
+    color:#2C3E50;
+    background-image:url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/videoblocks-light-grey-tech-minimal-abstract-geometric-motion-background-seamless-looping-video-animation-ultra-hd-4k-3840x2160_sbqqppslq_thumbnail-full01.png');
+}
+
+.warning-text{
+    font-size:5vh;
+    position: relative;
+    top: 8%;
+    padding: 0 20px;
+}
+
+.warning-img{
+    position: absolute;
+    height: 40vh;
+    width: 40vh;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.warning-img img{
+    height: 100%;
+}
+
 .landing-page{
     height:100vh;
     width:100vw;
@@ -410,4 +443,10 @@ body{
 
 .spinn {
     animation: spinn .4s infinite linear;
+}
+
+@media screen and (orientation: portrait) {
+    .portrait-warning {
+        display: initial;
+    }
 }
