@@ -53,6 +53,24 @@ class Controller{
     }
 
     /**
+     * Adds the typed word from the modal to the spitboard
+     */
+    addUserInputWord = () => {
+        $(".modal_inner > p").text("Please enter a word");
+        let modalValue = $("input[name='word']").val();
+        if(modalValue)
+        {
+            this.putWordOnBoard(modalValue);
+            $("input[name='word']").val("");
+        }
+        else
+        {
+            $(".modal_inner > p").text("You must enter a word");
+        }
+        this.checkIfEmpty();
+    }
+
+    /**
      * Adds click handlers to the related and adjective words buttons
      */
     addEventListeners = () => {
@@ -62,7 +80,7 @@ class Controller{
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
-        this.buttons.addWordButton.on('click', this.addInputWord)
+        this.buttons.addWordButton.on('click', this.addUserInputWord)
 
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
@@ -174,23 +192,6 @@ class Controller{
             $('.spit-board>.instructions').show();
         } else {
             $('.spit-board>.instructions').hide();
-        }
-    }
-
-    /**
-     * Adds the typed word from the modal to the spitboard
-     */
-    addInputWord = () => {
-        $(".modal_inner > p").text("Please enter a word");
-        let modalValue = $("input[name='word']").val();
-        if(modalValue)
-        {
-            this.board.addWord(modalValue);
-            $("input[name='word']").val("");
-        }
-        else
-        {
-            $(".modal_inner > p").text("You must enter a word");
         }
     }
 
