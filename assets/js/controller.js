@@ -66,7 +66,8 @@ class Controller{
 
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
-            $("#" + this.dataset.target).toggleClass("-open")
+            $("#" + this.dataset.target).toggleClass("-open");
+            $(".modal_inner > p").text("Please enter a word");
           });
           
         $(".modal").click(function(e) {
@@ -180,8 +181,17 @@ class Controller{
      * Adds the typed word from the modal to the spitboard
      */
     addInputWord = () => {
+        $(".modal_inner > p").text("Please enter a word");
         let modalValue = $("input[name='word']").val();
-        this.board.addWord(modalValue);
+        if(modalValue)
+        {
+            this.board.addWord(modalValue);
+            $("input[name='word']").val("");
+        }
+        else
+        {
+            $(".modal_inner > p").text("You must enter a word");
+        }
     }
 
     /**

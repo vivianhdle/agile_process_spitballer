@@ -459,6 +459,9 @@ body{
     border-radius: 5%;
   }
 
+  .modal_inner > p{
+      margin: 0;
+  }
   .modal_inner > input{
       width: 90%;
       padding: .5rem;
