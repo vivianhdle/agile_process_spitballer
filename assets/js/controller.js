@@ -69,7 +69,6 @@ class Controller{
     startButton = () => {
         $('.landing-page').remove();
         particlesJS.load('particles-js', 'assets/particles_main.json', function() {
-            console.log('callback - particles.js config loaded');
             var canvas = $('canvas').css({
                 'position':'absolute',
                 'z-index':-1
@@ -139,7 +138,9 @@ class Controller{
         }
         $(".app-instructions").show();
     }
-
+    /**
+     * Randomizes the board
+     */
     shuffleBoard = () => {
         this.board.randomFillBoard(this.select3Images);
         $('.image-random-div').show();
@@ -150,8 +151,9 @@ class Controller{
     clearBoard = () => {
         this.board.clearBoard();
     }
-
-
+    /**
+     * Checks if the board is empty, if so, show instructions
+     */
     checkIfEmpty=()=>{
         if (this.board.words.length === 0){
             $('.spit-board>.instructions').show();
