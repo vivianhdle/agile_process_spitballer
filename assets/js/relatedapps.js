@@ -10,24 +10,23 @@ class RelatedApps{
         this.displayAreas = {
             appArea: $(options.appArea),
             titleArea: $(options.titleArea),
-            appContainer:$(options.appContainer)
-        }
+            appContainer: $(options.appContainer)
+        };
+
         this.data = {
             trackName:null,
             artWork:null,
             link:null
-        }
+        };
+
         this.apps = [];
-        this.marker=3;
-        this.leftChevron= this.renderScrollIcons('left');
-        this.rightChevron= this.renderScrollIcons('right');
-        this.addEventListeners();
+        this.marker = 3;
     }
     /**
      * makes an API call to search for related apps relating to a word passed in
      * @param {string} word - a string that will be pumped into the itunes app store search
      */
-    getRelatedApps=word=>{
+    getRelatedApps = word => {
         var ajaxOptions = {
             url:"https://itunes.apple.com/search?",
             method:"post",
@@ -39,14 +38,15 @@ class RelatedApps{
                 media:'software'
             },
             success:this.gotRelatedApps
-        }
-        $.ajax(ajaxOptions)
+        };
+
+        $.ajax(ajaxOptions);
     }
     /**
      * success function, gets all the related apps and saves them in the contructor for future use
      * @param {object} response 
      */
-    gotRelatedApps=response=>{
+    gotRelatedApps = response => {
         this.displayAreas.appArea.empty();
         this.displayAreas.titleArea.empty();
         if (response.resultCount>0){
@@ -120,6 +120,7 @@ class RelatedApps{
                 'class':'fas fa-chevron-left'
             })
             button.append(leftIcon);
+            button.on('click', this.scrollBackwards);
         } else {
             button = $('<button>',{
                 id:'#scroll-right'
@@ -128,16 +129,13 @@ class RelatedApps{
                 'class':'fas fa-chevron-right'
             })
             button.append(rightIcon);
+            button.on('click', this.scrollForward);
         }
         return button
     }
     appendScrollIcons(){
-        $('.apps').append(this.rightChevron);
-        $('.apps').prepend(this.leftChevron);
-    }
-    addEventListeners(){
-        $('.apps').on('click','#scroll-right',this.scrollForward);
-        $('.apps').on('click','#scroll-left',this.scrollBackwards);
+        $('.apps').append(this.renderScrollIcons('right'));
+        $('.apps').prepend(this.renderScrollIcons('left'));
     }
     /**
      * creates dom elements(container,title,anchortag,image) grabs data from constructor to display on the DOM
