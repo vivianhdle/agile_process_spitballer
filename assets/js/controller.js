@@ -27,7 +27,8 @@ class Controller{
             startButton: $(options.buttons.start),
             random3: $(options.buttons.random3),
             randomizeBoard: $(options.buttons.randomizeBoard),
-            clearBoard:$(options.buttons.clearBoard)
+            clearBoard:$(options.buttons.clearBoard),
+            addWordButton:$(options.buttons.addWordButton)
         }
     }
 
@@ -52,6 +53,24 @@ class Controller{
     }
 
     /**
+     * Adds the typed word from the modal to the spitboard
+     */
+    addUserInputWord = () => {
+        $(".modal_inner > p").text("Please enter a word");
+        let modalValue = $("input[name='word']").val();
+        if(modalValue)
+        {
+            this.putWordOnBoard(modalValue);
+            $("input[name='word']").val("");
+        }
+        else
+        {
+            $(".modal_inner > p").text("You must enter a word");
+        }
+        this.checkIfEmpty();
+    }
+
+    /**
      * Adds click handlers to the related and adjective words buttons
      */
     addEventListeners = () => {
@@ -61,6 +80,19 @@ class Controller{
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
+        this.buttons.addWordButton.on('click', this.addUserInputWord)
+
+        /* ====================== MODAL ======================= */ 
+        $(".display-modal-btn[data-target]").click(function() {
+            $("#" + this.dataset.target).toggleClass("-open");
+            $(".modal_inner > p").text("Please enter a word");
+          });
+          
+        $(".modal").click(function(e) {
+            if (e.target === this) {
+                $(this).toggleClass("-open")
+            }
+        });
     }
 
     /**
@@ -138,6 +170,7 @@ class Controller{
         }
         $(".app-instructions").show();
     }
+
     /**
      * Randomizes the board
      */
@@ -161,6 +194,7 @@ class Controller{
             $('.spit-board>.instructions').hide();
         }
     }
+
     /**
      * Instantiates all the page objects and calls the addEventListeners function
      */
@@ -229,3 +263,5 @@ class Controller{
         this.addEventListeners();
     }
 }
+
+
