@@ -27,7 +27,8 @@ class Controller{
             startButton: $(options.buttons.start),
             random3: $(options.buttons.random3),
             randomizeBoard: $(options.buttons.randomizeBoard),
-            clearBoard:$(options.buttons.clearBoard)
+            clearBoard:$(options.buttons.clearBoard),
+            writeWord:$(options.buttons.writeWord)
         }
     }
 
@@ -61,6 +62,7 @@ class Controller{
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
+        this.buttons.writeWord.on('click',this.writeWord)
     }
 
     /**

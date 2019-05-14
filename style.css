@@ -51,7 +51,7 @@ body{
     width:60%;
     height:100%;
 }
-.clear-board,.randomize-board{
+.clear-board,.randomize-board,.write-word{
     position:absolute;
     height:5.5%;
     width:3%;
@@ -64,11 +64,14 @@ body{
     left:1%;
 
 }
-.randomize-board{
+.write-word{
     top:24.5%;
 }
 .clear-board{
     top:31%;
+}
+.randomize-board{
+    top: 37.5%;
 }
 .spit-board{
     position:relative;
@@ -359,11 +362,11 @@ body{
     transition: all .15s ease-in-out;
     font-size: 5vmin;
 }
-.random3:hover,.randomize-board:hover,.clear-board:hover {
+.random3:hover,.randomize-board:hover,.clear-board:hover,.write-word:hover {
     background-color: black;
     color: white;
 }
-.random3:hover i,.randomize-board:hover i,.clear-board:hover i {
+.random3:hover i,.randomize-board:hover i,.clear-board:hover i,.write-word:hover i {
     animation: barrelRoll .5s ;
 }
 .image-wrapper{

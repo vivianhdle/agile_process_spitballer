@@ -10,7 +10,8 @@ function initializeApp(){
             start:'.landing-page>button',
             random3:'.random3',
             randomizeBoard: '.randomize-board',
-            clearBoard:'.clear-board'
+            clearBoard:'.clear-board',
+            writeWord:'.write-word'
         },
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
