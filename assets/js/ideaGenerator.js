@@ -10,7 +10,7 @@ class IdeaGenerator
     constructor(options)
     {
         this.addEventHandler();
-        this.apiKey = new IdeaAPIKey('0R357RZW'); // API key to start with
+        this.apiKey = new IdeaAPIKey(localStorage.getItem('wordAPIKey')); // API key to start with
         this.callbacks = {
             putWordOnBoard: options.putWordOnBoard,
             checkIfEmpty:options.checkIfEmpty
