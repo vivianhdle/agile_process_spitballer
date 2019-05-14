@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="assets/js/particles.js"></script>
+    
     <script src="assets/js/relevantwords.js"></script>
     <script src="assets/js/ideaGenerator.js"></script>
     <script src="assets/js/relatedapps.js"></script>
@@ -28,7 +29,7 @@
             <div class="spitboard-container">
                 <button class="randomize-board"><i class="fas fa-random"></i></button>
                 <button class="clear-board"><i class="far fa-trash-alt"></i></button>
-                <button class="write-word"><i class="far fa-edit"></i></button>
+                <button id="write-word-modal-btn" class="display-modal-btn" data-target="modal1"><i class="far fa-edit"></i></button>
             </div>
             <div class="idea-container">
                 <div class="ideas">
@@ -46,6 +47,16 @@
                 </div>
             </div>
         </div>
+       
+        <!-- MODAL -->
+        <div class="modal" id="modal1">
+            <div class="modal_inner">
+                Add your word: <input type="text" name="word" placeholder="Add a word">
+            <button class="add-button">Add</button>
+            </div>
+        </div>
+       
+        
         <div class="bottom-half">
             <div class="image-random-div">
                 <button class="random3"><i class="fas fa-random"></i></button>

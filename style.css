@@ -51,7 +51,7 @@ body{
     width:60%;
     height:100%;
 }
-.clear-board,.randomize-board,.write-word{
+.clear-board,.randomize-board,.display-modal-btn{
     position:absolute;
     height:5.5%;
     width:3%;
@@ -64,7 +64,7 @@ body{
     left:1%;
 
 }
-.write-word{
+.display-modal-btn{
     top:24.5%;
 }
 .clear-board{
@@ -362,11 +362,11 @@ body{
     transition: all .15s ease-in-out;
     font-size: 5vmin;
 }
-.random3:hover,.randomize-board:hover,.clear-board:hover,.write-word:hover {
+.random3:hover,.randomize-board:hover,.clear-board:hover,.display-modal-btn:hover {
     background-color: black;
     color: white;
 }
-.random3:hover i,.randomize-board:hover i,.clear-board:hover i,.write-word:hover i {
+.random3:hover i,.randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i {
     animation: barrelRoll .5s ;
 }
 .image-wrapper{
@@ -414,3 +414,51 @@ body{
 .spinn {
     animation: spinn .4s infinite linear;
 }
+
+/* MODAL  */  
+  .add-button {
+    padding: 1rem 1.5rem;
+    border-radius: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: green;
+    color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .add-button:hover {
+    background-color: lightgreen;
+  }
+  
+  .modal {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+  }
+  .modal_inner {
+    font-size: 2rem;
+    max-width: 32rem;
+    padding: 1.5rem;
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s;
+  }
+  .modal.-open {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal.-open .modal_inner {
+    opacity: 1;
+    transform: scale(1);
+  }
+  

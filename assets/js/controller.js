@@ -27,8 +27,7 @@ class Controller{
             startButton: $(options.buttons.start),
             random3: $(options.buttons.random3),
             randomizeBoard: $(options.buttons.randomizeBoard),
-            clearBoard:$(options.buttons.clearBoard),
-            writeWord:$(options.buttons.writeWord)
+            clearBoard:$(options.buttons.clearBoard)
         }
     }
 
@@ -62,7 +61,17 @@ class Controller{
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
-        this.buttons.writeWord.on('click',this.writeWord)
+
+        /* ====================== MODAL ========================= */ 
+        $(".display-modal-btn[data-target]").click(function() {
+            $("#" + this.dataset.target).toggleClass("-open")
+          });
+          
+        $(".modal").click(function(e) {
+            if (e.target === this) {
+                $(this).toggleClass("-open")
+            }
+        });
     }
 
     /**
@@ -140,6 +149,7 @@ class Controller{
         }
         $(".app-instructions").show();
     }
+
     /**
      * Randomizes the board
      */
@@ -163,6 +173,7 @@ class Controller{
             $('.spit-board>.instructions').hide();
         }
     }
+
     /**
      * Instantiates all the page objects and calls the addEventListeners function
      */
@@ -231,3 +242,5 @@ class Controller{
         this.addEventListeners();
     }
 }
+
+
