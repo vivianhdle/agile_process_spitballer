@@ -27,7 +27,8 @@ class Controller{
             startButton: $(options.buttons.start),
             random3: $(options.buttons.random3),
             randomizeBoard: $(options.buttons.randomizeBoard),
-            clearBoard:$(options.buttons.clearBoard)
+            clearBoard:$(options.buttons.clearBoard),
+            addWordButton:$(options.buttons.addWordButton)
         }
     }
 
@@ -61,8 +62,9 @@ class Controller{
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
+        this.buttons.addWordButton.on('click', this.addInputWord)
 
-        /* ====================== MODAL ========================= */ 
+        /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
             $("#" + this.dataset.target).toggleClass("-open")
           });
@@ -172,6 +174,14 @@ class Controller{
         } else {
             $('.spit-board>.instructions').hide();
         }
+    }
+
+    /**
+     * Adds the typed word from the modal to the spitboard
+     */
+    addInputWord = () => {
+        let modalValue = $("input[name='word']").val();
+        this.board.addWord(modalValue);
     }
 
     /**
