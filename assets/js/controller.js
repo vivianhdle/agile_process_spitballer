@@ -14,6 +14,7 @@ class Controller{
         this.imageHolder = null;
         this.relatedApps = null;
         this.queue = 0;
+
         this.displayAreas = {
             relevant:options.displayAreas.relevant,
             synonymArea:options.displayAreas.synonymArea,
@@ -21,7 +22,8 @@ class Controller{
             appArea:options.displayAreas.appArea,
             appTitleArea:options.displayAreas.appTitleArea,
             appContainer:options.displayAreas.appContainer,
-        }
+        };
+
         this.buttons={
             relatedWords: $(options.buttons.relatedWords),
             adjectiveWords: $(options.buttons.adjectiveWords),
@@ -34,7 +36,7 @@ class Controller{
             addWordButton:$(options.buttons.addWordButton),
             scrollLeft:$(options.buttons.scrollLeft),
             scrollRight:$(options.buttons.scrollRight)
-        }
+        };
 
         this.putWordOnBoard = this.putWordOnBoard.bind(this);
         this.addUserInputWord = this.addUserInputWord.bind(this);
@@ -48,7 +50,7 @@ class Controller{
         this.shuffleBoard = this.shuffleBoard.bind(this);
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
-	this.toggleClearModal = this.toggleClearModal.bind(this);
+	    this.toggleClearModal = this.toggleClearModal.bind(this);
     }
 
     /**
@@ -57,7 +59,7 @@ class Controller{
      * @param {string} word - the word to be added to the Board
      */
     putWordOnBoard(word) {
-        if(this.board.addWord(word)) {
+        if (this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
             let ideaslength = $(".ideaCard").length;
@@ -77,7 +79,7 @@ class Controller{
     addUserInputWord() {
         $(".modal_inner > p").text("Please enter a word");
         let modalValue = $("input[name='word']").val();
-        if(modalValue)
+        if (modalValue)
         {
             this.putWordOnBoard(modalValue);
             $("input[name='word']").val("");
@@ -130,13 +132,6 @@ class Controller{
      */
     startButton() {
         $('.landing-page').remove();
-        particlesJS.load('particles-js', 'assets/particles_main.json', function() {
-            var canvas = $('canvas').css({
-                'position':'absolute',
-                'z-index':-1
-            });
-            canvas.prependTo('.hero-page');
-        });
         this.newGenerator.generateWords();
     }
 
