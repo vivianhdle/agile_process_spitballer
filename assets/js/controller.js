@@ -222,7 +222,6 @@ class Controller{
         this.board.clearBoard();
         this.toggleClearModal();
         this.imageHolder.clear();
-
     }
     /**
      * Checks if the board is empty, if so, show instructions

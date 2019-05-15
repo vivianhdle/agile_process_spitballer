@@ -10,17 +10,18 @@ class imageHolder
     constructor(options)
     {
         this.imageCards = [];
+
+        this.handleWordClick = this.handleWordClick.bind(this);
+        this.deleteImageFromArray = this.deleteImageFromArray.bind(this);
+        this.clear = this.clear.bind(this);
+        this.checkInstructions = this.checkInstructions.bind(this);
+
         this.callbacks = {
             showApps:options.showApps,
             showRelatedWords: options.showRelatedWords,
             decrementQueue: options.decrementQueue,
             deleteImageFromArray: this.deleteImageFromArray
         }
-
-        this.handleWordClick = this.handleWordClick.bind(this);
-        this.deleteImageFromArray = this.deleteImageFromArray.bind(this);
-        this.indexOfCard = this.indexOfCard.bind(this);
-        this.clear = this.clear.bind(this);
     }
 
     /**
@@ -29,7 +30,7 @@ class imageHolder
      * @param {string} word - the word used to create a new Image
      */
     handleWordClick(word) {
-        if(this.indexOfCard(word) === null)
+        if(this.imageCards.indexOf(word) === -1)
         {
             if(this.imageCards.length < 3)
             {
@@ -50,31 +51,21 @@ class imageHolder
      * @param {string} word - the word associated with the Image to be deleted
      */
     deleteImageFromArray(word) {
-        let indexToBeDeleted = this.indexOfCard(word);
+        let indexToBeDeleted = this.imageCards.indexOf(word);
         this.imageCards.splice(indexToBeDeleted, 1);
     }
-
-    /**
-     * Searches the image array for an image associated with a given word
-     * @param {string} word - the word associated with the Image to search for
-     * @returns {number} - the index of the Image whose word matches the given word, or -1 if none is found
-     */
-    indexOfCard(word) {
-        let indexToBeDeleted = null;
-        for(let index = 0; index < this.imageCards.length; index++)
-        {
-            if(this.imageCards[index].word === word)
-            {
-                indexToBeDeleted = index;
-            }
+    checkInstructions(){
+        if (this.imageCards.length === 0){ //&& there are words on the board
+            $('.image-wrapper>.instructions').show();
+        } else{
+            $('.image-wrapper>.instructions').hide();
         }
-        return indexToBeDeleted;
     }
-
     /**
      * Clears the images on page and the image storage array
      */
     clear() {
+        debugger;
         this.imageCards = [];
         $('.images-container').remove();
     }
