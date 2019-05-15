@@ -52,10 +52,12 @@ class imageHolder
      */
     deleteImageFromArray(word) {
         let indexToBeDeleted = this.indexOfCard(word);
+        console.log(this.imageCards);
+        console.log('indexToBeDeleted',indexToBeDeleted);
         if (indexToBeDeleted !== null){
             this.imageCards[indexToBeDeleted].domElement.remove();
+            this.imageCards.splice(indexToBeDeleted, 1);
         }
-        this.imageCards.splice(indexToBeDeleted, 1);
     }
     checkInstructions(){
         if (this.imageCards.length === 0){ //&& there are words on the board
