@@ -13,6 +13,7 @@ class Controller{
         this.board = null;
         this.imageHolder = null;
         this.relatedApps = null;
+        this.queue = 0;
         this.displayAreas = {
             relevant:options.displayAreas.relevant,
             synonymArea:options.displayAreas.synonymArea,
@@ -162,13 +163,20 @@ class Controller{
      * Clears the images and selects 3 random words from the board to pin
      */
     select3Images = () => {
-        this.imageHolder.clear();
-        $('.instructions').hide();
-        let imagesToAdd = this.board.selectAtRandom();
-        for (let index in imagesToAdd) {
-            this.imageHolder.handleWordClick(imagesToAdd[index]);
+        if (this.queue === 0) {
+            this.queue = 3;
+            this.imageHolder.clear();
+            $('.instructions').hide();
+            let imagesToAdd = this.board.selectAtRandom();
+            for (let index in imagesToAdd) {
+                this.imageHolder.handleWordClick(imagesToAdd[index]);
+            }
+            $(".app-instructions").show();
         }
-        $(".app-instructions").show();
+    }
+
+    decrementQueue = () => {
+        this.queue = this.queue > 0 ? this.queue - 1 : 0;
     }
 
     /**
@@ -223,7 +231,8 @@ class Controller{
         $('.spit-board').sortable();
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
-            showRelatedWords: this.showRelatedWords
+            showRelatedWords: this.showRelatedWords,
+            decrementQueue: this.decrementQueue
         });
         
         this.relatedApps = new RelatedApps({
