@@ -60,7 +60,7 @@ body{
     transform: translate(-50%,-50%);
     font-size:3rem;
     font-family: 'Walter Turncoat', sans-serif;
-    border-radius:20px;
+    border-radius:10px;
     border:none;
     color:white;
     background-color:rgba(25,25,25,.3);
@@ -91,7 +91,7 @@ body{
     font-size:3.75vmin;
     background-color:rgb(80, 124, 168);
     border:none;
-    border-radius:15%;
+    border-radius:10px;
     color:white;
     text-align:center;
     left:1%;
@@ -169,7 +169,7 @@ body{
     position: absolute;
     right: 5px;
     top: 65%;
-    border-radius: 20%;
+    border-radius: 10px;
     color: white;
     background-color: rgb(80, 124, 168);
     border: 1px solid white;
@@ -246,7 +246,7 @@ body{
     box-sizing:border-box;
     background-color:rgba(241, 188, 163, 0.473);
     color:rgb(112, 112, 109);
-    border-radius:30px;
+    border-radius:10px;
     border:1px solid black;
     overflow-x:hidden;
 }
@@ -255,11 +255,11 @@ body{
 }
 ::-webkit-scrollbar-track {
     background: #f1f1f1; 
-    border-radius:30px;
+    border-radius:10px;
 }
 ::-webkit-scrollbar-thumb {
     background: #888; 
-    border-radius:30px;
+    border-radius:10px;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
@@ -301,9 +301,11 @@ body{
     vertical-align:top;
     font-size:4.5vmin;
     cursor: pointer;
-    border-radius:10%;
+    border-radius:10px;
     overflow:hidden;
-    transition: all .25s ease-in-out
+    transition: all .25s ease-in-out;
+    margin:0 .5rem;
+    padding-bottom:.5rem;
 }
 .images-container>.image{
     height:80%;
@@ -369,8 +371,7 @@ body{
 .app>a>img{
     height:8vw;
     width:8vw;
-    border-radius:20%;
-    border:2px solid white;
+    border-radius:30px;
     position:relative;
     top:15%;
 }
@@ -409,6 +410,8 @@ body{
     height: 100%;
     display: flex;
     position: relative;
+    box-sizing:border-box;
+    padding:1rem;
 }
 
 .selected{
@@ -455,7 +458,7 @@ body{
     width: 100%;
     margin-top: 5%;
     padding: 1rem 1.5rem;
-    border-radius: 2px;
+    border-radius: 10px;
     font-weight: bold;
     text-transform: uppercase;
     background-color:rgb(80, 124, 168);
@@ -490,8 +493,8 @@ body{
     opacity: 0;
     transform: scale(0.8);
     transition: all 0.3s;
-    border-radius: 2px;
-    border-radius: 5%;
+    border-radius: 10px;
+    /* border-radius: 5%; */
 }
 
 .modal_inner > p{
