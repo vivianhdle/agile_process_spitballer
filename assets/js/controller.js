@@ -117,13 +117,13 @@ class Controller{
      */
     startButton() {
         $('.landing-page').remove();
-        // particlesJS.load('particles-js', 'assets/particles_main.json', function() {
-        //     var canvas = $('canvas').css({
-        //         'position':'absolute',
-        //         'z-index':-1
-        //     });
-        //     canvas.prependTo('.hero-page');
-        // });
+        particlesJS.load('particles-js', 'assets/particles_main.json', function() {
+            var canvas = $('canvas').css({
+                'position':'absolute',
+                'z-index':-1
+            });
+            canvas.prependTo('.hero-page');
+        });
         this.newGenerator.generateWords();
     }
 
