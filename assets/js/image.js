@@ -77,7 +77,7 @@ class Image {
             success: (response) => {
                 let imageURL;
                 if (response.totalHits > 0) {
-                    imageURL = response.hits[Math.floor(Math.random() * response.hits.length)].largeImageURL;
+                    imageURL = response.hits[Math.floor(Math.random() * response.hits.length)].webformatURL;
                 } else {
                     imageURL = "https://t4.ftcdn.net/jpg/01/39/16/63/240_F_139166369_NdTDXc0lM57N66868lC66PpsaMkFSwaf.jpg"
                 }
@@ -93,7 +93,7 @@ class Image {
      */
     refreshImage = () => {
         let image = $(this.domElement).find(".image");
-        image.css("background-image", `url(${this.images[Math.floor(Math.random() * this.images.length)].largeImageURL})`);
+        image.css("background-image", `url(${this.images[Math.floor(Math.random() * this.images.length)].webformatURL})`);
     }
 
     /**
