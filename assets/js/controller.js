@@ -46,7 +46,7 @@ class Controller{
         this.shuffleBoard = this.shuffleBoard.bind(this);
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
-
+	this.toggleClearModal = this.toggleClearModal.bind(this);
     }
 
     /**
@@ -93,7 +93,7 @@ class Controller{
     addEventListeners() {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
-        this.buttons.startButton.on('click tap',this.startButton);
+        this.buttons.startButton.on('click',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.addWordButton.on('click', this.addUserInputWord);
@@ -117,7 +117,7 @@ class Controller{
     /**
      *opens and closes a clear board confirmation modal
      */
-    toggleClearModal=()=>{
+    toggleClearModal(){
         $('.clear-board-modal').toggleClass('-open');
     }
 
