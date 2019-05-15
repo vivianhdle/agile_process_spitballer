@@ -29,6 +29,8 @@ class Controller{
             random3: $(options.buttons.random3),
             randomizeBoard: $(options.buttons.randomizeBoard),
             clearBoard:$(options.buttons.clearBoard),
+            yesClearBoard:$(options.buttons.yesClearBoard),
+            noClearBoard:$(options.buttons.noClearBoard),
             addWordButton:$(options.buttons.addWordButton)
         }
     }
@@ -80,20 +82,29 @@ class Controller{
         this.buttons.startButton.on('click',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
-        this.buttons.clearBoard.on('click',this.clearBoard);
-        this.buttons.addWordButton.on('click', this.addUserInputWord)
+        this.buttons.addWordButton.on('click', this.addUserInputWord);
+        this.buttons.clearBoard.on('click',this.toggleClearModal);
+        this.buttons.yesClearBoard.on('click',this.clearBoard);
+        this.buttons.noClearBoard.on('click',this.toggleClearModal);
+        $('.clear-board-modal').on('click',this.toggleClearModal);
 
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
             $("#" + this.dataset.target).toggleClass("-open");
             $(".modal_inner > p").text("Please enter a word");
-          });
-          
+        });
+
         $(".modal").click(function(e) {
             if (e.target === this) {
                 $(this).toggleClass("-open")
             }
         });
+    }
+    /**
+     *opens and closes a clear board confirmation modal
+     */
+    toggleClearModal=()=>{
+        $('.clear-board-modal').toggleClass('-open');
     }
 
     /**
@@ -192,7 +203,9 @@ class Controller{
      */
     clearBoard = () => {
         this.board.clearBoard();
+        this.toggleClearModal();
         this.imageHolder.clear();
+
     }
     /**
      * Checks if the board is empty, if so, show instructions
