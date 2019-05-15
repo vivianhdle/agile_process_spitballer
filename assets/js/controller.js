@@ -124,7 +124,7 @@ class Controller{
         //     });
         //     canvas.prependTo('.hero-page');
         // });
-        // this.newGenerator.generateWords();
+        this.newGenerator.generateWords();
     }
 
     /**
