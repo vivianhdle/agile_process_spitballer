@@ -13,6 +13,7 @@ class Image {
         this.callbacks = {
             showApps: callback.showApps,
             showRelatedWords: callback.showRelatedWords,
+            decrementQueue: callback.decrementQueue,
             deleteImageFromArray: callback.deleteImageFromArray
         }
         this.images = [];
@@ -82,6 +83,7 @@ class Image {
                 }
                 this.render(imageURL);
                 this.images = response.hits;
+                this.callbacks.decrementQueue();
             }
         });
     }

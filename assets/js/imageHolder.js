@@ -13,6 +13,7 @@ class imageHolder
         this.callbacks = {
             showApps:options.showApps,
             showRelatedWords: options.showRelatedWords,
+            decrementQueue: options.decrementQueue,
             deleteImageFromArray: this.deleteImageFromArray
         }
     }
