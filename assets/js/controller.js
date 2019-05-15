@@ -46,7 +46,7 @@ class Controller{
         this.shuffleBoard = this.shuffleBoard.bind(this);
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
-
+	this.toggleClearModal = this.toggleClearModal.bind(this);
     }
 
     /**
@@ -117,7 +117,7 @@ class Controller{
     /**
      *opens and closes a clear board confirmation modal
      */
-    toggleClearModal=()=>{
+    toggleClearModal(){
         $('.clear-board-modal').toggleClass('-open');
     }
 
