@@ -465,8 +465,8 @@ body{
 .add-button:hover {
     background-color: black;
 }
-  
-.modal {
+
+.modal, .clear-board-modal {
     visibility: hidden;
     position: fixed;
     top: 0;
@@ -481,9 +481,9 @@ body{
     z-index: 1;
 }
 
-.modal_inner {
+.modal_inner, .clear-board-content {
     font-size: 2rem;
-    max-width: 32rem;
+    max-width: 20rem;
     padding: 1.5rem;
     background-color: #ffffff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -501,13 +501,24 @@ body{
     width: 90%;
     padding: .5rem;
 }
-.modal.-open {
+.modal.-open, .clear-board-modal.-open {
     visibility: visible;
     background-color: rgba(0, 0, 0, 0.4);
 }
-.modal.-open .modal_inner {
+.modal.-open .modal_inner, .clear-board-modal.-open .clear-board-content {
     opacity: 1;
     transform: scale(1);
+}
+.clear-board-modal{
+    text-align:center;
+}
+
+#scroll-left, #scroll-right{
+    border:none;
+    background-color:transparent;
+}
+#scroll-left:hover, #scroll-right:hover{
+    transform: scale(1.4)
 }
 
 @media screen and (orientation: portrait) {

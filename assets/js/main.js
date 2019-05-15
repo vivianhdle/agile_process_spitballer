@@ -11,6 +11,8 @@ function initializeApp(){
             random3:'.random3',
             randomizeBoard: '.randomize-board',
             clearBoard:'.clear-board',
+            yesClearBoard:'.yes-clear',
+            noClearBoard:'.no-clear',
             addWordButton:'.add-button'
         },
         relatedWordsButton:'.syn>.title',

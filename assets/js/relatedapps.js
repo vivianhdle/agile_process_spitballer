@@ -125,13 +125,13 @@ class RelatedApps{
         let button;
 
         if (direction === 'left') {
-            button = $('<button>',{id: '#scroll-left'}).append(
+            button = $('<button>',{id: 'scroll-left'}).append(
                 $('<i>',{'class': 'fas fa-chevron-left'})
             );
             button.on('click', this.scrollBackwards);
 
         } else {
-            button = $('<button>',{id: '#scroll-right'}).append(
+            button = $('<button>',{id: 'scroll-right'}).append(
                 $('<i>',{'class': 'fas fa-chevron-right'})
             );
             button.on('click', this.scrollForward);
