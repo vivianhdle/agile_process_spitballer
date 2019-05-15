@@ -15,6 +15,8 @@ class Board {
         };
 
         this.deleteWord = this.deleteWord.bind(this);
+        this.randomFillBoard = this.randomFillBoard.bind(this);
+        this.selectAtRandom = this.selectAtRandom.bind(this);
     }
     /**
      * Add a word to the board if there is room and it isn't already on the board
@@ -82,7 +84,7 @@ class Board {
     }
 
 
-    randomFillBoard = (callback = null) => {
+    randomFillBoard(callback = null) {
         $(".word-generator-button > i").addClass('spinn');
         $.ajax(
             {
@@ -112,7 +114,7 @@ class Board {
         );
     }
 
-    selectAtRandom = () => {
+    selectAtRandom() {
         let limit = Math.min(3, this.words.length);
         let results = [];
         let words = this.words.slice();

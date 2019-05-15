@@ -21,13 +21,18 @@ class RelatedApps{
 
         this.apps = [];
         this.marker = 3;
+
+        this.getRelatedApps = this.getRelatedApps.bind(this);
+        this.gotRelatedApps = this.gotRelatedApps.bind(this);
+        this.scrollBackwards = this.scrollBackwards.bind(this);
+        this.scrollForward = this.scrollForward.bind(this);
     }
 
     /**
      * makes an API call to search for related apps relating to a word passed in
      * @param {string} word - a string that will be pumped into the itunes app store search
      */
-    getRelatedApps = word => {
+    getRelatedApps(word) {
         var ajaxOptions = {
             url: "https://itunes.apple.com/search?",
             method: "post",
@@ -48,7 +53,7 @@ class RelatedApps{
      * success function, gets all the related apps and saves them in the contructor for future use
      * @param {object} response 
      */
-    gotRelatedApps = response => {
+    gotRelatedApps(response) {
         this.displayAreas.appArea.empty();
         this.displayAreas.titleArea.empty();
 
@@ -78,7 +83,7 @@ class RelatedApps{
         this.marker = 3;
     }
 
-    scrollForward = () => {
+    scrollForward() {
         let counter = 0;
 
         if (this.marker < this.apps.length) {
@@ -98,7 +103,7 @@ class RelatedApps{
         }
     }
 
-    scrollBackwards = () => {
+    scrollBackwards() {
         let counter = 0;
 
         if (this.marker > 3) {

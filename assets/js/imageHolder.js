@@ -16,6 +16,11 @@ class imageHolder
             decrementQueue: options.decrementQueue,
             deleteImageFromArray: this.deleteImageFromArray
         }
+
+        this.handleWordClick = this.handleWordClick.bind(this);
+        this.deleteImageFromArray = this.deleteImageFromArray.bind(this);
+        this.indexOfCard = this.indexOfCard.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
     /**
@@ -23,8 +28,7 @@ class imageHolder
      * If there is room, create a new Image and add it to the image array
      * @param {string} word - the word used to create a new Image
      */
-    handleWordClick = (word) =>
-    {
+    handleWordClick(word) {
         if(this.indexOfCard(word) === null)
         {
             if(this.imageCards.length < 3)
@@ -45,8 +49,7 @@ class imageHolder
      * Deletes an Image from the image array
      * @param {string} word - the word associated with the Image to be deleted
      */
-    deleteImageFromArray = (word) =>
-    {
+    deleteImageFromArray(word) {
         let indexToBeDeleted = this.indexOfCard(word);
         this.imageCards.splice(indexToBeDeleted, 1);
     }
@@ -56,8 +59,7 @@ class imageHolder
      * @param {string} word - the word associated with the Image to search for
      * @returns {number} - the index of the Image whose word matches the given word, or -1 if none is found
      */
-    indexOfCard = (word) =>
-    {
+    indexOfCard(word) {
         let indexToBeDeleted = null;
         for(let index = 0; index < this.imageCards.length; index++)
         {
@@ -72,7 +74,7 @@ class imageHolder
     /**
      * Clears the images on page and the image storage array
      */
-    clear = () => {
+    clear() {
         this.imageCards = [];
         $('.images-container').remove();
     }

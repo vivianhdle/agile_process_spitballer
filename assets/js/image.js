@@ -18,6 +18,12 @@ class Image {
         }
         this.images = [];
         this.getImage();
+
+        this.handleClick = this.handleClick.bind(this);
+        this.render = this.render.bind(this);
+        this.getImage = this.getImage.bind(this);
+        this.refreshImage = this.refreshImage.bind(this);
+        this.deleteSelf = this.deleteSelf.bind(this);
     }
 
     /**
@@ -26,7 +32,7 @@ class Image {
      * Highlights the last Image that was clicked on
      * Reveals refresh button on hover
      */
-    handleClick = () => {
+    handleClick() {
         this.callbacks.showApps(this.word);
         this.callbacks.showRelatedWords(this.word);
         $(".image-wrapper > div").removeClass("selected");
@@ -45,7 +51,7 @@ class Image {
      * Creates the DOM element and its children, adds click handlers, and appends it to the DOM
      * @param {string} imageURL - the URL of the image received from the image API
      */
-    render = (imageURL) => {
+    render(imageURL) {
         $(".image-wrapper > div").removeClass("selected");
         let imageContainer = $("<div>", { class: "images-container" });
         let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
@@ -66,7 +72,7 @@ class Image {
     /**
      * Calls the image API and sends the image URL to the render function
      */
-    getImage = () => {
+    getImage() {
         $.ajax({
             url: "https://pixabay.com/api/",
             method: "get",
@@ -93,7 +99,7 @@ class Image {
     /**
      * Refreshes the image of the DOM element
      */
-    refreshImage = () => {
+    refreshImage() {
         let image = $(this.domElement).find(".image");
         image.css("background-image", `url(${this.images[Math.floor(Math.random() * this.images.length)].webformatURL})`);
     }
@@ -101,7 +107,7 @@ class Image {
     /**
      * Deletes the DOM element and calls an ImageHolder function, removing it from the image array
      */
-    deleteSelf = () => {
+    deleteSelf() {
         this.domElement.remove();
         this.callbacks.deleteImageFromArray(this.word);
 

@@ -31,6 +31,20 @@ class Controller{
             clearBoard:$(options.buttons.clearBoard),
             addWordButton:$(options.buttons.addWordButton)
         }
+
+        this.putWordOnBoard = this.putWordOnBoard.bind(this);
+        this.addUserInputWord = this.addUserInputWord.bind(this);
+        this.addEventListeners = this.addEventListeners.bind(this);
+        this.startButton = this.startButton.bind(this);
+        this.sendToImageCard = this.sendToImageCard.bind(this);
+        this.showApps = this.showApps.bind(this);
+        this.showRelatedWords = this.showRelatedWords.bind(this);
+        this.select3Images = this.select3Images.bind(this);
+        this.decrementQueue = this.decrementQueue.bind(this);
+        this.shuffleBoard = this.shuffleBoard.bind(this);
+        this.clearBoard = this.clearBoard.bind(this);
+        this.checkIfEmpty = this.checkIfEmpty.bind(this);
+
     }
 
     /**
@@ -38,7 +52,7 @@ class Controller{
      * Refreshes new words when list of words is empty.
      * @param {string} word - the word to be added to the Board
      */
-    putWordOnBoard = (word) => {
+    putWordOnBoard(word) {
         if(this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
@@ -56,7 +70,7 @@ class Controller{
     /**
      * Adds the typed word from the modal to the spitboard
      */
-    addUserInputWord = () => {
+    addUserInputWord() {
         $(".modal_inner > p").text("Please enter a word");
         let modalValue = $("input[name='word']").val();
         if(modalValue)
@@ -74,14 +88,14 @@ class Controller{
     /**
      * Adds click handlers to the related and adjective words buttons
      */
-    addEventListeners = () => {
+    addEventListeners() {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
         this.buttons.startButton.on('click',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
-        this.buttons.addWordButton.on('click', this.addUserInputWord)
+        this.buttons.addWordButton.on('click', this.addUserInputWord);
 
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
@@ -99,7 +113,7 @@ class Controller{
     /**
      * hides landing page and makes an API call 
      */
-    startButton = () => {
+    startButton() {
         $('.landing-page').remove();
         particlesJS.load('particles-js', 'assets/particles_main.json', function() {
             var canvas = $('canvas').css({
@@ -134,7 +148,7 @@ class Controller{
      * Takes a word from the Board and sends it to ImageHolder to be made into an Image
      * @param word - the word to make an Image off of
      */
-    sendToImageCard = word => {
+    sendToImageCard(word) {
         if(this.imageHolder.handleWordClick(word)){
             $('.instructions').hide();
             return true;
@@ -147,8 +161,7 @@ class Controller{
      * Tells related apps object to make API call for apps
      * @param {string} word - the word to call the API with
      */
-    showApps = (word) =>
-    {
+    showApps(word) {
         this.relatedApps.getRelatedApps(word);
     }
 
@@ -156,13 +169,13 @@ class Controller{
      * Tells relevant words object to call API and get related words and adjectives
      * @param {string} word - the word used in the API call
      */
-    showRelatedWords = word => {
+    showRelatedWords(word) {
         this.relevantWords.getAllData(word);
     }
     /**
      * Clears the images and selects 3 random words from the board to pin
      */
-    select3Images = () => {
+    select3Images() {
         // debugger;
         if (this.queue === 0) {
             this.queue = 3;
@@ -176,28 +189,28 @@ class Controller{
         }
     }
 
-    decrementQueue = () => {
+    decrementQueue() {
         this.queue = this.queue > 0 ? this.queue - 1 : 0;
     }
 
     /**
      * Randomizes the board
      */
-    shuffleBoard = () => {
+    shuffleBoard() {
         this.board.randomFillBoard(this.select3Images);
         $('.image-random-div').show();
     };
     /**
      * calls the clear board method in board, will clear the dom elements, and array
      */
-    clearBoard = () => {
+    clearBoard() {
         this.board.clearBoard();
         this.imageHolder.clear();
     }
     /**
      * Checks if the board is empty, if so, show instructions
      */
-    checkIfEmpty=()=>{
+    checkIfEmpty() {
         if (this.board.words.length === 0){
             $('.spit-board>.instructions').show();
         } else {

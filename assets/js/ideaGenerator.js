@@ -15,6 +15,9 @@ class IdeaGenerator
             putWordOnBoard: options.putWordOnBoard,
             checkIfEmpty:options.checkIfEmpty
         }
+
+        this.addEventHandler = this.addEventHandler.bind(this);
+        this.generateWords = this.generateWords.bind(this);
     }
 
 
@@ -22,8 +25,7 @@ class IdeaGenerator
      * Adds event handler on Generate Random Ideas button.
      * On click calls generateWords function.
      */
-    addEventHandler = () => 
-    { 
+    addEventHandler() {
         $(".word-generator-button").on("click", this.generateWords);
     }
 
@@ -31,8 +33,7 @@ class IdeaGenerator
      * Makes ajax call to request 5 random words from random-word-api.
      * On success creates 5 instances of ideaCard and renders them to the DOM.
      */
-    generateWords = () =>
-    {
+    generateWords() {
         $(".word-generator-button > i").addClass('spinn');
         $.ajax(
             {
@@ -135,6 +136,7 @@ class ideaCard {
         }
         this.domElement = null;
         this.handleClick = this.handleClick.bind(this);
+        this.render = this.render.bind(this);
     }
 
     /**
@@ -142,7 +144,7 @@ class ideaCard {
      * Sends the clicked word to the callback function and then to Controller.
      * Controller will send the clicked word to cork board object.
      */
-    handleClick = () => {
+    handleClick() {
         if(this.callbacks.putWordOnBoard(this.word)) {
             this.callbacks.checkIfEmpty();
             this.domElement.remove();
@@ -153,7 +155,7 @@ class ideaCard {
      * @return {null} this.domElement 
      * this.domElement is a new div element that has the random word from API call.
      */
-    render = () => {
+    render() {
         this.domElement = $('<div>', {class: 'ideaCard'}).append(
             $('<div>').text(this.word)
         )

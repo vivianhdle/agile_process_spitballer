@@ -21,6 +21,8 @@ class RelevantWords{
         this.gotSynonyms = this.gotSynonyms.bind(this);
         this.displaySynonyms = this.displaySynonyms.bind(this);
         this.displayAdjectives = this.displayAdjectives.bind(this);
+        this.getAdjectives = this.getAdjectives.bind(this);
+        this.gotAdjectives = this.gotAdjectives.bind(this);
         //===========================================================
     }
     /**
@@ -61,7 +63,7 @@ class RelevantWords{
      * If called, will make an API call for adjectives
      * @param {string} word - search this word for adjectives
      */
-    getAdjectives = (word) => {
+    getAdjectives(word) {
         var ajaxOptions = {
             url:"https://api.datamuse.com/words",
             method:"get",
@@ -77,7 +79,7 @@ class RelevantWords{
      * The success call for getting adjectives, will save them in a list and display them
      * @param {object} response - data we receive back (adjectives)
      */
-    gotAdjectives = (response) => {
+    gotAdjectives(response) {
         for(let item in response){
             this.adjectives.push(response[item].word);
         }
