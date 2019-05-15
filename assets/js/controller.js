@@ -31,7 +31,9 @@ class Controller{
             clearBoard:$(options.buttons.clearBoard),
             yesClearBoard:$(options.buttons.yesClearBoard),
             noClearBoard:$(options.buttons.noClearBoard),
-            addWordButton:$(options.buttons.addWordButton)
+            addWordButton:$(options.buttons.addWordButton),
+            scrollLeft:$(options.buttons.scrollLeft),
+            scrollRight:$(options.buttons.scrollRight)
         }
 
         this.putWordOnBoard = this.putWordOnBoard.bind(this);
@@ -100,6 +102,8 @@ class Controller{
         this.buttons.clearBoard.on('click',this.toggleClearModal);
         this.buttons.yesClearBoard.on('click',this.clearBoard);
         this.buttons.noClearBoard.on('click',this.toggleClearModal);
+        this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
+        this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
         $('.clear-board-modal').on('click',this.toggleClearModal);
 
         /* ====================== MODAL ======================= */ 

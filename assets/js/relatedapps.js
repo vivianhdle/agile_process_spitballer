@@ -12,16 +12,13 @@ class RelatedApps{
             titleArea: $(options.titleArea),
             appContainer: $(options.appContainer)
         };
-
         this.data = {
             trackName: null,
             artWork: null,
             link: null
         };
-
         this.apps = [];
         this.marker = 3;
-
         this.getRelatedApps = this.getRelatedApps.bind(this);
         this.gotRelatedApps = this.gotRelatedApps.bind(this);
         this.scrollBackwards = this.scrollBackwards.bind(this);
@@ -68,7 +65,9 @@ class RelatedApps{
                 this.displayAreas.appArea.append(this.render());
             }
             if (this.apps.length > 3){
-                this.appendScrollIcons();
+                $('.scroll').show();
+            } else {
+                $('.scroll').hide();
             }
 
         } else {
@@ -82,14 +81,15 @@ class RelatedApps{
 
         this.marker = 3;
     }
-
+    /**
+     * see more apps to the right of the 3 displayed if there are any
+     */
     scrollForward() {
         let counter = 0;
 
         if (this.marker < this.apps.length) {
             $('.apps').empty();
             $('.names').empty();
-
             for (let appIndex = this.marker; (appIndex < this.apps.length && appIndex < this.marker + 3); appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl512;
@@ -97,22 +97,20 @@ class RelatedApps{
                 this.displayAreas.appArea.append(this.render());
                 counter++;
             }
-
             this.marker = this.marker + counter;
-            this.appendScrollIcons();
         }
     }
-
+    /**
+     * see more apps to the left of the 3 displayed if there are any
+     */
     scrollBackwards() {
         let counter = 0;
 
         if (this.marker > 3) {
             $('.apps').empty();
             $('.names').empty();
-
             const oldAppIndex = this.marker - 6 < 0 ? 0 : this.marker - 6;
             let appIndex = oldAppIndex;
-
             for (appIndex; appIndex < oldAppIndex + 3; appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl512;
@@ -120,34 +118,8 @@ class RelatedApps{
                 this.displayAreas.appArea.append(this.render());
                 counter++;
             }
-
             this.marker = oldAppIndex + counter;
-            this.appendScrollIcons();
         }
-    }
-
-    renderScrollIcons(direction) {
-        let button;
-
-        if (direction === 'left') {
-            button = $('<button>',{id: 'scroll-left'}).append(
-                $('<i>',{'class': 'fas fa-chevron-left'})
-            );
-            button.on('click', this.scrollBackwards);
-
-        } else {
-            button = $('<button>',{id: 'scroll-right'}).append(
-                $('<i>',{'class': 'fas fa-chevron-right'})
-            );
-            button.on('click', this.scrollForward);
-        }
-
-        return button;
-    }
-
-    appendScrollIcons() {
-        this.displayAreas.appArea.append(this.renderScrollIcons('right'));
-        this.displayAreas.appArea.prepend(this.renderScrollIcons('left'));
     }
 
     /**
@@ -155,12 +127,6 @@ class RelatedApps{
      * @returns a DOM element that has not been appended to the DOM
      */
     render() {
-        const title = $('<div>',{
-            class:'app-title',
-            'text':this.data.trackName
-        });
-        $('.names').append(title);
-
         const container = $('<div>',{
             'class':'app'
         });
@@ -171,8 +137,12 @@ class RelatedApps{
         const image = $('<img>',{
             'src':this.data.artWork
         });
+        const title = $('<div>',{
+            'text':this.data.trackName,
+            'class':'app-title'
+        })
         anchorTag.append(image);
-        container.append(anchorTag);
+        container.append(title,anchorTag);
 
         return container;
     }
