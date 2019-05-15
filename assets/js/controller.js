@@ -116,15 +116,16 @@ class Controller{
      * hides landing page and makes an API call 
      */
     startButton() {
-        $('.landing-page').remove();
-        particlesJS.load('particles-js', 'assets/particles_main.json', function() {
-            var canvas = $('canvas').css({
-                'position':'absolute',
-                'z-index':-1
-            });
-            canvas.prependTo('.hero-page');
-        });
-        this.newGenerator.generateWords();
+        // $('.landing-page').remove();
+        // particlesJS.load('particles-js', 'assets/particles_main.json', function() {
+        //     var canvas = $('canvas').css({
+        //         'position':'absolute',
+        //         'z-index':-1
+        //     });
+        //     canvas.prependTo('.hero-page');
+        // });
+        // this.newGenerator.generateWords();
+        alert('heyo');
     }
 
     /**
