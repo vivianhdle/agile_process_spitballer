@@ -108,8 +108,7 @@ class Image {
      * Deletes the DOM element and calls an ImageHolder function, removing it from the image array
      */
     deleteSelf() {
-        debugger;
-        this.domElement.remove();
+        // this.domElement.remove();
         this.callbacks.deleteImageFromArray(this.word);
     }
 }

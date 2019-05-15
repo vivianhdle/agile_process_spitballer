@@ -11,7 +11,8 @@ class Board {
         this.domElement = null;
         this.callbacks = {
             sendToImageCard: options.sendToImageCard,
-            checkIfEmpty:options.checkIfEmpty
+            checkIfEmpty: options.checkIfEmpty,
+            deleteImage: options.deleteImage
         };
 
         this.deleteWord = this.deleteWord.bind(this);
@@ -50,6 +51,7 @@ class Board {
             this.words.splice(wordIndex, 1);
         }
         this.callbacks.checkIfEmpty();
+        this.callbacks.deleteImage(word);
     }
 
     /**
@@ -102,7 +104,9 @@ class Board {
                         this.clearBoard();
                         for(let index = 0; index < response.length; index++)
                         {
-                            this.addWord(response[index]);
+                            if (response[index] !== ''){
+                                this.addWord(response[index]);
+                            }
                         }
                     }
                 },

@@ -58,7 +58,7 @@ class RelatedApps{
             this.apps = response.results;
             $('.app-instructions').remove();
 
-            for (let appIndex = 0; appIndex < 3; appIndex++) {
+            for (let appIndex = 0; appIndex < 3 && appIndex<this.apps.length; appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl512;
                 this.data.link = this.apps[appIndex].trackViewUrl;

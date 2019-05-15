@@ -77,14 +77,16 @@ class Controller{
     addUserInputWord() {
         $(".modal_inner > p").text("Please enter a word");
         let modalValue = $("input[name='word']").val();
-        if(modalValue)
+        let pattern = /^[a-z]/gmi;
+        debugger;
+        if(modalValue && pattern.test(modalValue))
         {
             this.putWordOnBoard(modalValue);
             $("input[name='word']").val("");
         }
         else
         {
-            $(".modal_inner > p").text("You must enter a word");
+            $(".modal_inner > p").text("Word must start with a letter");
         }
         this.checkIfEmpty();
     }
@@ -191,7 +193,6 @@ class Controller{
      * Clears the images and selects 3 random words from the board to pin
      */
     select3Images() {
-        // debugger;
         if (this.queue === 0) {
             this.queue = 3;
             this.imageHolder.clear();
@@ -250,21 +251,24 @@ class Controller{
                 putWordOnBoard:this.putWordOnBoard
             }
         });
-
-        $(this.displayAreas.relevant).hide();
-        this.board = new Board({
-            sendToImageCard: this.sendToImageCard,
-            checkIfEmpty:this.checkIfEmpty
-        });
-
-        $('.spitboard-container').append(this.board.render());
-        $('.spit-board').hide();
-        $('.spit-board').sortable();
+        
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords,
             decrementQueue: this.decrementQueue
         });
+
+        $(this.displayAreas.relevant).hide();
+
+        this.board = new Board({
+            sendToImageCard: this.sendToImageCard,
+            checkIfEmpty:this.checkIfEmpty,
+            deleteImage:this.imageHolder.deleteImageFromArray
+        });
+
+        $('.spitboard-container').append(this.board.render());
+        $('.spit-board').hide();
+        $('.spit-board').sortable();
         
         this.relatedApps = new RelatedApps({
             appArea:this.displayAreas.appArea,
