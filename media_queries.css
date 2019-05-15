@@ -1,0 +1,62 @@
+
+    /* ========== MOBILE =========== */
+    /* iPhone 8 and lower */
+    @media screen and (orientation: landscape) and (max-device-width: 736px){
+        .clear-board,.randomize-board,.display-modal-btn{
+            position:absolute;
+            height:8%;
+            width:4%;
+            font-size:3.75vmin;
+            background-color:rgb(80, 124, 168);
+            border:none;
+            border-radius:10px;
+            color:white;
+            text-align:center;
+            left:.7%;
+        }
+        
+        
+
+        .clear-board > i, .randomize-board > i, .display-modal-btn > i{
+            position: relative;
+            right: 10%;
+        }
+    }
+
+    /* iPhone X */
+    @media screen and (orientation: landscape) and (max-device-width: 812px){
+        .clear-board > i, .randomize-board > i, .display-modal-btn > i{
+            position: relative;
+            top: 0px;
+            left: 1px;
+        }
+
+        .clear-board,.randomize-board,.display-modal-btn{
+            height:8%;
+            width:4%;
+            left: .6%;
+        }
+
+        .display-modal-btn{
+            top:15%;
+        }
+        .clear-board{
+            top:27%;
+        }
+        .randomize-board{
+            top: 39%;
+        }
+        
+        
+    }
+
+
+    /* ========== TABLET =========== */
+    @media screen and (min-width: 600px){
+
+    }
+
+    /* ========== DESKTOP =========== */
+    @media screen and (min-width: 1200px){
+
+    }
