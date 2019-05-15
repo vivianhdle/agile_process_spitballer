@@ -370,36 +370,39 @@ body{
     font-family: 'Walter Turncoat', sans-serif;
     box-sizing: border-box;
     position: relative;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
 }
 .apps{
-    height:60%;
-    width:100%;
+    height:100%;
+    width:80%;
+    position:relative;
     display:flex;
-    align-items:center;
     justify-content: center;
-    text-align: center;
-
 }
-.names{
-    height:30%;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-    text-align: center;
+.arrow{
+    width:10%;
+    display:hidden;
 }
 .app{
-    /* width:33.33%; */
-    max-width:33.33%;
-    padding:1rem;
+    width: 100%;
+    max-width: 33.33%;
     height:100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
 }
 .app-title{
-    height:35%;
-    width:28%;
+    height:100%;
+    width:100%;
+    height:20%;
     margin:0 4%;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
     color:rgb(51, 83, 116);
 }
 .app>a>img{
@@ -432,11 +435,11 @@ body{
     transition: all .15s ease-in-out;
     font-size: 5vmin;
 }
-.random3:hover,.randomize-board:hover,.clear-board:hover,.display-modal-btn:hover {
+.random3:hover,.randomize-board:hover,.clear-board:hover,.display-modal-btn:hover,#scroll-left:hover, #scroll-right:hover{
     background-color: black;
     color: white;
 }
-.random3:hover i,.randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i {
+.random3:hover i,.randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i,#scroll-left:hover i, #scroll-right:hover i{
     animation: barrelRoll .5s ;
 }
 .image-wrapper{
@@ -553,10 +556,12 @@ body{
 #scroll-left, #scroll-right{
     border:none;
     background-color:transparent;
+    font-size: 1.5rem;
+    background-color:rgb(80, 124, 168);
+    border-radius:10px;
+    color:white;
 }
-#scroll-left:hover, #scroll-right:hover{
-    transform: scale(1.4)
-}
+
 .fa-snowplow{
     font-size:7rem;
 }

@@ -13,7 +13,9 @@ function initializeApp(){
             clearBoard:'.clear-board',
             yesClearBoard:'.yes-clear',
             noClearBoard:'.no-clear',
-            addWordButton:'.add-button'
+            addWordButton:'.add-button',
+            scrollLeft:'#scroll-left',
+            scrollRight:'#scroll-right'
         },
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
