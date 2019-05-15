@@ -91,11 +91,13 @@ class Controller{
     addEventListeners() {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
-        this.buttons.startButton.on('click',this.startButton);
+        this.buttons.startButton.on('tap',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.shuffleBoard);
         this.buttons.clearBoard.on('click',this.clearBoard);
         this.buttons.addWordButton.on('click', this.addUserInputWord);
+
+        // jQuery( ".selector" ).on( "tap", function( event ) { ... } )
 
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
