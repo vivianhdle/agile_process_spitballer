@@ -439,8 +439,11 @@ body{
     background-color: black;
     color: white;
 }
-.random3:hover i,.randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i,#scroll-left:hover i, #scroll-right:hover i{
+.random3:hover i,#scroll-left:hover i, #scroll-right:hover i{
     animation: barrelRoll .5s ;
+}
+.randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i {
+    animation: barrelRoll2 .5s;
 }
 .image-wrapper{
     width: 55%;
@@ -484,6 +487,11 @@ body{
 @keyframes barrelRoll {
     0% {transform: rotateX(0deg)}
     100% {transform: rotateX(360deg)}
+}
+
+@keyframes barrelRoll2 {
+    0% {transform: rotateX(0deg) translate(-50%, -50%)}
+    100% {transform: rotateX(360deg) translate(-50%, -50%)}
 }
 
 .spinn {
