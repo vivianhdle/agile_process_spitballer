@@ -82,8 +82,7 @@ class Board {
     }
 
 
-    randomFillBoard = (callback = null) =>
-    {
+    randomFillBoard = (callback = null) => {
         $(".word-generator-button > i").addClass('spinn');
         $.ajax(
             {
