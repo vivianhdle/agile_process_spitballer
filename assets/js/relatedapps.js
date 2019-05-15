@@ -58,16 +58,16 @@ class RelatedApps{
             this.apps = response.results;
             $('.app-instructions').remove();
 
-            for (let appIndex = 0; appIndex < 3; appIndex++) {
+            for (let appIndex = 0; appIndex < 3 && appIndex<this.apps.length; appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl512;
                 this.data.link = this.apps[appIndex].trackViewUrl;
                 this.displayAreas.appArea.append(this.render());
             }
             if (this.apps.length > 3){
-                $('.scroll').show();
+                $('.arrow').show();
             } else {
-                $('.scroll').hide();
+                $('.arrow').hide();
             }
 
         } else {
@@ -88,8 +88,7 @@ class RelatedApps{
         let counter = 0;
 
         if (this.marker < this.apps.length) {
-            $('.apps').empty();
-            $('.names').empty();
+            this.clearAppContainer();
             for (let appIndex = this.marker; (appIndex < this.apps.length && appIndex < this.marker + 3); appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl512;
@@ -107,8 +106,7 @@ class RelatedApps{
         let counter = 0;
 
         if (this.marker > 3) {
-            $('.apps').empty();
-            $('.names').empty();
+            this.clearAppContainer();
             const oldAppIndex = this.marker - 6 < 0 ? 0 : this.marker - 6;
             let appIndex = oldAppIndex;
             for (appIndex; appIndex < oldAppIndex + 3; appIndex++) {
@@ -120,6 +118,12 @@ class RelatedApps{
             }
             this.marker = oldAppIndex + counter;
         }
+    }
+    /**
+     * empties out the app container
+     */
+    clearAppContainer(){
+        $('.apps').empty();
     }
 
     /**

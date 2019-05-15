@@ -50,14 +50,17 @@ class IdeaGenerator
                     } else {
                         $(".ideaCard").remove();
                         let newIdeaCard = null;
-                        for (let index = 0; index < response.length; index++) {
-                            newIdeaCard = new ideaCard({
-                                word: response[index],
-                                callbacks: {
-                                    putWordOnBoard: this.callbacks.putWordOnBoard,
-                                    checkIfEmpty: this.callbacks.checkIfEmpty
-                                }
-                            });
+                        for(let index = 0; index < response.length; index++)
+                        {
+                            if (response[index] !== ' '){
+                                    newIdeaCard = new ideaCard({
+                                    word:response[index],
+                                    callbacks:{
+                                        putWordOnBoard:this.callbacks.putWordOnBoard,
+                                        checkIfEmpty:this.callbacks.checkIfEmpty
+                                    }
+                                })
+                            }
                             $(".ideas").append(newIdeaCard.render());
                         }
                     }
