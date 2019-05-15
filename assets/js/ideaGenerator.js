@@ -9,15 +9,15 @@ class IdeaGenerator
      */
     constructor(options)
     {
-        this.addEventHandler();
         this.apiKey = new IdeaAPIKey(localStorage.getItem('wordAPIKey')); // API key to start with
         this.callbacks = {
             putWordOnBoard: options.putWordOnBoard,
             checkIfEmpty:options.checkIfEmpty
-        }
+        };
 
         this.addEventHandler = this.addEventHandler.bind(this);
         this.generateWords = this.generateWords.bind(this);
+        this.addEventHandler();
     }
 
 
@@ -35,40 +35,40 @@ class IdeaGenerator
      */
     generateWords() {
         $(".word-generator-button > i").addClass('spinn');
-        $.ajax(
-            {
+
+        $.ajax({
                 url: "https://random-word-api.herokuapp.com/word",
                 method: "get",
                 data: {
                     key: this.apiKey.getKey(),
                     number: 5
                 },
-                success: (response) => {
+
+                success: response => {
                     if (response === "wrong API key") {
                         this.apiKey.generateNewKey(this.generateWords);
                     } else {
                         $(".ideaCard").remove();
                         let newIdeaCard = null;
-                        for(let index = 0; index < response.length; index++)
-                        {
+                        for (let index = 0; index < response.length; index++) {
                             newIdeaCard = new ideaCard({
-                                word:response[index],
-                                callbacks:{
-                                    putWordOnBoard:this.callbacks.putWordOnBoard,
-                                    checkIfEmpty:this.callbacks.checkIfEmpty
+                                word: response[index],
+                                callbacks: {
+                                    putWordOnBoard: this.callbacks.putWordOnBoard,
+                                    checkIfEmpty: this.callbacks.checkIfEmpty
                                 }
-                            })
+                            });
                             $(".ideas").append(newIdeaCard.render());
-
                         }
                     }
                 },
+
                 complete: () => {
                     localStorage.setItem('wordAPIKey', this.apiKey.getKey());
                     $(".word-generator-button > i").removeClass('spinn');
                 }
-            }
-        );
+        });
+
         $('.spit-board').show('slow');
     }
 }
@@ -87,6 +87,8 @@ class IdeaAPIKey {
         } else {
             this.generateNewKey();
         }
+
+        this.getKey = this.getKey.bind(this);
     }
 
     /**
@@ -102,7 +104,7 @@ class IdeaAPIKey {
             success: response => {
                 this.key = response;
                 console.log('Got a new key: ' + this.key);
-                if(callback) {
+                if (callback) {
                     callback();
                 }
             }
@@ -130,11 +132,12 @@ class ideaCard {
      */
     constructor(options) {
         this.word = options.word;
-        this.callbacks = {
-            putWordOnBoard:options.callbacks.putWordOnBoard,
-            checkIfEmpty:options.callbacks.checkIfEmpty
-        }
         this.domElement = null;
+        this.callbacks = {
+            putWordOnBoard :options.callbacks.putWordOnBoard,
+            checkIfEmpty: options.callbacks.checkIfEmpty
+        };
+
         this.handleClick = this.handleClick.bind(this);
         this.render = this.render.bind(this);
     }
@@ -145,7 +148,7 @@ class ideaCard {
      * Controller will send the clicked word to cork board object.
      */
     handleClick() {
-        if(this.callbacks.putWordOnBoard(this.word)) {
+        if (this.callbacks.putWordOnBoard(this.word)) {
             this.callbacks.checkIfEmpty();
             this.domElement.remove();
         }    
@@ -158,7 +161,8 @@ class ideaCard {
     render() {
         this.domElement = $('<div>', {class: 'ideaCard'}).append(
             $('<div>').text(this.word)
-        )
+        );
+
         this.domElement.click(this.handleClick);
         return this.domElement;
     }
