@@ -74,6 +74,8 @@ class RelatedApps{
                 })
             );
         }
+
+        this.marker = 3;
     }
 
     scrollForward = () => {
@@ -103,7 +105,10 @@ class RelatedApps{
             $('.apps').empty();
             $('.names').empty();
 
-            for (let appIndex = this.marker - 6; appIndex < this.marker - 3; appIndex++) {
+            const oldAppIndex = this.marker - 6 < 0 ? 0 : this.marker - 6;
+            let appIndex = oldAppIndex;
+
+            for (appIndex; appIndex < oldAppIndex + 3; appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl512;
                 this.data.link = this.apps[appIndex].trackViewUrl;
@@ -111,7 +116,7 @@ class RelatedApps{
                 counter++;
             }
 
-            this.marker = this.marker-counter;
+            this.marker = oldAppIndex + counter;
             this.appendScrollIcons();
         }
     }
