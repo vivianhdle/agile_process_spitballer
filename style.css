@@ -520,6 +520,24 @@ body{
 #scroll-left:hover, #scroll-right:hover{
     transform: scale(1.4)
 }
+.fa-snowplow{
+    font-size:7rem;
+}
+.yes-clear,.no-clear{
+    border:none;
+    font-size:1.5rem;
+    background-color:transparent;
+}
+.yes-clear{
+    color:green;
+}
+.no-clear{
+    color:red;
+}
+
+.yes-clear:hover,.no-clear:hover{
+    transform:scale(1.2);
+}
 
 @media screen and (orientation: portrait) {
     .portrait-warning {
