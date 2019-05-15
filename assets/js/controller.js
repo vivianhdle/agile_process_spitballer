@@ -174,6 +174,7 @@ class Controller{
      * Clears the images and selects 3 random words from the board to pin
      */
     select3Images = () => {
+        // debugger;
         if (this.queue === 0) {
             this.queue = 3;
             this.imageHolder.clear();
@@ -203,6 +204,8 @@ class Controller{
     clearBoard = () => {
         this.board.clearBoard();
         this.toggleClearModal();
+        this.imageHolder.clear();
+
     }
     /**
      * Checks if the board is empty, if so, show instructions

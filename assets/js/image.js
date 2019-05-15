@@ -50,7 +50,9 @@ class Image {
         let imageContainer = $("<div>", { class: "images-container" });
         let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
         let wordDiv = $("<div>", { class: "word" }).text(this.word).css({"border-top": "1px solid black"});
-        let deleteButton = $('<div>', { 'class': 'wordCloseButton' }).text('X').click(this.deleteSelf);
+        let deleteButton = $('<div>', { 'class': 'imgCloseButton' }).click(this.deleteSelf).append(
+            $('<span>', {'class': 'imgCloseText'}).text('X')
+        );
         let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click(this.refreshImage);
         let refreshIcon = $("<i>", { "class": "fas fa-redo" });
         refreshButton.append(refreshIcon);

@@ -162,7 +162,9 @@ class BoardWord {
     render() {
         this.domElement = $('<div>', {'class': 'spit-board-word'}).append(
             $('<div>', {'class': 'wordInner'}).text(this.word),
-            $('<div>', {'class': 'wordCloseButton'}).text('X').click(this.deleteSelf)
+            $('<div>', {'class': 'wordCloseButton'}).click(this.deleteSelf).append(
+                $('<span>', {'class': 'wordCloseText'}).text('X')
+            )
         );
         this.domElement.click(this.handleClick);
         return this.domElement;
