@@ -89,8 +89,8 @@ button{
 }
 .clear-board,.randomize-board,.display-modal-btn{
     position:absolute;
-    height:5.5%;
-    width:3%;
+    height:2rem;
+    width:2rem;
     font-size:1.25rem;
     background-color:rgb(80, 124, 168);
     border:none;
@@ -343,7 +343,7 @@ button{
     padding: 5px;
     opacity: 0;
     transition: all .15s ease-in-out;
-    border:1px solid white;
+    background-color:rgba(138, 131, 131, 0.596);
 }
 .imgCloseButton:hover {
     color: rgb(226, 161, 161);
@@ -423,8 +423,8 @@ button{
 }
 
 .random3 {
-    height:25%;
-    width: 80%;
+    height:3rem;
+    width:3rem;
     position:absolute;
     top: 50%;
     left: 50%;
@@ -436,7 +436,7 @@ button{
     background-color: rgb(80, 124, 168);
     color: white;
     transition: all .15s ease-in-out;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .random3:hover,.randomize-board:hover,.clear-board:hover,.display-modal-btn:hover,#scroll-left:hover, #scroll-right:hover{
     background-color: black;
