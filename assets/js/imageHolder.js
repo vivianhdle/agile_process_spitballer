@@ -15,12 +15,14 @@ class imageHolder
         this.deleteImageFromArray = this.deleteImageFromArray.bind(this);
         this.clear = this.clear.bind(this);
         this.checkInstructions = this.checkInstructions.bind(this);
+        
 
         this.callbacks = {
             showApps:options.showApps,
             showRelatedWords: options.showRelatedWords,
             decrementQueue: options.decrementQueue,
-            deleteImageFromArray: this.deleteImageFromArray
+            deleteImageFromArray: this.deleteImageFromArray,
+            deleteRelatedApps: options.deleteRelatedApps
         }
     }
 
@@ -57,6 +59,7 @@ class imageHolder
         if (indexToBeDeleted !== null){
             this.imageCards[indexToBeDeleted].domElement.remove();
             this.imageCards.splice(indexToBeDeleted, 1);
+            this.callbacks.deleteRelatedApps();
         }
     }
     checkInstructions(){

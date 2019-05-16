@@ -12,7 +12,8 @@ class Board {
         this.callbacks = {
             sendToImageCard: options.sendToImageCard,
             checkIfEmpty: options.checkIfEmpty,
-            deleteImage: options.deleteImage
+            deleteImage: options.deleteImage,
+            deleteRelatedApps: options.deleteRelatedApps
         };
 
         this.deleteWord = this.deleteWord.bind(this);
