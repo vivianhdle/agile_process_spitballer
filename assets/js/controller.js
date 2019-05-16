@@ -130,8 +130,8 @@ class Controller{
     deleteRelatedApps(word = null){
         
         this.relatedApps.removeRelatedApps();
-        
-        
+        this.relevantWords.removeRelatedWords();
+
     }
 
     /**

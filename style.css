@@ -387,9 +387,6 @@ button{
 }
 .arrow{
     width:10%;
-    height: 100%;
-    position: relative;
-    display:hidden;
 }
 .app{
     width: 100%;
