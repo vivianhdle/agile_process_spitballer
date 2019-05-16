@@ -339,13 +339,14 @@ button{
     right: 5px;
     top: 5px;
     color: white;
-    border-radius: 100%;
+    border-radius: 50%;
     padding: 5px;
     opacity: 0;
     transition: all .15s ease-in-out;
+    border:1px solid white;
 }
 .imgCloseButton:hover {
-    color: black;
+    color: rgb(226, 161, 161);
     cursor:pointer;
 }
 .imgCloseText {
