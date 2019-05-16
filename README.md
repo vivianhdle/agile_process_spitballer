@@ -1,4 +1,4 @@
-<img align="right" width="150" src="/assets/images/idea-bulb.jpg">
+<img align="right" width="150" src="/assets/images/idea-bulb.png">
 
 # Agile Process Spitballer
 
