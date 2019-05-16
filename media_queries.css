@@ -32,9 +32,13 @@
             transform: translate(-50%, -50%);
         }
 
+        .random3{
+            width: 60%;
+        }
+
         .random3 > i{
             position: relative;
-            right: 8px;
+            right: 10px;
         }
         
 
