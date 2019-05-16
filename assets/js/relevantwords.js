@@ -132,6 +132,13 @@ class RelevantWords{
             
         }
     }
+
+    removeRelatedWords() {
+        this.synonyms = [];
+        this.adjectives = [];
+        $('.synonyms').remove();
+        $('.adjectives').remove();
+    }
 }
 /**
  * A synonym that can be clicked and sent to the board
