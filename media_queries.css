@@ -31,6 +31,12 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
+        
+        .random3 > i{
+            position: relative;
+            right: 5%;
+        }
+        
 
         .randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i {
             animation: barrelRoll2 .5s;
