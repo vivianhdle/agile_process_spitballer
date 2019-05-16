@@ -1,60 +1,34 @@
-# c219_hackathon2
+<img align="right" width="150" src="/assets/images/idea-bulb.png">
 
-Hackathon project involving the combination of different data sources into an application or game
+# Agile Process Spitballer
 
-### Requirements
-- Combine at least 4 **external** resources via AJAX requests and present their information in an application
-- Must be documented loosely on JSDOC standards
-- All API interactions must be encapsulated in an OOP object defined with a class.
-  - must use class
-  - must have methods to access the data
-  - must pass data to subsequent functions with callbacks upon getting their data
-  
-- Must be issue-managed via meistertask or trello
-  - name your project 2.19 Team [your team number] Hackathon
+##### DOMAIN HERE
 
-### Judging Criteria
-- **Appeal** : is it visually appealing / well put together
-- **Code Quality** : is the code properly formatted, are variables and functions well defined and documented
-- **Presentation** : How well is it presented during the unveiling session
-- **Task / Issue Management** : How well was the development process documented / controlled.  Were there well-defined issues, milestones, and project management
-- **Innovative / Transformative** : Did the project do something new and exciting?  Was it bold and tried to do things that haven't been done much.  Did it combine the data sources together in a way that was more useful than either source by itself
-- **Ease of Use / Understanding** : Was it easy to use the application / game, or if it was more complex, was the application or game able to provide you with tutorials or instructions that made understanding it a breeze.
+This repo contains an Agile Process Spitballer. This was designed to assist developers with the agile ideation process.  We have created a cohesive app that ties together 4 different API's to help get your creative juices flowing.
 
-### Teams
-- Team 1
-  - andrew ly
-  - jason yata
-  - kenneth Li
-  - quan le
-  
-- Team 2
-  - chris gusavson
-  - westley poon
-  - vivian le
+In this app, you can select words, and from those words come images, relevant apps, and related words to help you visualize your next idea.
 
-- Team 3
-  - michelle poole
-  - johnny pham
-  - jennifer chun lai
+### Setup Instructions
 
-- team 4
-  - alice le
-  - jun lang
-  - kylie lin
-  - jimmy Pang
+1. Fork this repo
+1. Clone your forked copy of this repo
+   - `git clone https://github.com/[Your Username]/agile_process_spitballer.git`
+1. Change directory into the newly cloned repo
+   - `cd c219_jobsearch`
 
-- team 5
-  - chris gormley
-  - jennifer ong
-  - david lee
-  - jay samora
-  
-- team 6
-  - joe delrossi
-  - eric george
-  - caroline pan
-  - jaime kim
+### Accomplishments
+1. JavaScript, jQuery, HTML5, CSS3, particles.js, OOP
+1. All API interactions are encapsulated in their individual instances of their respective class
+1. Classes pass data to subsequent functions with callbacks upon getting their data
+1. Documented with JSDOC standards
 
-### Alpha version Deadline: 
-- 7:00pm Wednesday, March 20th, 2015
+
+### Project Documentation
+
+1. [Figma](https://www.figma.com/file/O9cE3hQkZKlBG8hc56ToZVtu/Spitballer)
+
+### Authors
+
+1. Vivian Le (https://github.com/vivianhdle)
+1. Westley Poon (https://github.com/WestleyPoon)
+1. Christopher Gustavsson (https://github.com/Christopher-Gustavsson)
