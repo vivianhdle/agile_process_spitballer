@@ -6,7 +6,7 @@ body{
     background-size:cover;
     color:rgb(80, 124, 168);
     font-family: 'Walter Turncoat', sans-serif;
-    background-image:url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/videoblocks-light-grey-tech-minimal-abstract-geometric-motion-background-seamless-looping-video-animation-ultra-hd-4k-3840x2160_sbqqppslq_thumbnail-full01.png');
+    background-image:url('./assets/images/background.png');
 }
 .portrait-warning{
     display: none;
@@ -18,7 +18,7 @@ body{
     background-size:cover;
     text-align:center;
     color:#2C3E50;
-    background-image:url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/videoblocks-light-grey-tech-minimal-abstract-geometric-motion-background-seamless-looping-video-animation-ultra-hd-4k-3840x2160_sbqqppslq_thumbnail-full01.png');
+    background-image:url('./assets/images/background.png');
 }
 
 .warning-text{
@@ -51,7 +51,7 @@ body{
     font-size:5rem;
     text-align:center;
     color:#2C3E50;
-    background-image:url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/videoblocks-light-grey-tech-minimal-abstract-geometric-motion-background-seamless-looping-video-animation-ultra-hd-4k-3840x2160_sbqqppslq_thumbnail-full01.png');
+    background-image:url('./assets/images/background.png');
 }
 .landing-page>button{
     position:absolute;
