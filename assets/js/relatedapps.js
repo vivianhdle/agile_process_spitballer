@@ -71,6 +71,7 @@ class RelatedApps{
             }
 
         } else {
+            $('.arrow').hide();
             this.displayAreas.appContainer.append(
                 $('<div>',{
                     text:'NO APPS FOUND',
