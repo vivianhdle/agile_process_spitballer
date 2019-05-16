@@ -6,13 +6,19 @@
             position:absolute;
             height:15%;
             width:4%;
-            font-size:3.75vmin;
+            /* font-size:3.75vmin; */
             background-color:rgb(80, 124, 168);
-            border:none;
+            /* border:none;
             border-radius:10px;
             color:white;
-            text-align:center;
+            text-align:center; */
             left:.7%;
+        }
+
+        .random3{
+            position:absolute;
+            height: 37.5%;
+            width: 75%;
         }
 
         .display-modal-btn{
@@ -32,7 +38,7 @@
             transform: translate(-50%, -50%);
         }
 
-        .randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i {
+        .randomize-board:hover i,.clear-board:hover i,.display-modal-btn:hover i, .random3 i {
             animation: barrelRoll2 .5s;
         }
     }
@@ -48,7 +54,7 @@
 
         .clear-board,.randomize-board,.display-modal-btn{
             height:15%;
-            width:4%;
+            width:4.5%;
             left: .6%;
         }
 
