@@ -52,7 +52,8 @@ class Controller{
         this.shuffleBoard = this.shuffleBoard.bind(this);
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
-	    this.toggleClearModal = this.toggleClearModal.bind(this);
+        this.toggleClearModal = this.toggleClearModal.bind(this);
+        this.deleteRelatedApps = this.deleteRelatedApps.bind(this);
     }
 
     /**
@@ -125,6 +126,14 @@ class Controller{
             }
         });
     }
+
+    deleteRelatedApps(word = null){
+        
+        this.relatedApps.removeRelatedApps();
+        
+        
+    }
+
     /**
      *opens and closes a clear board confirmation modal
      */
@@ -254,15 +263,16 @@ class Controller{
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords,
-            decrementQueue: this.decrementQueue
+            decrementQueue: this.decrementQueue,
+            deleteRelatedApps: this.deleteRelatedApps
         });
 
         $(this.displayAreas.relevant).hide();
 
         this.board = new Board({
             sendToImageCard: this.sendToImageCard,
-            checkIfEmpty:this.checkIfEmpty,
-            deleteImage:this.imageHolder.deleteImageFromArray
+            checkIfEmpty: this.checkIfEmpty,
+            deleteImage: this.imageHolder.deleteImageFromArray,
         });
 
         $('.spitboard-container').append(this.board.render());
