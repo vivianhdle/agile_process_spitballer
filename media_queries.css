@@ -31,10 +31,10 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
-        
+
         .random3 > i{
             position: relative;
-            right: 5%;
+            right: 8px;
         }
         
 
