@@ -1,4 +1,4 @@
-<img align="right" width="150" src="/assets/images/idea-image.jpg">
+<img align="right" width="150" src="/assets/images/idea-bulb.jpg">
 
 # Agile Process Spitballer
 
@@ -27,7 +27,7 @@ In this app, you can select words, and from those words come images, relevant ap
 
 1. [Figma](https://www.figma.com/file/O9cE3hQkZKlBG8hc56ToZVtu/Spitballer)
 
-###Authors
+### Authors
 
 1. Vivian Le (https://github.com/vivianhdle)
 1. Westley Poon (https://github.com/WestleyPoon)
