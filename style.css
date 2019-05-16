@@ -371,7 +371,6 @@ body{
     position: relative;
     display:flex;
     align-items:center;
-    white-space: nowrap;
     justify-content: center;
     text-align: center;
 }
@@ -380,6 +379,7 @@ body{
     width:80%;
     position:relative;
     display:flex;
+    white-space: nowrap;
     justify-content: center;
 }
 .arrow{
