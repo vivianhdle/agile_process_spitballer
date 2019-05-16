@@ -57,7 +57,7 @@ class Image {
         let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
         let wordDiv = $("<div>", { class: "word" }).text(this.word).css({"border-top": "1px solid black"});
         let deleteButton = $('<div>', { 'class': 'imgCloseButton' }).click(this.deleteSelf).append(
-            $('<span>', {'class': 'imgCloseText'}).text('X')
+            $('<span>', {'class': 'imgCloseText'}).text('x')
         );
         let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click((event) => {
             event.stopPropagation();

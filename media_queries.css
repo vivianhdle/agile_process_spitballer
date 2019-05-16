@@ -2,6 +2,10 @@
     /* ========== MOBILE =========== */
     /* iPhone 8 and lower */
     @media screen and (orientation: landscape) and (max-device-width: 736px){
+        .hero-page{
+            height:100vh;
+            width:100vwh;
+        }
         .random3,.clear-board,.randomize-board,.display-modal-btn{
             position:absolute;
             height:15%;
@@ -101,10 +105,23 @@
 
     /* ========== TABLET =========== */
     @media screen and (min-width: 600px){
-
+        .hero-page{
+            min-width:890px;
+            min-height:560px;
+        }
     }
 
     /* ========== DESKTOP =========== */
     @media screen and (min-width: 1200px){
-
+        
     }
+
+
+    @media screen and (min-width: 1281px){
+        html{
+            font-size:22px;
+        }
+    }
+
+
+    

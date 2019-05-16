@@ -77,7 +77,7 @@ class Controller{
      * Adds the typed word from the modal to the spitboard
      */
     addUserInputWord() {
-        $(".modal_inner > p").text("Please enter a word");
+        $(".modal_inner > p").text("Add your own word onto the board");
         let modalValue = $("input[name='word']").val();
         let pattern = /^[a-z]/gmi;
         debugger;
@@ -113,7 +113,7 @@ class Controller{
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
             $("#" + this.dataset.target).toggleClass("-open");
-            $(".modal_inner > p").text("Please enter a word");
+            $(".modal_inner > p").text("Add your own word onto the board");
         });
 
         $(".modal").click(function(e) {

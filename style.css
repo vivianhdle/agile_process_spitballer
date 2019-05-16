@@ -8,6 +8,9 @@ body{
     font-family: 'Walter Turncoat', sans-serif;
     background-image:url('./assets/images/background.png');
 }
+button{
+    cursor:pointer;
+}
 .portrait-warning{
     display: none;
     height:100vh;
@@ -86,8 +89,8 @@ body{
 }
 .clear-board,.randomize-board,.display-modal-btn{
     position:absolute;
-    height:5.5%;
-    width:3%;
+    height:2rem;
+    width:2rem;
     font-size:1.25rem;
     background-color:rgb(80, 124, 168);
     border:none;
@@ -145,17 +148,16 @@ body{
     position: absolute;
     right: 5px;
     top: 5px;
-    background-color: white;
-    color: black;
+    color: white;
     border-radius: 100%;
     padding: 5px;
     opacity: 0;
     transition: all .15s ease-in-out;
 }
 .wordCloseButton:hover {
-    background-color: darkred;
-    color: white;
+    color:rgb(226, 161, 161);
     cursor: default;
+    cursor:pointer;
 }
 .wordCloseText {
     position: absolute;
@@ -170,19 +172,21 @@ body{
 .image-refresh-button{
     font-size: 1rem;
     text-align: center;
-    line-height: 100%;  
-    height: 10%;
-    width: 10%;
+    height: 4.5vh;
+    width: 4.5vh;
     position: absolute;
-    right: 5px;
+    right: 0;
+    margin:0 .25rem;
     top: 58%;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     background-color: rgb(80, 124, 168);
-    border: 1px solid white;
-    padding: 5px;
-    opacity: 0;
+    border: .5px solid white;
     transition: all .15s ease-in-out;
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-refresh-button:hover{
@@ -334,17 +338,16 @@ body{
     position: absolute;
     right: 5px;
     top: 5px;
-    background-color: white;
-    color: black;
-    border-radius: 100%;
+    color: white;
+    border-radius: 50%;
     padding: 5px;
     opacity: 0;
     transition: all .15s ease-in-out;
+    background-color:rgba(138, 131, 131, 0.596);
 }
 .imgCloseButton:hover {
-    background-color: darkred;
-    color: white;
-    cursor: default;
+    color: rgb(226, 161, 161);
+    cursor:pointer;
 }
 .imgCloseText {
     position: absolute;
@@ -422,8 +425,8 @@ body{
 }
 
 .random3 {
-    height:25%;
-    width: 80%;
+    height:3rem;
+    width:3rem;
     position:absolute;
     top: 50%;
     left: 50%;
@@ -435,7 +438,7 @@ body{
     background-color: rgb(80, 124, 168);
     color: white;
     transition: all .15s ease-in-out;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .random3:hover,.randomize-board:hover,.clear-board:hover,.display-modal-btn:hover,#scroll-left:hover, #scroll-right:hover{
     background-color: black;
