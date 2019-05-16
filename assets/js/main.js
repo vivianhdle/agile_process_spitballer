@@ -15,7 +15,8 @@ function initializeApp(){
             noClearBoard:'.no-clear',
             addWordButton:'.add-button',
             scrollLeft:'#scroll-left',
-            scrollRight:'#scroll-right'
+            scrollRight:'#scroll-right',
+            imgCloseButton: '.imgCloseButton'
         },
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
@@ -29,6 +30,7 @@ function initializeApp(){
             appArea:'.apps',
             appTitleArea:'.names',
             appContainer:'.app-container',
+            imageWrapper: '.image-wrapper'
         }
     });
     mainController.start();

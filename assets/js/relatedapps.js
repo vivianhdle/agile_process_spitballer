@@ -23,6 +23,7 @@ class RelatedApps{
         this.gotRelatedApps = this.gotRelatedApps.bind(this);
         this.scrollBackwards = this.scrollBackwards.bind(this);
         this.scrollForward = this.scrollForward.bind(this);
+        this.removeRelatedApps = this.removeRelatedApps.bind(this);
     }
 
     /**
@@ -128,10 +129,26 @@ class RelatedApps{
     }
 
     /**
+     * resets values in constructor and clears the DOM elements for related apps
+     */
+    removeRelatedApps(){
+        this.data = {
+            trackName: null,
+            artWork: null,
+            link: null
+        };
+        this.apps = [];
+        this.marker = 3;
+        $("#scroll-left, #scroll-right").hide();
+        this.clearAppContainer();
+    }
+
+    /**
      * creates dom elements(container,title,anchortag,image) grabs data from constructor to display on the DOM
      * @returns a DOM element that has not been appended to the DOM
      */
     render() {
+        $("#scroll-left, #scroll-right").show();
         const container = $('<div>',{
             'class':'app'
         });

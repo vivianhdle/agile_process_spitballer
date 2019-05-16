@@ -16,12 +16,13 @@ class Controller{
         this.queue = 0;
 
         this.displayAreas = {
-            relevant:options.displayAreas.relevant,
-            synonymArea:options.displayAreas.synonymArea,
-            adjectiveArea:options.displayAreas.adjectiveArea,
-            appArea:options.displayAreas.appArea,
-            appTitleArea:options.displayAreas.appTitleArea,
-            appContainer:options.displayAreas.appContainer,
+            relevant:$(options.displayAreas.relevant),
+            synonymArea:$(options.displayAreas.synonymArea),
+            adjectiveArea:$(options.displayAreas.adjectiveArea),
+            appArea:$(options.displayAreas.appArea),
+            appTitleArea:$(options.displayAreas.appTitleArea),
+            appContainer:$(options.displayAreas.appContainer),
+            imageWrapper:$(options.displayAreas.imageWrapper)
         };
 
         this.buttons={
@@ -35,7 +36,8 @@ class Controller{
             noClearBoard:$(options.buttons.noClearBoard),
             addWordButton:$(options.buttons.addWordButton),
             scrollLeft:$(options.buttons.scrollLeft),
-            scrollRight:$(options.buttons.scrollRight)
+            scrollRight:$(options.buttons.scrollRight),
+            imgCloseButton:$(options.buttons.imgCloseButton)
         };
 
         this.putWordOnBoard = this.putWordOnBoard.bind(this);
@@ -108,6 +110,7 @@ class Controller{
         this.buttons.noClearBoard.on('click',this.toggleClearModal);
         this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
         this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
+        this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
         $('.clear-board-modal').on('click',this.toggleClearModal);
 
         /* ====================== MODAL ======================= */ 
@@ -184,6 +187,7 @@ class Controller{
     showRelatedWords(word) {
         this.relevantWords.getAllData(word);
     }
+    
     /**
      * Clears the images and selects 3 random words from the board to pin
      */
