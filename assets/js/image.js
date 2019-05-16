@@ -59,7 +59,10 @@ class Image {
         let deleteButton = $('<div>', { 'class': 'imgCloseButton' }).click(this.deleteSelf).append(
             $('<span>', {'class': 'imgCloseText'}).text('X')
         );
-        let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click(this.refreshImage);
+        let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click((event) => {
+            event.stopPropagation();
+            this.refreshImage();
+        });
         let refreshIcon = $("<i>", { "class": "fas fa-redo" });
         refreshButton.append(refreshIcon);
         imageContainer.append(imageDiv, wordDiv, refreshButton, deleteButton);
