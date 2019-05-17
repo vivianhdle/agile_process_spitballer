@@ -53,7 +53,7 @@ class Controller{
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
         this.toggleClearModal = this.toggleClearModal.bind(this);
-        this.deleteRelatedApps = this.deleteRelatedApps.bind(this);
+        this.deleteRelatedAppsAndWords = this.deleteRelatedAppsAndWords.bind(this);
     }
 
     /**
@@ -127,11 +127,12 @@ class Controller{
         });
     }
 
-    deleteRelatedApps(word = null){
-        
+    /**
+     * Clears the related apps and related words containers of the DOM
+     */
+    deleteRelatedAppsAndWords(){
         this.relatedApps.removeRelatedApps();
         this.relevantWords.removeRelatedWords();
-
     }
 
     /**
@@ -231,6 +232,7 @@ class Controller{
         this.board.clearBoard();
         this.toggleClearModal();
         this.imageHolder.clear();
+        this.deleteRelatedAppsAndWords();
     }
     /**
      * Checks if the board is empty, if so, show instructions
@@ -264,7 +266,7 @@ class Controller{
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords,
             decrementQueue: this.decrementQueue,
-            deleteRelatedApps: this.deleteRelatedApps
+            deleteRelatedAppsAndWords: this.deleteRelatedAppsAndWords
         });
 
         $(this.displayAreas.relevant).hide();

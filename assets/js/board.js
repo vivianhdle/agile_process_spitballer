@@ -13,7 +13,6 @@ class Board {
             sendToImageCard: options.sendToImageCard,
             checkIfEmpty: options.checkIfEmpty,
             deleteImage: options.deleteImage,
-            deleteRelatedApps: options.deleteRelatedApps
         };
 
         this.deleteWord = this.deleteWord.bind(this);
