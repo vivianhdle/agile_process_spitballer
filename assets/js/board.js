@@ -90,6 +90,7 @@ class Board {
 
     randomFillBoard(callback = null) {
         $(".word-generator-button > i").addClass('spinn');
+        $(".board-spinner").removeClass('hidden');
         $.ajax(
             {
                 url: "https://random-word-api.herokuapp.com/word",
@@ -115,6 +116,7 @@ class Board {
                     this.callbacks.checkIfEmpty();
                     $('.image-wrapper').show();
                     $(".word-generator-button > i").removeClass('spinn');
+                    $(".board-spinner").addClass('hidden');
                 }
             }
         );

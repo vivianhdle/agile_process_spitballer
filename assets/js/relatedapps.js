@@ -31,6 +31,8 @@ class RelatedApps{
      * @param {string} word - a string that will be pumped into the itunes app store search
      */
     getRelatedApps(word) {
+        $('.apps-spinner').removeClass('hidden');
+        $('.app-instructions').remove();
         var ajaxOptions = {
             url: "https://itunes.apple.com/search?",
             method: "post",
@@ -54,10 +56,10 @@ class RelatedApps{
     gotRelatedApps(response) {
         this.displayAreas.appArea.empty();
         this.displayAreas.titleArea.empty();
+        $('.apps-spinner').addClass('hidden');
         
         if (response.resultCount > 0){
             this.apps = response.results;
-            $('.app-instructions').remove();
 
             for (let appIndex = 0; appIndex < 3 && appIndex<this.apps.length; appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
@@ -162,7 +164,7 @@ class RelatedApps{
         const title = $('<div>',{
             'text':this.data.trackName,
             'class':'app-title'
-        })
+        });
         anchorTag.append(image);
         container.append(title,anchorTag);
 

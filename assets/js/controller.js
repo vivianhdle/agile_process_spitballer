@@ -83,7 +83,7 @@ class Controller{
         $(".modal_inner > p").text("Add your own word onto the board");
         let modalValue = $("input[name='word']").val();
         let pattern = /^[a-z]/gmi;
-        debugger;
+
         if(modalValue && pattern.test(modalValue))
         {
             this.putWordOnBoard(modalValue);

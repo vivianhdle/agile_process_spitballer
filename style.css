@@ -321,8 +321,6 @@ button{
 .images-container>.image{
     height:80%;
     width:100%;
-    background-size:cover;
-    background-position:center;
 }
 .images-container>.word{
     height:20%;
@@ -330,6 +328,12 @@ button{
     align-items:center;
     justify-content: center;
     background-color: rgba(95, 87, 87, 0);
+}
+
+.image-inner {
+    object-fit: cover;
+    height: 100%;
+    width: 100%
 }
 
 .imgCloseButton {
@@ -483,6 +487,11 @@ button{
     100% {transform: rotate(359deg)}
 }
 
+@keyframes spinn-reverse {
+    0%   {transform: rotate(0deg)}
+    100% {transform: rotate(-360deg)}
+}
+
 @keyframes barrelRoll {
     0% {transform: rotateX(0deg)}
     100% {transform: rotateX(360deg)}
@@ -586,6 +595,31 @@ button{
 
 .yes-clear:hover,.no-clear:hover{
     transform:scale(1.2);
+}
+
+.spinner {
+    position: absolute;
+}
+
+.spinner img {
+    height: 100%;
+    animation: spinn-reverse 1s infinite linear;
+}
+
+.image-spinner {
+    height: 60%;
+    top: 8%;
+    left: 12%;
+}
+
+.apps-spinner {
+    height: 20%;
+    top: 70%;
+    right: 14%;
+}
+
+.hidden {
+    display: none;
 }
 
 @media screen and (orientation: portrait) {

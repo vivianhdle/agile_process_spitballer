@@ -54,18 +54,24 @@ class Image {
     render(imageURL) {
         $(".image-wrapper > div").removeClass("selected");
         let imageContainer = $("<div>", { class: "images-container" });
-        let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
+        // let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
+        let imageDiv = $("<div>", { class: "image" }).append(
+            $('<img>', {class: 'image-inner'}).on('load', this.onImageLoad).attr('src', imageURL)
+        );
         let wordDiv = $("<div>", { class: "word" }).text(this.word).css({"border-top": "1px solid black"});
         let deleteButton = $('<div>', { 'class': 'imgCloseButton' }).click(this.deleteSelf).append(
             $('<span>', {'class': 'imgCloseText'}).text('x')
         );
         let refreshButton = $('<div>', { 'class': 'image-refresh-button' }).click((event) => {
             event.stopPropagation();
-            this.refreshImage();
+            this.refreshImage(event);
         });
         let refreshIcon = $("<i>", { "class": "fas fa-redo" });
         refreshButton.append(refreshIcon);
-        imageContainer.append(imageDiv, wordDiv, refreshButton, deleteButton);
+        imageContainer.append(
+            $('<div>', {'class': 'spinner image-spinner'}).append(
+                $('<img>', {'src': './assets/images/spinner.png'})
+            ), imageDiv, wordDiv, refreshButton, deleteButton);
         refreshButton.css("visibility", "hidden");
         this.domElement = imageContainer;
         $(".image-wrapper").append(imageContainer);
@@ -102,9 +108,13 @@ class Image {
     /**
      * Refreshes the image of the DOM element
      */
-    refreshImage() {
-        let image = $(this.domElement).find(".image");
-        image.css("background-image", `url(${this.images[Math.floor(Math.random() * this.images.length)].webformatURL})`);
+    refreshImage(event) {
+        if (this.images.length > 0) {
+            $(event.target).addClass('spinn');
+
+            let image = $(this.domElement).find(".image-inner");
+            image.attr('src', this.images[Math.floor(Math.random() * this.images.length)].webformatURL);
+        }
     }
 
     /**
@@ -113,6 +123,11 @@ class Image {
     deleteSelf() {
         // this.domElement.remove();
         this.callbacks.deleteImageFromArray(this.word);
+    }
+
+    onImageLoad(event) {
+        $(event.target).parent().parent().find('.spinner').addClass('hidden');
+        $(event.target).parent().parent().find('i').removeClass('spinn');
     }
 }
 
