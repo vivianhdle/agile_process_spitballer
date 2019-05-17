@@ -216,6 +216,9 @@ class BoardWord {
      * @param event - the click event
      */
     deleteSelf(event) {
+        this.domElement.remove();
+        event.stopPropagation();
+        this.deleteCallback(this.word);
         if(this.checkBoardNotFull()){
             $('.display-modal-btn').css({
                 'pointer-events': 'auto',
@@ -223,8 +226,5 @@ class BoardWord {
                 'background-color': 'rgb(80, 124, 168)'
             });
         }
-        this.domElement.remove();
-        event.stopPropagation();
-        this.deleteCallback(this.word);
     }
 }

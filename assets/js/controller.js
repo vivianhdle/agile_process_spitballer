@@ -135,7 +135,6 @@ class Controller{
             $(".modal_inner > p").text("Word must start with a letter");
         }
         this.checkIfEmpty();
-
         if(this.checkIfNotFull()){
             $('.display-modal-btn').css({
                 'pointer-events': 'auto',
@@ -245,16 +244,21 @@ class Controller{
      * Clears the images and selects 3 random words from the board to pin
      */
     select3Images() {
-        if (this.queue === 0) {
-            this.queue = 3;
-            this.imageHolder.clear();
-            $('.instructions').hide();
-            let imagesToAdd = this.board.selectAtRandom();
-            for (let index in imagesToAdd) {
-                this.imageHolder.handleWordClick(imagesToAdd[index]);
+        if (this.board.words.length ===0){
+            return
+        } else {
+            if (this.queue === 0) {
+                this.queue = 3;
+                this.imageHolder.clear();
+                $('.instructions').hide();
+                let imagesToAdd = this.board.selectAtRandom();
+                for (let index in imagesToAdd) {
+                    this.imageHolder.handleWordClick(imagesToAdd[index]);
+                }
+                $(".app-instructions").show();
             }
-            $(".app-instructions").show();
         }
+        
     }
 
     decrementQueue() {
