@@ -37,7 +37,9 @@ class Controller{
             addWordButton:$(options.buttons.addWordButton),
             scrollLeft:$(options.buttons.scrollLeft),
             scrollRight:$(options.buttons.scrollRight),
-            imgCloseButton:$(options.buttons.imgCloseButton)
+            imgCloseButton:$(options.buttons.imgCloseButton),
+            yesRandomize:$(options.buttons.yesRandomize),
+            noRandomize:$(options.buttons.noRandomize)
         };
 
         this.putWordOnBoard = this.putWordOnBoard.bind(this);
@@ -53,6 +55,7 @@ class Controller{
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
         this.toggleClearModal = this.toggleClearModal.bind(this);
+        this.toggleRandomModal=this.toggleRandomModal.bind(this);
         this.deleteRelatedAppsAndWords = this.deleteRelatedAppsAndWords.bind(this);
     }
 
@@ -104,7 +107,7 @@ class Controller{
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
         this.buttons.startButton.on('click',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
-        this.buttons.randomizeBoard.on('click', this.shuffleBoard);
+        this.buttons.randomizeBoard.on('click', this.toggleRandomModal);
         this.buttons.addWordButton.on('click', this.addUserInputWord);
         this.buttons.clearBoard.on('click',this.toggleClearModal);
         this.buttons.yesClearBoard.on('click',this.clearBoard);
@@ -112,7 +115,10 @@ class Controller{
         this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
         this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
         this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
+        this.buttons.yesRandomize.on('click',this.shuffleBoard);
+        this.buttons.noRandomize.on('click',this.toggleRandomModal);
         $('.clear-board-modal').on('click',this.toggleClearModal);
+        $('.rerandomize-board').on('click',this.toggleRandomModal);
 
         /* ====================== MODAL ======================= */ 
         $(".display-modal-btn[data-target]").click(function() {
@@ -141,7 +147,13 @@ class Controller{
     toggleClearModal(){
         $('.clear-board-modal').toggleClass('-open');
     }
-
+    /**
+     *opens and closes a randomize board confirmation modal
+     */
+    toggleRandomModal(){
+        console.log('hi');
+        $('.rerandomize-board').toggleClass('-open');
+    }
     /**
      * hides landing page and makes an API call 
      */
@@ -224,6 +236,7 @@ class Controller{
     shuffleBoard() {
         this.board.randomFillBoard(this.select3Images);
         $('.image-random-div').show();
+        this.toggleRandomModal();
     };
     /**
      * calls the clear board method in board, will clear the dom elements, and array

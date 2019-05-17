@@ -67,12 +67,24 @@
         <div class="clear-board-modal" id="clear-board-modal">
             <div class="clear-board-content" onClick="event.stopPropagation()">
                 <div><i class="fas fa-snowplow"></i></div>
-                <div>Are you sure you want to clear the whole board?</div>
+                <div class="modal-text">Are you sure you want to clear the whole board?</div>
                 <button class="yes-clear">YES</button>
                 <button class="no-clear">NO</button>
             </div>
         </div>
         <!-- END DELETE BOARD MODAL -->
+
+
+        <!-- START RANDOMIZE BOARD MODAL -->
+        <div class="rerandomize-board" id="rerandomize-board">
+            <div class="rerandomize-content" onClick="event.stopPropagation()">
+                <div><i class="fas fa-random randomize-modal"></i></div>
+                <div class="modal-text">Randomizing the whole board will erase your current board, do you wish to continue?</div>
+                <button class="yes-random">YES</button>
+                <button class="no-random">NO</button>
+            </div>
+        </div>
+        <!-- END RANDOMIZE BOARD MODAL -->
         
         
         <div class="bottom-half">

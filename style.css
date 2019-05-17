@@ -513,7 +513,7 @@ button{
     background-color: black;
 }
 
-.modal, .clear-board-modal {
+.modal, .clear-board-modal,.rerandomize-board {
     visibility: hidden;
     position: fixed;
     top: 0;
@@ -528,8 +528,8 @@ button{
     z-index: 1;
 }
 
-.modal_inner, .clear-board-content {
-    font-size: 2rem;
+.modal_inner, .clear-board-content,.rerandomize-content {
+    font-size: 1.5rem;
     max-width: 20rem;
     padding: 1.5rem;
     background-color: #ffffff;
@@ -538,26 +538,22 @@ button{
     transform: scale(0.8);
     transition: all 0.3s;
     border-radius: 10px;
-    /* border-radius: 5%; */
+    text-align:center;
+    font-family:Helvetica, sans-serif;
 }
 
-.modal_inner > p{
-    margin: 0;
-}
+
 .modal_inner > input{
     width: 90%;
     padding: .5rem;
 }
-.modal.-open, .clear-board-modal.-open {
+.modal.-open, .clear-board-modal.-open, .rerandomize-board.-open {
     visibility: visible;
     background-color: rgba(0, 0, 0, 0.4);
 }
-.modal.-open .modal_inner, .clear-board-modal.-open .clear-board-content {
+.modal.-open .modal_inner, .clear-board-modal.-open .clear-board-content, .rerandomize-board.-open .rerandomize-content{
     opacity: 1;
     transform: scale(1);
-}
-.clear-board-modal{
-    text-align:center;
 }
 
 #scroll-left, #scroll-right{
@@ -569,24 +565,30 @@ button{
     color:white;
 }
 
-.fa-snowplow{
+.fa-snowplow, .randomize-modal{
     font-size:7rem;
 }
-.yes-clear,.no-clear{
+.yes-clear,.no-clear,.yes-random,.no-random{
+    margin:1rem 0 0 0;
     border:none;
-    font-size:1.5rem;
-    background-color:transparent;
+    font-size:1rem;
+    border-radius:10px;
+    padding:.75rem;
+    color:white;
 }
-.yes-clear{
-    color:green;
+.yes-clear,.yes-random{
+    background-color:rgba(0, 128, 0, 0.575);
 }
-.no-clear{
-    color:red;
+.no-clear,.no-random{
+    background-color:rgba(255, 15, 15, 0.719);
+}
+.no-clear:hover,.no-random:hover,.yes-clear:hover,.yes-random:hover{
+    background-color:black;
+}
+.modal-text{
+    padding-top:1rem;
 }
 
-.yes-clear:hover,.no-clear:hover{
-    transform:scale(1.2);
-}
 
 @media screen and (orientation: portrait) {
     .portrait-warning {
