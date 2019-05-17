@@ -54,8 +54,6 @@ class imageHolder
      */
     deleteImageFromArray(word) {
         let indexToBeDeleted = this.indexOfCard(word);
-        console.log(this.imageCards);
-        console.log('indexToBeDeleted',indexToBeDeleted);
         if (indexToBeDeleted !== null){
             this.imageCards[indexToBeDeleted].domElement.remove();
             this.imageCards.splice(indexToBeDeleted, 1);

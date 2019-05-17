@@ -8,6 +8,9 @@ body{
     font-family: 'Walter Turncoat', sans-serif;
     background-image:url('./assets/images/background.png');
 }
+::-webkit-scrollbar { 
+    display: none; 
+} 
 button{
     cursor:pointer;
 }
@@ -272,20 +275,7 @@ button{
     border:1px solid black;
     overflow-x:hidden;
 }
-::-webkit-scrollbar{
-    width:10px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-    border-radius:10px;
-}
-::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius:10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
+
 .title{
     color:rgb(80, 124, 168);
     cursor: pointer;
