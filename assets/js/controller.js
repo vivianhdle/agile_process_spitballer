@@ -58,6 +58,37 @@ class Controller{
     }
 
     /**
+     * Adds click handlers to the related and adjective words buttons
+     */
+    addEventListeners() {
+        this.buttons.relatedWords.on('click', this.toggleRelatedWords);
+        this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
+        this.buttons.startButton.on('click',this.startButton);
+        this.buttons.random3.on('click', this.select3Images);
+        this.buttons.randomizeBoard.on('click', this.shuffleBoard);
+        this.buttons.addWordButton.on('click', this.addUserInputWord);
+        this.buttons.clearBoard.on('click',this.toggleClearModal);
+        this.buttons.yesClearBoard.on('click',this.clearBoard);
+        this.buttons.noClearBoard.on('click',this.toggleClearModal);
+        this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
+        this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
+        this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
+        $('.clear-board-modal').on('click',this.toggleClearModal);
+
+        /* ====================== MODAL ======================= */ 
+        $(".display-modal-btn[data-target]").click(function() {
+            $("#" + this.dataset.target).toggleClass("-open");
+            $(".modal_inner > p").text("Add your own word onto the board");
+        });
+
+        $(".modal").click(function(e) {
+            if (e.target === this) {
+                $(this).toggleClass("-open")
+            }
+        });
+    }
+
+    /**
      * Takes a word from IdeaGenerator callback and attempts to put the word on the Board object.
      * Refreshes new words when list of words is empty.
      * @param {string} word - the word to be added to the Board
@@ -94,37 +125,21 @@ class Controller{
             $(".modal_inner > p").text("Word must start with a letter");
         }
         this.checkIfEmpty();
-    }
 
-    /**
-     * Adds click handlers to the related and adjective words buttons
-     */
-    addEventListeners() {
-        this.buttons.relatedWords.on('click', this.toggleRelatedWords);
-        this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
-        this.buttons.startButton.on('click',this.startButton);
-        this.buttons.random3.on('click', this.select3Images);
-        this.buttons.randomizeBoard.on('click', this.shuffleBoard);
-        this.buttons.addWordButton.on('click', this.addUserInputWord);
-        this.buttons.clearBoard.on('click',this.toggleClearModal);
-        this.buttons.yesClearBoard.on('click',this.clearBoard);
-        this.buttons.noClearBoard.on('click',this.toggleClearModal);
-        this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
-        this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
-        this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
-        $('.clear-board-modal').on('click',this.toggleClearModal);
-
-        /* ====================== MODAL ======================= */ 
-        $(".display-modal-btn[data-target]").click(function() {
-            $("#" + this.dataset.target).toggleClass("-open");
-            $(".modal_inner > p").text("Add your own word onto the board");
-        });
-
-        $(".modal").click(function(e) {
-            if (e.target === this) {
-                $(this).toggleClass("-open")
-            }
-        });
+        if(this.checkIfNotFull()){
+            $('.display-modal-btn').css({
+                'pointer-events': 'auto',
+                'cursor': 'pointer',
+                'background-color': 'rgb(80, 124, 168)'
+            });
+        }
+        else{
+            $('.display-modal-btn').css({
+                'pointer-events': 'none',
+                'background-color': 'gray'
+            });
+            $('#modal1').removeClass('-open');
+        }
     }
 
     /**
@@ -250,6 +265,9 @@ class Controller{
         }
     }
 
+    /**
+     * Checks if the board is not full
+     */
     checkIfNotFull()
     {
         return this.board.words.length < 20;
