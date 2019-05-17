@@ -52,7 +52,6 @@ class Image {
      * @param {string} imageURL - the URL of the image received from the image API
      */
     render(imageURL) {
-        $(".image-wrapper > div").removeClass("selected");
         let imageContainer = $("<div>", { class: "images-container" });
         let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
         let wordDiv = $("<div>", { class: "word" }).text(this.word).css({"border-top": "1px solid black"});
