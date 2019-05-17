@@ -22,7 +22,7 @@ class imageHolder
             showRelatedWords: options.showRelatedWords,
             decrementQueue: options.decrementQueue,
             deleteImageFromArray: this.deleteImageFromArray,
-            deleteRelatedApps: options.deleteRelatedApps
+            deleteRelatedAppsAndWords: options.deleteRelatedAppsAndWords
         }
     }
 
@@ -59,7 +59,7 @@ class imageHolder
         if (indexToBeDeleted !== null){
             this.imageCards[indexToBeDeleted].domElement.remove();
             this.imageCards.splice(indexToBeDeleted, 1);
-            this.callbacks.deleteRelatedApps();
+            this.callbacks.deleteRelatedAppsAndWords();
         }
     }
     checkInstructions(){
