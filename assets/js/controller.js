@@ -54,6 +54,7 @@ class Controller{
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
         this.toggleClearModal = this.toggleClearModal.bind(this);
         this.deleteRelatedAppsAndWords = this.deleteRelatedAppsAndWords.bind(this);
+        this.checkIfNotFull = this.checkIfNotFull.bind(this);
     }
 
     /**
@@ -249,13 +250,19 @@ class Controller{
         }
     }
 
+    checkIfNotFull()
+    {
+        return this.board.words.length < 20;
+    }
+
     /**
      * Instantiates all the page objects and calls the addEventListeners function
      */
     start() {
         this.newGenerator = new IdeaGenerator({
             putWordOnBoard:this.putWordOnBoard,
-            checkIfEmpty:this.checkIfEmpty
+            checkIfEmpty:this.checkIfEmpty,
+            checkIfNotFull:this.checkIfNotFull
         });
 
         this.relevantWords = new RelevantWords({
