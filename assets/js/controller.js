@@ -57,6 +57,38 @@ class Controller{
         this.toggleClearModal = this.toggleClearModal.bind(this);
         this.toggleRandomModal=this.toggleRandomModal.bind(this);
         this.deleteRelatedAppsAndWords = this.deleteRelatedAppsAndWords.bind(this);
+        this.checkIfNotFull = this.checkIfNotFull.bind(this);
+    }
+
+    /**
+     * Adds click handlers to the related and adjective words buttons
+     */
+    addEventListeners() {
+        this.buttons.relatedWords.on('click', this.toggleRelatedWords);
+        this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
+        this.buttons.startButton.on('click',this.startButton);
+        this.buttons.random3.on('click', this.select3Images);
+        this.buttons.randomizeBoard.on('click', this.shuffleBoard);
+        this.buttons.addWordButton.on('click', this.addUserInputWord);
+        this.buttons.clearBoard.on('click',this.toggleClearModal);
+        this.buttons.yesClearBoard.on('click',this.clearBoard);
+        this.buttons.noClearBoard.on('click',this.toggleClearModal);
+        this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
+        this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
+        this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
+        $('.clear-board-modal').on('click',this.toggleClearModal);
+
+        /* ====================== MODAL ======================= */ 
+        $(".display-modal-btn[data-target]").click(function() {
+            $("#" + this.dataset.target).toggleClass("-open");
+            $(".modal_inner > p").text("Add your own word onto the board");
+        });
+
+        $(".modal").click(function(e) {
+            if (e.target === this) {
+                $(this).toggleClass("-open")
+            }
+        });
     }
 
     /**
@@ -97,40 +129,21 @@ class Controller{
             $(".modal_inner > p").text("Word must start with a letter");
         }
         this.checkIfEmpty();
-    }
 
-    /**
-     * Adds click handlers to the related and adjective words buttons
-     */
-    addEventListeners() {
-        this.buttons.relatedWords.on('click', this.toggleRelatedWords);
-        this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
-        this.buttons.startButton.on('click',this.startButton);
-        this.buttons.random3.on('click', this.select3Images);
-        this.buttons.randomizeBoard.on('click', this.toggleRandomModal);
-        this.buttons.addWordButton.on('click', this.addUserInputWord);
-        this.buttons.clearBoard.on('click',this.toggleClearModal);
-        this.buttons.yesClearBoard.on('click',this.clearBoard);
-        this.buttons.noClearBoard.on('click',this.toggleClearModal);
-        this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
-        this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
-        this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
-        this.buttons.yesRandomize.on('click',this.shuffleBoard);
-        this.buttons.noRandomize.on('click',this.toggleRandomModal);
-        $('.clear-board-modal').on('click',this.toggleClearModal);
-        $('.rerandomize-board').on('click',this.toggleRandomModal);
-
-        /* ====================== MODAL ======================= */ 
-        $(".display-modal-btn[data-target]").click(function() {
-            $("#" + this.dataset.target).toggleClass("-open");
-            $(".modal_inner > p").text("Add your own word onto the board");
-        });
-
-        $(".modal").click(function(e) {
-            if (e.target === this) {
-                $(this).toggleClass("-open")
-            }
-        });
+        if(this.checkIfNotFull()){
+            $('.display-modal-btn').css({
+                'pointer-events': 'auto',
+                'cursor': 'pointer',
+                'background-color': 'rgb(80, 124, 168)'
+            });
+        }
+        else{
+            $('.display-modal-btn').css({
+                'pointer-events': 'none',
+                'background-color': 'gray'
+            });
+            $('#modal1').removeClass('-open');
+        }
     }
 
     /**
@@ -151,7 +164,11 @@ class Controller{
      *opens and closes a randomize board confirmation modal
      */
     toggleRandomModal(){
-        $('.rerandomize-board').toggleClass('-open');
+        if (this.board.words.length) {
+            $('.rerandomize-board').toggleClass('-open');
+        } else {
+            this.board.randomFillBoard(this.select3Images);
+        }
     }
     /**
      * hides landing page and makes an API call 
@@ -233,7 +250,6 @@ class Controller{
      * Randomizes the board
      */
     shuffleBoard() {
-        this.board.randomFillBoard(this.select3Images);
         $('.image-random-div').show();
         this.toggleRandomModal();
     };
@@ -241,6 +257,11 @@ class Controller{
      * calls the clear board method in board, will clear the dom elements, and array
      */
     clearBoard() {
+        $('.display-modal-btn').css({
+            'pointer-events': 'auto',
+            'cursor': 'pointer',
+            'background-color': 'rgb(80, 124, 168)'
+        });
         this.board.clearBoard();
         this.toggleClearModal();
         this.imageHolder.clear();
@@ -258,12 +279,21 @@ class Controller{
     }
 
     /**
+     * Checks if the board is not full
+     */
+    checkIfNotFull()
+    {
+        return this.board.words.length < 20;
+    }
+
+    /**
      * Instantiates all the page objects and calls the addEventListeners function
      */
     start() {
         this.newGenerator = new IdeaGenerator({
             putWordOnBoard:this.putWordOnBoard,
-            checkIfEmpty:this.checkIfEmpty
+            checkIfEmpty:this.checkIfEmpty,
+            checkIfNotFull:this.checkIfNotFull
         });
 
         this.relevantWords = new RelevantWords({

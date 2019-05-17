@@ -12,7 +12,8 @@ class IdeaGenerator
         this.apiKey = new IdeaAPIKey(localStorage.getItem('wordAPIKey')); // API key to start with
         this.callbacks = {
             putWordOnBoard: options.putWordOnBoard,
-            checkIfEmpty:options.checkIfEmpty
+            checkIfEmpty: options.checkIfEmpty,
+            checkIfNotFull: options.checkIfNotFull 
         };
 
         this.addEventHandler = this.addEventHandler.bind(this);
@@ -57,7 +58,8 @@ class IdeaGenerator
                                     word:response[index],
                                     callbacks:{
                                         putWordOnBoard:this.callbacks.putWordOnBoard,
-                                        checkIfEmpty:this.callbacks.checkIfEmpty
+                                        checkIfEmpty:this.callbacks.checkIfEmpty,
+                                        checkIfNotFull:this.callbacks.checkIfNotFull
                                     }
                                 })
                             }
@@ -106,7 +108,6 @@ class IdeaAPIKey {
             datatype: 'text',
             success: response => {
                 this.key = response;
-                console.log('Got a new key: ' + this.key);
                 if (callback) {
                     callback();
                 }
@@ -137,8 +138,9 @@ class ideaCard {
         this.word = options.word;
         this.domElement = null;
         this.callbacks = {
-            putWordOnBoard :options.callbacks.putWordOnBoard,
-            checkIfEmpty: options.callbacks.checkIfEmpty
+            putWordOnBoard: options.callbacks.putWordOnBoard,
+            checkIfEmpty: options.callbacks.checkIfEmpty,
+            checkIfNotFull: options.callbacks.checkIfNotFull
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -152,6 +154,20 @@ class ideaCard {
      */
     handleClick() {
         if (this.callbacks.putWordOnBoard(this.word)) {
+            if(this.callbacks.checkIfNotFull())
+            {
+                $('.display-modal-btn').css({
+                    'pointer-events': 'auto',
+                    'cursor': 'pointer',
+                    'background-color': 'rgb(80, 124, 168)'
+                });
+            }
+            else{
+                $('.display-modal-btn').css({
+                    'pointer-events': 'none',
+                    'background-color': 'gray'
+                });
+            }
             this.callbacks.checkIfEmpty();
             this.domElement.remove();
         }    

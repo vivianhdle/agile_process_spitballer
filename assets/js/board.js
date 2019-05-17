@@ -19,6 +19,13 @@ class Board {
         this.randomFillBoard = this.randomFillBoard.bind(this);
         this.selectAtRandom = this.selectAtRandom.bind(this);
     }
+
+    /**
+     * Returns true if the board is not full
+     */
+    checkBoardNotFull(){
+        return this.words.length < 20;
+    }
     /**
      * Add a word to the board if there is room and it isn't already on the board
      * @param {string} word - the word to be added to the board
@@ -26,17 +33,26 @@ class Board {
      */
     addWord(word) {
         if(this.words.length < 20 && this.wordIsOnBoard(word) === -1) {
+            $('.display-modal-btn').css({
+                'pointer-events': 'auto',
+                'background-color': 'grey'
+            });
+
             const newWord = new BoardWord({
                 word: word,
                 callbacks: {
                     sendToImage: this.callbacks.sendToImageCard,
-                    deleteWord: this.deleteWord
+                    deleteWord: this.deleteWord,
+                    checkBoardNotFull: this.checkBoardNotFull
                 }
             });
             this.domElement.append(newWord.render());
             this.words.push(newWord);
             return true;
-        } else {
+        } 
+        else {
+            $('.display-modal-btn').css('pointer-events', 'none');
+            $('.display-modal-btn').css('cursor', 'auto');
             return false;
         }
     }
@@ -100,7 +116,6 @@ class Board {
                 },
                 success: (response) => {
                     if (response === "wrong API key") {
-                        console.log('key failed');
                     } else {
                         this.clearBoard();
                         for(let index = 0; index < response.length; index++)
@@ -147,6 +162,7 @@ class BoardWord {
         this.word = options.word;
         this.sendToImageCallback = options.callbacks.sendToImage;
         this.deleteCallback = options.callbacks.deleteWord;
+        this.checkBoardNotFull = options.callbacks.checkBoardNotFull;
         this.domElement = null;
         this.selected = false;
 
@@ -185,6 +201,13 @@ class BoardWord {
      * @param event - the click event
      */
     deleteSelf(event) {
+        if(this.checkBoardNotFull){
+            $('.display-modal-btn').css({
+                'pointer-events': 'auto',
+                'cursor': 'pointer',
+                'background-color': 'rgb(80, 124, 168)'
+            });
+        }
         this.domElement.remove();
         event.stopPropagation();
         this.deleteCallback(this.word);
