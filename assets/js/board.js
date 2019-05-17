@@ -18,6 +18,7 @@ class Board {
         this.deleteWord = this.deleteWord.bind(this);
         this.randomFillBoard = this.randomFillBoard.bind(this);
         this.selectAtRandom = this.selectAtRandom.bind(this);
+        this.checkBoardNotFull = this.checkBoardNotFull.bind(this);
     }
 
     /**
@@ -76,7 +77,7 @@ class Board {
         }
         else{
             $('.clear-board').css({
-                'pointer-events': 'none',
+                'pointer-events': 'auto',
                 'background-color': 'rgb(80, 124, 168)'
             });
         }
@@ -215,7 +216,7 @@ class BoardWord {
      * @param event - the click event
      */
     deleteSelf(event) {
-        if(this.checkBoardNotFull){
+        if(this.checkBoardNotFull()){
             $('.display-modal-btn').css({
                 'pointer-events': 'auto',
                 'cursor': 'pointer',

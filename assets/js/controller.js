@@ -174,6 +174,10 @@ class Controller{
             $('.rerandomize-board').toggleClass('-open');
         } else {
             this.board.randomFillBoard(this.select3Images);
+            $('.clear-board').css({
+                'pointer-events': 'auto',
+                'background-color': 'rgb(80, 124, 168)'
+            });
         }
     }
     /**
@@ -182,6 +186,11 @@ class Controller{
     startButton() {
         $('.landing-page').remove();
         this.newGenerator.generateWords();
+
+        $('.clear-board').css({
+            'pointer-events': 'none',
+            'background-color': 'gray'
+        });
     }
 
     /**
