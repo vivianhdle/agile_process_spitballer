@@ -156,11 +156,16 @@ class Synonym{
         this.handleClick = this.handleClick.bind(this);
     }
     /**
-     * When clicked, put word on board and remove the dom element 
+     * When clicked, put word on board and remove the dom element, or else make it shake and turn it red 
      */
-    handleClick(){
+    handleClick(event){
         if (this.putWordOnBoard(this.word)){
             this.domElement.remove();
+        } else {
+            $(event.target).addClass('shake');
+            setTimeout(()=>{
+                $(event.target).removeClass('shake');
+            },1000);
         }
     }
     /**
@@ -193,9 +198,15 @@ class Adjective{
     /**
      * When clicked, put word on board and remove the dom element 
      */
-    handleClick(){
+    handleClick(event){
         if(this.putWordOnBoard(this.word)){
             this.domElement.remove()
+        }else {
+            debugger;
+            $(event.target).addClass('shake');
+            setTimeout(()=>{
+                $(event.target).removeClass('shake');
+            },1000);
         }
     }
     /**
