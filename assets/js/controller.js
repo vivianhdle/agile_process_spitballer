@@ -107,6 +107,10 @@ class Controller{
             {
                 this.newGenerator.generateWords();
             }
+            $('.clear-board').css({
+                'pointer-events': 'auto',
+                'background-color': 'rgb(80, 124, 168)'
+            });
             return true;
         } else {
             return false;
@@ -170,6 +174,10 @@ class Controller{
             $('.rerandomize-board').toggleClass('-open');
         } else {
             this.board.randomFillBoard(this.select3Images);
+            $('.clear-board').css({
+                'pointer-events': 'auto',
+                'background-color': 'rgb(80, 124, 168)'
+            });
         }
     }
     /**
@@ -178,6 +186,11 @@ class Controller{
     startButton() {
         $('.landing-page').remove();
         this.newGenerator.generateWords();
+
+        $('.clear-board').css({
+            'pointer-events': 'none',
+            'background-color': 'gray'
+        });
     }
 
     /**
@@ -260,6 +273,10 @@ class Controller{
      * calls the clear board method in board, will clear the dom elements, and array
      */
     clearBoard() {
+        $('.clear-board').css({
+            'pointer-events': 'none',
+            'background-color': 'gray'
+        });
         $('.display-modal-btn').css({
             'pointer-events': 'auto',
             'cursor': 'pointer',
@@ -276,8 +293,10 @@ class Controller{
     checkIfEmpty() {
         if (this.board.words.length === 0){
             $('.spit-board>.instructions').show();
+            return true;
         } else {
             $('.spit-board>.instructions').hide();
+            return false;
         }
     }
 
