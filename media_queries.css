@@ -110,10 +110,7 @@
 
     /* ========== TABLET =========== */
     @media screen and (min-width: 600px){
-        .hero-page{
-            min-width:890px;
-            min-height:560px;
-        }
+        
     }
 
     /* ========== DESKTOP =========== */

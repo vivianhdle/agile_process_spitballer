@@ -16,7 +16,9 @@ function initializeApp(){
             addWordButton:'.add-button',
             scrollLeft:'#scroll-left',
             scrollRight:'#scroll-right',
-            imgCloseButton: '.imgCloseButton'
+            imgCloseButton: '.imgCloseButton',
+            yesRandomize:'.yes-random',
+            noRandomize:'.no-random'
         },
         relatedWordsButton:'.syn>.title',
         adjectiveWordsButton:'.adj>.title',
