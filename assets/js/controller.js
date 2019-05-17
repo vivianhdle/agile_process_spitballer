@@ -83,7 +83,6 @@ class Controller{
         $(".modal_inner > p").text("Add your own word onto the board");
         let modalValue = $("input[name='word']").val();
         let pattern = /^[a-z]/gmi;
-        debugger;
         if(modalValue && pattern.test(modalValue))
         {
             this.putWordOnBoard(modalValue);
@@ -229,6 +228,11 @@ class Controller{
      * calls the clear board method in board, will clear the dom elements, and array
      */
     clearBoard() {
+        $('.display-modal-btn').css({
+            'pointer-events': 'auto',
+            'cursor': 'pointer',
+            'background-color': 'rgb(80, 124, 168)'
+        });
         this.board.clearBoard();
         this.toggleClearModal();
         this.imageHolder.clear();

@@ -106,7 +106,6 @@ class IdeaAPIKey {
             datatype: 'text',
             success: response => {
                 this.key = response;
-                console.log('Got a new key: ' + this.key);
                 if (callback) {
                     callback();
                 }
