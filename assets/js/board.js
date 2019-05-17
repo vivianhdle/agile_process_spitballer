@@ -104,6 +104,7 @@ class Board {
 
 
     randomFillBoard(callback = null) {
+        $('.image-random-div').show();
         $(".word-generator-button > i").addClass('spinn');
         $(".board-spinner").removeClass('hidden');
         $.ajax(

@@ -202,7 +202,6 @@ class Adjective{
         if(this.putWordOnBoard(this.word)){
             this.domElement.remove()
         }else {
-            debugger;
             $(event.target).addClass('shake');
             setTimeout(()=>{
                 $(event.target).removeClass('shake');
