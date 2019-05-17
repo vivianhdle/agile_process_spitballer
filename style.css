@@ -497,11 +497,6 @@ button{
     100% {transform: rotate(359deg)}
 }
 
-@keyframes spinn-reverse {
-    0%   {transform: rotate(0deg)}
-    100% {transform: rotate(-360deg)}
-}
-
 @keyframes barrelRoll {
     0% {transform: rotateX(0deg)}
     100% {transform: rotateX(360deg)}
@@ -615,7 +610,7 @@ button{
 
 .spinner img {
     height: 100%;
-    animation: spinn-reverse 1s infinite linear;
+    animation: spinn 1s infinite linear;
     object-fit: contain;
     width:100%;
 }
