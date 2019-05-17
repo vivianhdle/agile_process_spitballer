@@ -98,7 +98,10 @@ button{
     border:none;
     border-radius:10px;
     color:white;
-    margin-top:1rem;
+    margin-top:2.4rem;
+}
+.randomize-board {
+    margin-top: 0;
 }
 .display-modal-btn{
     top:24.5%;
@@ -431,14 +434,14 @@ button{
 }
 
 .image-random-div {
-    width: 5%;
+    width: 4.5%;
     height: 100%;
     position: relative;
 }
 
 .random3 {
     height:3rem;
-    width:3rem;
+    width:2rem;
     position:absolute;
     top: 50%;
     left: 50%;
@@ -468,6 +471,7 @@ button{
     position: relative;
     box-sizing:border-box;
     padding:1rem 0;
+    margin-right: .5%;
 }
 
 .selected{
@@ -575,7 +579,6 @@ button{
 
 #scroll-left, #scroll-right{
     border:none;
-    background-color:transparent;
     font-size: 1.5rem;
     background-color:rgb(80, 124, 168);
     border-radius:10px;
@@ -590,11 +593,14 @@ button{
     border:none;
     font-size:1rem;
     border-radius:10px;
-    padding:.75rem;
+    padding:1rem 3rem;
     color:white;
 }
 .yes-clear,.yes-random{
     background-color:rgba(0, 128, 0, 0.575);
+}
+.no-clear{
+   margin-left: 10%;
 }
 .no-clear,.no-random{
     background-color:rgba(255, 15, 15, 0.719);

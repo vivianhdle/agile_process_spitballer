@@ -95,7 +95,7 @@ class Image {
                 if (response.totalHits > 0) {
                     imageURL = response.hits[Math.floor(Math.random() * response.hits.length)].webformatURL;
                 } else {
-                    imageURL = "https://t4.ftcdn.net/jpg/01/39/16/63/240_F_139166369_NdTDXc0lM57N66868lC66PpsaMkFSwaf.jpg"
+                    imageURL = "./assets/images/404.jpg"
                 }
                 this.render(imageURL);
                 this.images = response.hits;
@@ -109,7 +109,7 @@ class Image {
      */
     refreshImage(event) {
         if (this.images.length > 0) {
-            $(event.target).addClass('spinn');
+            $(event.currentTarget).find('i').addClass('spinn');
 
             let image = $(this.domElement).find(".image-inner");
             image.attr('src', this.images[Math.floor(Math.random() * this.images.length)].webformatURL);
