@@ -116,6 +116,8 @@ button{
     background-size:cover;
     background-position:center;
     display:inline-block;
+    padding:1rem 0;
+    box-sizing:border-box;
 }
 .button-container{
     width:8%;
