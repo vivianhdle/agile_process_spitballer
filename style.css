@@ -8,9 +8,9 @@ body{
     font-family: 'Walter Turncoat', sans-serif;
     background-image:url('./assets/images/background.png');
 }
-::-webkit-scrollbar { 
-    display: none; 
-} 
+::-webkit-scrollbar {
+    display: none;
+}
 button{
     cursor:pointer;
 }
@@ -133,6 +133,10 @@ button{
     justify-content: center;
     display:flex;
     align-items:center;
+}
+.options > * {
+    display: flex;
+    justify-content: center;
 }
 .spit-board-word{
     color: white;
@@ -443,6 +447,8 @@ button{
     color: white;
     transition: all .15s ease-in-out;
     font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 .random3:hover,.randomize-board:hover,.clear-board:hover,.display-modal-btn:hover,#scroll-left:hover, #scroll-right:hover{
     background-color: black;
@@ -509,7 +515,7 @@ button{
     animation: spinn .4s infinite linear;
 }
 
-/* MODAL  */  
+/* MODAL  */
 .add-button {
     width: 100%;
     margin-top: 5%;
