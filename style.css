@@ -308,6 +308,7 @@ button{
 .bottom-half{
     height:40%;
     display:flex;
+    position:relative;
 }
 
 .images-container{
@@ -609,23 +610,24 @@ button{
 
 .spinner {
     position: absolute;
+    opacity: .5;
 }
 
 .spinner img {
     height: 100%;
     animation: spinn-reverse 1s infinite linear;
+    object-fit: contain;
+    width:100%;
 }
 
 .image-spinner {
-    height: 60%;
-    top: 8%;
-    left: 12%;
+    height: 80%;
 }
 
 .apps-spinner {
-    height: 20%;
-    top: 70%;
-    right: 14%;
+    height: 100%;
+    width: 40%;
+    right: 0;
 }
 
 .hidden {
