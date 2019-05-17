@@ -151,7 +151,6 @@ class Controller{
      *opens and closes a randomize board confirmation modal
      */
     toggleRandomModal(){
-        console.log('hi');
         $('.rerandomize-board').toggleClass('-open');
     }
     /**
