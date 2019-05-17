@@ -68,13 +68,15 @@ class Controller{
         this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
         this.buttons.startButton.on('click',this.startButton);
         this.buttons.random3.on('click', this.select3Images);
-        this.buttons.randomizeBoard.on('click', this.shuffleBoard);
+        this.buttons.randomizeBoard.on('click', this.toggleRandomModal);
         this.buttons.addWordButton.on('click', this.addUserInputWord);
         this.buttons.clearBoard.on('click',this.toggleClearModal);
         this.buttons.yesClearBoard.on('click',this.clearBoard);
         this.buttons.noClearBoard.on('click',this.toggleClearModal);
         this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
         this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
+        this.buttons.yesRandomize.on('click',this.shuffleBoard);
+        this.buttons.noRandomize.on('click',this.toggleRandomModal);
         this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
         $('.clear-board-modal').on('click',this.toggleClearModal);
 
@@ -250,8 +252,9 @@ class Controller{
      * Randomizes the board
      */
     shuffleBoard() {
-        $('.image-random-div').show();
         this.toggleRandomModal();
+        $('.image-random-div').show();
+        this.board.randomFillBoard(this.select3Images);
     };
     /**
      * calls the clear board method in board, will clear the dom elements, and array
