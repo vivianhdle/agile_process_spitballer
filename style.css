@@ -88,7 +88,6 @@ button{
     height:100%;
 }
 .clear-board,.randomize-board,.display-modal-btn{
-    position:absolute;
     height:2rem;
     width:2rem;
     font-size:1.25rem;
@@ -96,9 +95,7 @@ button{
     border:none;
     border-radius:10px;
     color:white;
-    text-align:center;
-    left:1%;
-
+    margin-top:1rem;
 }
 .display-modal-btn{
     top:24.5%;
@@ -111,12 +108,26 @@ button{
 }
 .spit-board{
     position:relative;
-    left:8%;
-    top:5%;
-    height:90%;
+    height:100%;
     width:90%;
     background-size:cover;
     background-position:center;
+    display:inline-block;
+}
+.button-container{
+    width:8%;
+    display:inline-block;
+    height:100%;
+    vertical-align: bottom;
+}
+.options{
+    top:50%;
+    position:relative;
+    transform:translateY(-50%);
+    flex-direction: column;
+    justify-content: center;
+    display:flex;
+    align-items:center;
 }
 .spit-board-word{
     color: white;
