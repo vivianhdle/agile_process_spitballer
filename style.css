@@ -421,7 +421,7 @@ button{
 .app>a>img{
     height:8vw;
     width:8vw;
-    border-radius:30px;
+    border-radius:15px;
     position:relative;
     top:15%;
 }
