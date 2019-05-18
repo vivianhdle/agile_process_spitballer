@@ -77,7 +77,6 @@ class Controller{
         this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
         this.buttons.yesRandomize.on('click',this.shuffleBoard);
         this.buttons.noRandomize.on('click',this.toggleRandomModal);
-        this.displayAreas.imageWrapper.on('click', this.buttons.imgCloseButton, this.relatedApps.removeRelatedApps);
         $('.clear-board-modal').on('click',this.toggleClearModal);
 
         /* ====================== MODAL ======================= */ 

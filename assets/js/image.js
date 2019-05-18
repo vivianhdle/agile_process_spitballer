@@ -14,7 +14,8 @@ class Image {
             showApps: callback.showApps,
             showRelatedWords: callback.showRelatedWords,
             decrementQueue: callback.decrementQueue,
-            deleteImageFromArray: callback.deleteImageFromArray
+            deleteImageFromArray: callback.deleteImageFromArray,
+            deleteRelatedAppsAndWords: callback.deleteRelatedAppsAndWords
         }
         this.images = [];
         this.getImage();
@@ -120,7 +121,7 @@ class Image {
      * Deletes the DOM element and calls an ImageHolder function, removing it from the image array
      */
     deleteSelf() {
-        // this.domElement.remove();
+        this.callbacks.deleteRelatedAppsAndWords();
         this.callbacks.deleteImageFromArray(this.word);
     }
 

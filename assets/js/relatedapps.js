@@ -31,7 +31,9 @@ class RelatedApps{
      * @param {string} word - a string that will be pumped into the itunes app store search
      */
     getRelatedApps(word) {
+        this.removeRelatedApps();
         $('.apps-spinner').removeClass('hidden');
+        $('.arrow').hide();
         $('.app-instructions').remove();
         var ajaxOptions = {
             url: "https://itunes.apple.com/search?",
@@ -54,8 +56,7 @@ class RelatedApps{
      * @param {object} response 
      */
     gotRelatedApps(response) {
-        this.displayAreas.appArea.empty();
-        this.displayAreas.titleArea.empty();
+        
         $('.apps-spinner').addClass('hidden');
         
         if (response.resultCount > 0){
