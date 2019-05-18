@@ -15,6 +15,7 @@ class RelevantWords{
         }
         this.synonyms = [];
         this.adjectives = [];
+        this.word = null;
         //==========================================================
         //BIND
         this.getSynonyms = this.getSynonyms.bind(this);
@@ -38,6 +39,7 @@ class RelevantWords{
      * @param {string} word  - search this word for synonyms
      */
     getSynonyms(word){
+        this.word = word;
         var ajaxOptions = {
             url:"https://api.datamuse.com/words",
             method:"get",
@@ -133,11 +135,13 @@ class RelevantWords{
         }
     }
 
-    removeRelatedWords() {
-        this.synonyms = [];
-        this.adjectives = [];
-        $('.synonyms').remove();
-        $('.adjectives').remove();
+    removeRelatedWords(word) {
+        if (this.word === word){
+            this.synonyms = [];
+            this.adjectives = [];
+            $('.synonyms').remove();
+            $('.adjectives').remove();
+        }
     }
 }
 /**

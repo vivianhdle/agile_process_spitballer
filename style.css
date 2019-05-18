@@ -585,11 +585,11 @@ button{
     color:white;
 }
 
-.fa-snowplow, .randomize-modal{
+.fa-snowplow, .randomize-modal, .modal-edit{
     font-size:7rem;
 }
 .yes-clear,.no-clear,.yes-random,.no-random{
-    margin:1rem 0 0 0;
+    margin:1rem 1rem 0 1rem;
     border:none;
     font-size:1rem;
     border-radius:10px;
@@ -599,9 +599,7 @@ button{
 .yes-clear,.yes-random{
     background-color:rgba(0, 128, 0, 0.575);
 }
-.no-clear{
-   margin-left: 10%;
-}
+
 .no-clear,.no-random{
     background-color:rgba(255, 15, 15, 0.719);
 }

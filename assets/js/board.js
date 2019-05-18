@@ -67,7 +67,6 @@ class Board {
         if(wordIndex >= 0) {
             this.words.splice(wordIndex, 1);
         }
-        // this.callbacks.checkIfEmpty();
         this.callbacks.deleteImage(word);
         if(this.callbacks.checkIfEmpty()){
             $('.clear-board').css({

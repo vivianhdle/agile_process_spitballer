@@ -17,6 +17,7 @@ class RelatedApps{
             artWork: null,
             link: null
         };
+        this.word;
         this.apps = [];
         this.marker = 3;
         this.getRelatedApps = this.getRelatedApps.bind(this);
@@ -31,7 +32,8 @@ class RelatedApps{
      * @param {string} word - a string that will be pumped into the itunes app store search
      */
     getRelatedApps(word) {
-        this.removeRelatedApps();
+        this.word = word
+        this.removeRelatedApps(word);
         $('.apps-spinner').removeClass('hidden');
         $('.arrow').hide();
         $('.app-instructions').remove();
@@ -135,28 +137,39 @@ class RelatedApps{
     /**
      * resets values in constructor and clears the DOM elements for related apps
      */
-    removeRelatedApps(){
-        this.data = {
-            trackName: null,
-            artWork: null,
-            link: null
-        };
-        this.apps = [];
-        this.marker = 3;
-        $("#scroll-left, #scroll-right").hide();
-        this.clearAppContainer();
+    removeRelatedApps(word){
+        if (word === this.word){
+            this.data = {
+                trackName: null,
+                artWork: null,
+                link: null
+            };
+            this.apps = [];
+            this.marker = 3;
+            $("#scroll-left, #scroll-right").hide();
+                this.clearAppContainer();
+        }
+        
     }
     checkScrolls(){
-        if (this.marker===3){
+        if (this.marker===3 && this.apps.length>3){
             $('#scroll-left').css({
                 'pointer-events': 'none',
                 'background-color': 'gray'
             });
-        } else if (this.marker===21){
+            $('#scroll-right').css({
+                'pointer-events': 'auto',
+                'background-color': 'rgb(80, 124, 168)'
+            })
+        } else if (this.marker===this.apps.length){
             $('#scroll-right').css({
                 'pointer-events': 'none',
                 'background-color': 'gray'
             });
+            $('#scroll-left').css({
+                'pointer-events': 'auto',
+                'background-color': 'rgb(80, 124, 168)'
+            })
         } else {
             $('#scroll-left, #scroll-right').css({
                 'pointer-events': 'auto',

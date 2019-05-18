@@ -57,7 +57,7 @@ class imageHolder
         if (indexToBeDeleted !== null){
             this.imageCards[indexToBeDeleted].domElement.remove();
             this.imageCards.splice(indexToBeDeleted, 1);
-            this.callbacks.deleteRelatedAppsAndWords();
+            this.callbacks.deleteRelatedAppsAndWords(word);
         }
     }
     checkInstructions(){

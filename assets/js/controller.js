@@ -153,9 +153,9 @@ class Controller{
     /**
      * Clears the related apps and related words containers of the DOM
      */
-    deleteRelatedAppsAndWords(){
-        this.relatedApps.removeRelatedApps();
-        this.relevantWords.removeRelatedWords();
+    deleteRelatedAppsAndWords(word){
+        this.relatedApps.removeRelatedApps(word);
+        this.relevantWords.removeRelatedWords(word);
     }
 
     /**
