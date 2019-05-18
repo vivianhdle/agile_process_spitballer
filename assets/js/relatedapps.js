@@ -56,7 +56,6 @@ class RelatedApps{
      * @param {object} response 
      */
     gotRelatedApps(response) {
-        
         $('.apps-spinner').addClass('hidden');
         
         if (response.resultCount > 0){
@@ -83,8 +82,8 @@ class RelatedApps{
                 })
             );
         }
-
         this.marker = 3;
+        this.checkScrolls();
     }
     /**
      * see more apps to the right of the 3 displayed if there are any
@@ -103,6 +102,7 @@ class RelatedApps{
             }
             this.marker = this.marker + counter;
         }
+        this.checkScrolls();
     }
     /**
      * see more apps to the left of the 3 displayed if there are any
@@ -123,6 +123,7 @@ class RelatedApps{
             }
             this.marker = oldAppIndex + counter;
         }
+        this.checkScrolls();
     }
     /**
      * empties out the app container
@@ -144,6 +145,24 @@ class RelatedApps{
         this.marker = 3;
         $("#scroll-left, #scroll-right").hide();
         this.clearAppContainer();
+    }
+    checkScrolls(){
+        if (this.marker===3){
+            $('#scroll-left').css({
+                'pointer-events': 'none',
+                'background-color': 'gray'
+            });
+        } else if (this.marker===21){
+            $('#scroll-right').css({
+                'pointer-events': 'none',
+                'background-color': 'gray'
+            });
+        } else {
+            $('#scroll-left, #scroll-right').css({
+                'pointer-events': 'auto',
+                'background-color': 'rgb(80, 124, 168)'
+            })
+        }
     }
 
     /**
