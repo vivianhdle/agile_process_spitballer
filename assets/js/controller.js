@@ -87,8 +87,8 @@ class Controller {
             $(".modal_inner > p").text("Add your own word onto the board");
         });
 
-        $(".modal").click(function (e) {
-            if (e.target === this) {
+        $(".modal").click(function (event) {
+            if (event.target === this) {
                 $(this).toggleClass("-open")
             }
         });
