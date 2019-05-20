@@ -4,15 +4,15 @@
 class Board {
     /**
      * Creates a board object
-     * @param options - object that holds the callbacks for board and BoardWord
+     * @param callbacks - object that holds the callbacks for board and BoardWord
      */
-    constructor(options) {
+    constructor(callbacks) {
         this.words = [];
         this.domElement = null;
         this.callbacks = {
-            sendToImageCard: options.sendToImageCard,
-            checkIfEmpty: options.checkIfEmpty,
-            deleteImage: options.deleteImage,
+            sendToImageCard: callbacks.sendToImageCard,
+            checkIfEmpty: callbacks.checkIfEmpty,
+            deleteImage: callbacks.deleteImage,
         };
 
         this.deleteWord = this.deleteWord.bind(this);

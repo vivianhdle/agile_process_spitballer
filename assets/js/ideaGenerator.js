@@ -4,14 +4,14 @@
 class IdeaGenerator {
     /**
      * Create an Idea Generator
-     * @param {object} options - Object containing callbacks from Controller
+     * @param {object} callbacks - Object containing callbacks from Controller
      */
-    constructor(options) {
+    constructor(callbacks) {
         this.apiKey = new IdeaAPIKey(localStorage.getItem('wordAPIKey')); // API key to start with
         this.callbacks = {
-            putWordOnBoard: options.putWordOnBoard,
-            checkIfEmpty: options.checkIfEmpty,
-            checkIfNotFull: options.checkIfNotFull
+            putWordOnBoard: callbacks.putWordOnBoard,
+            checkIfEmpty: callbacks.checkIfEmpty,
+            checkIfNotFull: callbacks.checkIfNotFull
         };
 
         this.addEventHandler = this.addEventHandler.bind(this);

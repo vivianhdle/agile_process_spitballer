@@ -356,7 +356,9 @@ class Controller {
             appArea: this.displayAreas.appArea,
             titleArea: this.displayAreas.appTitleArea,
             appContainer: this.displayAreas.appContainer,
-            changeAppLoadingStatus: this.changeAppLoadingStatus
+            callbacks: {
+                changeAppLoadingStatus: this.changeAppLoadingStatus
+            }
         });
 
         $('.image-random-div').hide();

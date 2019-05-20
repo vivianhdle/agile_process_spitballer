@@ -4,9 +4,9 @@
 class imageHolder {
     /**
      * Creates an ImageHolder object
-     * @param options - object that holds callbacks for it and child objects
+     * @param callbacks - object that holds callbacks for it and child objects
      */
-    constructor(options) {
+    constructor(callbacks) {
         this.imageCards = [];
 
         this.handleWordClick = this.handleWordClick.bind(this);
@@ -16,13 +16,13 @@ class imageHolder {
 
 
         this.callbacks = {
-            showApps: options.showApps,
-            showRelatedWords: options.showRelatedWords,
-            decrementQueue: options.decrementQueue,
+            showApps: callbacks.showApps,
+            showRelatedWords: callbacks.showRelatedWords,
+            decrementQueue: callbacks.decrementQueue,
             deleteImageFromArray: this.deleteImageFromArray,
-            deleteRelatedAppsAndWords: options.deleteRelatedAppsAndWords,
-            checkIfLoadingApps: options.checkIfLoadingApps,
-            changeAppLoadingStatus: options.changeAppLoadingStatus
+            deleteRelatedAppsAndWords: callbacks.deleteRelatedAppsAndWords,
+            checkIfLoadingApps: callbacks.checkIfLoadingApps,
+            changeAppLoadingStatus: callbacks.changeAppLoadingStatus
         }
     }
 
