@@ -1,19 +1,17 @@
 /**
  * Class representing an Idea Generator
  */
-class IdeaGenerator
-{
+class IdeaGenerator {
     /**
      * Create an Idea Generator
      * @param {object} options - Object containing callbacks from Controller
      */
-    constructor(options)
-    {
+    constructor(options) {
         this.apiKey = new IdeaAPIKey(localStorage.getItem('wordAPIKey')); // API key to start with
         this.callbacks = {
             putWordOnBoard: options.putWordOnBoard,
             checkIfEmpty: options.checkIfEmpty,
-            checkIfNotFull: options.checkIfNotFull 
+            checkIfNotFull: options.checkIfNotFull
         };
 
         this.addEventHandler = this.addEventHandler.bind(this);
@@ -38,40 +36,39 @@ class IdeaGenerator
         $(".word-generator-button > i").addClass('spinn');
 
         $.ajax({
-                url: "https://random-word-api.herokuapp.com/word",
-                method: "get",
-                data: {
-                    key: this.apiKey.getKey(),
-                    number: 5
-                },
+            url: "https://random-word-api.herokuapp.com/word",
+            method: "get",
+            data: {
+                key: this.apiKey.getKey(),
+                number: 5
+            },
 
-                success: response => {
-                    if (response === "wrong API key") {
-                        this.apiKey.generateNewKey(this.generateWords);
-                    } else {
-                        $(".ideaCard").remove();
-                        let newIdeaCard = null;
-                        for(let index = 0; index < response.length; index++)
-                        {
-                            if (response[index] !== ' '){
-                                    newIdeaCard = new ideaCard({
-                                    word:response[index],
-                                    callbacks:{
-                                        putWordOnBoard:this.callbacks.putWordOnBoard,
-                                        checkIfEmpty:this.callbacks.checkIfEmpty,
-                                        checkIfNotFull:this.callbacks.checkIfNotFull
-                                    }
-                                })
-                            }
-                            $(".ideas").append(newIdeaCard.render());
+            success: response => {
+                if (response === "wrong API key") {
+                    this.apiKey.generateNewKey(this.generateWords);
+                } else {
+                    $(".ideaCard").remove();
+                    let newIdeaCard = null;
+                    for (let index = 0; index < response.length; index++) {
+                        if (response[index] !== ' ') {
+                            newIdeaCard = new ideaCard({
+                                word: response[index],
+                                callbacks: {
+                                    putWordOnBoard: this.callbacks.putWordOnBoard,
+                                    checkIfEmpty: this.callbacks.checkIfEmpty,
+                                    checkIfNotFull: this.callbacks.checkIfNotFull
+                                }
+                            })
                         }
+                        $(".ideas").append(newIdeaCard.render());
                     }
-                },
-
-                complete: () => {
-                    localStorage.setItem('wordAPIKey', this.apiKey.getKey());
-                    $(".word-generator-button > i").removeClass('spinn');
                 }
+            },
+
+            complete: () => {
+                localStorage.setItem('wordAPIKey', this.apiKey.getKey());
+                $(".word-generator-button > i").removeClass('spinn');
+            }
         });
 
         $('.spit-board').show('slow');
@@ -154,15 +151,13 @@ class ideaCard {
      */
     handleClick() {
         if (this.callbacks.putWordOnBoard(this.word)) {
-            if(this.callbacks.checkIfNotFull())
-            {
+            if (this.callbacks.checkIfNotFull()) {
                 $('.display-modal-btn').css({
                     'pointer-events': 'auto',
                     'cursor': 'pointer',
                     'background-color': 'rgb(80, 124, 168)'
                 });
-            }
-            else{
+            } else {
                 $('.display-modal-btn').css({
                     'pointer-events': 'none',
                     'background-color': 'gray'
@@ -170,11 +165,11 @@ class ideaCard {
             }
             this.callbacks.checkIfEmpty();
             this.domElement.remove();
-        }    
+        }
     }
 
     /**
-     * @return {null} this.domElement 
+     * @return {null} this.domElement
      * this.domElement is a new div element that has the random word from API call.
      */
     render() {

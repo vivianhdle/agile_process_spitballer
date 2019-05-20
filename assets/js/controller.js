@@ -1,14 +1,13 @@
-
 /**
  * Class representing the overarching object that creates the page objects and handles communication between them
  */
-class Controller{
+class Controller {
     /**
      * Creates a Controller object
      * @param options - object holding the selectors for the related and adjective words buttons
      */
-    constructor(options){
-        this.newGenerator=null;
+    constructor(options) {
+        this.newGenerator = null;
         this.relevantWords = null;
         this.board = null;
         this.imageHolder = null;
@@ -17,30 +16,30 @@ class Controller{
         this.appsLoading = false;
 
         this.displayAreas = {
-            relevant:$(options.displayAreas.relevant),
-            synonymArea:$(options.displayAreas.synonymArea),
-            adjectiveArea:$(options.displayAreas.adjectiveArea),
-            appArea:$(options.displayAreas.appArea),
-            appTitleArea:$(options.displayAreas.appTitleArea),
-            appContainer:$(options.displayAreas.appContainer),
-            imageWrapper:$(options.displayAreas.imageWrapper)
+            relevant: $(options.displayAreas.relevant),
+            synonymArea: $(options.displayAreas.synonymArea),
+            adjectiveArea: $(options.displayAreas.adjectiveArea),
+            appArea: $(options.displayAreas.appArea),
+            appTitleArea: $(options.displayAreas.appTitleArea),
+            appContainer: $(options.displayAreas.appContainer),
+            imageWrapper: $(options.displayAreas.imageWrapper)
         };
 
-        this.buttons={
+        this.buttons = {
             relatedWords: $(options.buttons.relatedWords),
             adjectiveWords: $(options.buttons.adjectiveWords),
             startButton: $(options.buttons.start),
             random3: $(options.buttons.random3),
             randomizeBoard: $(options.buttons.randomizeBoard),
-            clearBoard:$(options.buttons.clearBoard),
-            yesClearBoard:$(options.buttons.yesClearBoard),
-            noClearBoard:$(options.buttons.noClearBoard),
-            addWordButton:$(options.buttons.addWordButton),
-            scrollLeft:$(options.buttons.scrollLeft),
-            scrollRight:$(options.buttons.scrollRight),
-            imgCloseButton:$(options.buttons.imgCloseButton),
-            yesRandomize:$(options.buttons.yesRandomize),
-            noRandomize:$(options.buttons.noRandomize)
+            clearBoard: $(options.buttons.clearBoard),
+            yesClearBoard: $(options.buttons.yesClearBoard),
+            noClearBoard: $(options.buttons.noClearBoard),
+            addWordButton: $(options.buttons.addWordButton),
+            scrollLeft: $(options.buttons.scrollLeft),
+            scrollRight: $(options.buttons.scrollRight),
+            imgCloseButton: $(options.buttons.imgCloseButton),
+            yesRandomize: $(options.buttons.yesRandomize),
+            noRandomize: $(options.buttons.noRandomize)
         };
 
         this.putWordOnBoard = this.putWordOnBoard.bind(this);
@@ -56,7 +55,7 @@ class Controller{
         this.clearBoard = this.clearBoard.bind(this);
         this.checkIfEmpty = this.checkIfEmpty.bind(this);
         this.toggleClearModal = this.toggleClearModal.bind(this);
-        this.toggleRandomModal=this.toggleRandomModal.bind(this);
+        this.toggleRandomModal = this.toggleRandomModal.bind(this);
         this.deleteRelatedAppsAndWords = this.deleteRelatedAppsAndWords.bind(this);
         this.checkIfNotFull = this.checkIfNotFull.bind(this);
         this.checkIfLoadingApps = this.checkIfLoadingApps.bind(this);
@@ -68,27 +67,27 @@ class Controller{
      */
     addEventListeners() {
         this.buttons.relatedWords.on('click', this.toggleRelatedWords);
-        this.buttons.adjectiveWords.on('click',this.toggleAdjectives);
-        this.buttons.startButton.on('click',this.startButton);
+        this.buttons.adjectiveWords.on('click', this.toggleAdjectives);
+        this.buttons.startButton.on('click', this.startButton);
         this.buttons.random3.on('click', this.select3Images);
         this.buttons.randomizeBoard.on('click', this.toggleRandomModal);
         this.buttons.addWordButton.on('click', this.addUserInputWord);
-        this.buttons.clearBoard.on('click',this.toggleClearModal);
-        this.buttons.yesClearBoard.on('click',this.clearBoard);
-        this.buttons.noClearBoard.on('click',this.toggleClearModal);
-        this.buttons.scrollLeft.on('click',this.relatedApps.scrollBackwards);
-        this.buttons.scrollRight.on('click',this.relatedApps.scrollForward);
-        this.buttons.yesRandomize.on('click',this.shuffleBoard);
-        this.buttons.noRandomize.on('click',this.toggleRandomModal);
-        $('.clear-board-modal').on('click',this.toggleClearModal);
+        this.buttons.clearBoard.on('click', this.toggleClearModal);
+        this.buttons.yesClearBoard.on('click', this.clearBoard);
+        this.buttons.noClearBoard.on('click', this.toggleClearModal);
+        this.buttons.scrollLeft.on('click', this.relatedApps.scrollBackwards);
+        this.buttons.scrollRight.on('click', this.relatedApps.scrollForward);
+        this.buttons.yesRandomize.on('click', this.shuffleBoard);
+        this.buttons.noRandomize.on('click', this.toggleRandomModal);
+        $('.clear-board-modal').on('click', this.toggleClearModal);
 
-        /* ====================== MODAL ======================= */ 
-        $(".display-modal-btn[data-target]").click(function() {
+        /* ====================== MODAL ======================= */
+        $(".display-modal-btn[data-target]").click(function () {
             $("#" + this.dataset.target).toggleClass("-open");
             $(".modal_inner > p").text("Add your own word onto the board");
         });
 
-        $(".modal").click(function(e) {
+        $(".modal").click(function (e) {
             if (e.target === this) {
                 $(this).toggleClass("-open")
             }
@@ -105,8 +104,7 @@ class Controller{
             $('.image-wrapper').show();
             $('.image-random-div').show();
             let ideaslength = $(".ideaCard").length;
-            if(ideaslength === 1)
-            {
+            if (ideaslength === 1) {
                 this.newGenerator.generateWords();
             }
             $('.clear-board').css({
@@ -127,24 +125,20 @@ class Controller{
         let modalValue = $("input[name='word']").val();
         let pattern = /^[a-z]/gmi;
 
-        if(modalValue && pattern.test(modalValue))
-        {
+        if (modalValue && pattern.test(modalValue)) {
             this.putWordOnBoard(modalValue);
             $("input[name='word']").val("");
-        }
-        else
-        {
+        } else {
             $(".modal_inner > p").text("Word must start with a letter");
         }
         this.checkIfEmpty();
-        if(this.checkIfNotFull()){
+        if (this.checkIfNotFull()) {
             $('.display-modal-btn').css({
                 'pointer-events': 'auto',
                 'cursor': 'pointer',
                 'background-color': 'rgb(80, 124, 168)'
             });
-        }
-        else{
+        } else {
             $('.display-modal-btn').css({
                 'pointer-events': 'none',
                 'background-color': 'gray'
@@ -156,7 +150,7 @@ class Controller{
     /**
      * Clears the related apps and related words containers of the DOM
      */
-    deleteRelatedAppsAndWords(word){
+    deleteRelatedAppsAndWords(word) {
         this.relatedApps.removeRelatedApps(word);
         this.relevantWords.removeRelatedWords(word);
     }
@@ -164,13 +158,14 @@ class Controller{
     /**
      *opens and closes a clear board confirmation modal
      */
-    toggleClearModal(){
+    toggleClearModal() {
         $('.clear-board-modal').toggleClass('-open');
     }
+
     /**
      *opens and closes a randomize board confirmation modal
      */
-    toggleRandomModal(){
+    toggleRandomModal() {
         if (this.board.words.length) {
             $('.rerandomize-board').toggleClass('-open');
         } else {
@@ -181,8 +176,9 @@ class Controller{
             });
         }
     }
+
     /**
-     * hides landing page and makes an API call 
+     * hides landing page and makes an API call
      */
     startButton() {
         $('.landing-page').remove();
@@ -197,7 +193,7 @@ class Controller{
     /**
      * Shows the related words div and hides the adjective words div
      */
-    toggleRelatedWords(){
+    toggleRelatedWords() {
         $('.syn i').toggleClass('flipped');
         $('.adj i').removeClass('flipped');
         $('.adjectives').hide();
@@ -207,18 +203,19 @@ class Controller{
     /**
      * Hides the related words div and shows the adjective words div
      */
-    toggleAdjectives(){
+    toggleAdjectives() {
         $('.adj i').toggleClass('flipped');
         $('.syn i').addClass('flipped');
         $('.synonyms').hide();
         $('.adjectives').toggle();
     }
+
     /**
      * Takes a word from the Board and sends it to ImageHolder to be made into an Image
      * @param word - the word to make an Image off of
      */
     sendToImageCard(word) {
-        if(this.imageHolder.handleWordClick(word)){
+        if (this.imageHolder.handleWordClick(word)) {
             $('.instructions').hide();
             return true;
         } else {
@@ -241,12 +238,12 @@ class Controller{
     showRelatedWords(word) {
         this.relevantWords.getAllData(word);
     }
-    
+
     /**
      * Clears the images and selects 3 random words from the board to pin
      */
     select3Images() {
-        if (this.board.words.length ===0){
+        if (this.board.words.length === 0) {
             return
         } else {
             if (this.queue === 0) {
@@ -260,7 +257,7 @@ class Controller{
                 $(".app-instructions").show();
             }
         }
-        
+
     }
 
     decrementQueue() {
@@ -283,6 +280,7 @@ class Controller{
         $('.image-random-div').show();
         this.board.randomFillBoard(this.select3Images);
     };
+
     /**
      * calls the clear board method in board, will clear the dom elements, and array
      */
@@ -301,11 +299,12 @@ class Controller{
         this.imageHolder.clear();
         this.deleteRelatedAppsAndWords();
     }
+
     /**
      * Checks if the board is empty, if so, show instructions
      */
     checkIfEmpty() {
-        if (this.board.words.length === 0){
+        if (this.board.words.length === 0) {
             $('.spit-board>.instructions').show();
             return true;
         } else {
@@ -317,8 +316,7 @@ class Controller{
     /**
      * Checks if the board is not full
      */
-    checkIfNotFull()
-    {
+    checkIfNotFull() {
         return this.board.words.length < 20;
     }
 
@@ -327,19 +325,19 @@ class Controller{
      */
     start() {
         this.newGenerator = new IdeaGenerator({
-            putWordOnBoard:this.putWordOnBoard,
-            checkIfEmpty:this.checkIfEmpty,
-            checkIfNotFull:this.checkIfNotFull
+            putWordOnBoard: this.putWordOnBoard,
+            checkIfEmpty: this.checkIfEmpty,
+            checkIfNotFull: this.checkIfNotFull
         });
 
         this.relevantWords = new RelevantWords({
-            synonymArea:$('.syn'),
-            adjectiveArea:$('.adj'),
-            callbacks:{
-                putWordOnBoard:this.putWordOnBoard
+            synonymArea: $('.syn'),
+            adjectiveArea: $('.adj'),
+            callbacks: {
+                putWordOnBoard: this.putWordOnBoard
             }
         });
-        
+
         this.imageHolder = new imageHolder({
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords,
@@ -360,11 +358,11 @@ class Controller{
         $('.spitboard-container').append(this.board.render());
         $('.spit-board').hide();
         $('.spit-board').sortable();
-        
+
         this.relatedApps = new RelatedApps({
-            appArea:this.displayAreas.appArea,
-            titleArea:this.displayAreas.appTitleArea,
-            appContainer:this.displayAreas.appContainer,
+            appArea: this.displayAreas.appArea,
+            titleArea: this.displayAreas.appTitleArea,
+            appContainer: this.displayAreas.appContainer,
             changeAppLoadingStatus: this.changeAppLoadingStatus
         });
 
@@ -374,25 +372,25 @@ class Controller{
             Instructions elements to guide user
         =========================================*/
         $('.image-wrapper').append(
-            $('<div>',{
-                text:'CLICK AN IDEA FROM THE BOARD',
-                class:'instructions'
+            $('<div>', {
+                text: 'CLICK AN IDEA FROM THE BOARD',
+                class: 'instructions'
             })).hide();
 
         $(this.displayAreas.appContainer).append(
-            $('<div>',{
-                text:'CLICK AN IMAGE FOR RELATED APPS / WORDS',
-                class:'app-instructions'
-                })
-            );
+            $('<div>', {
+                text: 'CLICK AN IMAGE FOR RELATED APPS / WORDS',
+                class: 'app-instructions'
+            })
+        );
 
         $(".app-container>*").hide();
 
-        $('.spit-board').append($('<div>',{
-            text:'CLICK AN IDEA FROM THE WORD LIST',
-            class:'instructions',
-            css:{
-                "text-align":"center"
+        $('.spit-board').append($('<div>', {
+            text: 'CLICK AN IDEA FROM THE WORD LIST',
+            class: 'instructions',
+            css: {
+                "text-align": "center"
             }
         }));
 

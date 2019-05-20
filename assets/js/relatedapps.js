@@ -1,10 +1,10 @@
 /**
  * Class representing apps related to a specific word
  */
-class RelatedApps{
+class RelatedApps {
     /**
      * Makes storage for dom elements and app data
-     * @param {object} options - displayArea 
+     * @param {object} options - displayArea
      */
     constructor(options) {
         this.displayAreas = {
@@ -56,21 +56,21 @@ class RelatedApps{
 
     /**
      * success function, gets all the related apps and saves them in the contructor for future use
-     * @param {object} response 
+     * @param {object} response
      */
     gotRelatedApps(response) {
         $('.apps-spinner').addClass('hidden');
-        
-        if (response.resultCount > 0){
+
+        if (response.resultCount > 0) {
             this.apps = response.results;
 
-            for (let appIndex = 0; appIndex < 3 && appIndex<this.apps.length; appIndex++) {
+            for (let appIndex = 0; appIndex < 3 && appIndex < this.apps.length; appIndex++) {
                 this.data.trackName = this.apps[appIndex].trackName;
                 this.data.artWork = this.apps[appIndex].artworkUrl100;
                 this.data.link = this.apps[appIndex].trackViewUrl;
                 this.displayAreas.appArea.append(this.render());
             }
-            if (this.apps.length > 3){
+            if (this.apps.length > 3) {
                 $('.arrow').show();
             } else {
                 $('.arrow').hide();
@@ -79,9 +79,9 @@ class RelatedApps{
         } else {
             $('.arrow').hide();
             this.displayAreas.appContainer.append(
-                $('<div>',{
-                    text:'NO APPS FOUND',
-                    class:'app-instructions'
+                $('<div>', {
+                    text: 'NO APPS FOUND',
+                    class: 'app-instructions'
                 })
             );
         }
@@ -89,6 +89,7 @@ class RelatedApps{
         this.marker = 3;
         this.checkScrolls();
     }
+
     /**
      * see more apps to the right of the 3 displayed if there are any
      */
@@ -108,6 +109,7 @@ class RelatedApps{
         }
         this.checkScrolls();
     }
+
     /**
      * see more apps to the left of the 3 displayed if there are any
      */
@@ -129,18 +131,19 @@ class RelatedApps{
         }
         this.checkScrolls();
     }
+
     /**
      * empties out the app container
      */
-    clearAppContainer(){
+    clearAppContainer() {
         $('.apps').empty();
     }
 
     /**
      * resets values in constructor and clears the DOM elements for related apps
      */
-    removeRelatedApps(word){
-        if (word === this.word){
+    removeRelatedApps(word) {
+        if (word === this.word) {
             this.data = {
                 trackName: null,
                 artWork: null,
@@ -149,12 +152,13 @@ class RelatedApps{
             this.apps = [];
             this.marker = 3;
             $("#scroll-left, #scroll-right").hide();
-                this.clearAppContainer();
+            this.clearAppContainer();
         }
-        
+
     }
-    checkScrolls(){
-        if (this.marker===3 && this.apps.length>3){
+
+    checkScrolls() {
+        if (this.marker === 3 && this.apps.length > 3) {
             $('#scroll-left').css({
                 'pointer-events': 'none',
                 'background-color': 'gray'
@@ -163,7 +167,7 @@ class RelatedApps{
                 'pointer-events': 'auto',
                 'background-color': 'rgb(80, 124, 168)'
             })
-        } else if (this.marker===this.apps.length){
+        } else if (this.marker === this.apps.length) {
             $('#scroll-right').css({
                 'pointer-events': 'none',
                 'background-color': 'gray'
@@ -186,22 +190,22 @@ class RelatedApps{
      */
     render() {
         $("#scroll-left, #scroll-right").show();
-        const container = $('<div>',{
-            'class':'app'
+        const container = $('<div>', {
+            'class': 'app'
         });
-        const anchorTag = $('<a>',{
-            'href':this.data.link,
-            'target':'_blank'
+        const anchorTag = $('<a>', {
+            'href': this.data.link,
+            'target': '_blank'
         });
-        const image = $('<img>',{
-            'src':this.data.artWork
+        const image = $('<img>', {
+            'src': this.data.artWork
         });
-        const title = $('<div>',{
-            'text':this.data.trackName,
-            'class':'app-title'
+        const title = $('<div>', {
+            'text': this.data.trackName,
+            'class': 'app-title'
         });
         anchorTag.append(image);
-        container.append(title,anchorTag);
+        container.append(title, anchorTag);
 
         return container;
     }

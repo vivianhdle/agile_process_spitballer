@@ -24,16 +24,17 @@ class Board {
     /**
      * Returns true if the board is not full
      */
-    checkBoardNotFull(){
+    checkBoardNotFull() {
         return this.words.length < 20;
     }
+
     /**
      * Add a word to the board if there is room and it isn't already on the board
      * @param {string} word - the word to be added to the board
      * @returns {boolean} - true if the add succeeded and false if it failed
      */
     addWord(word) {
-        if(this.words.length < 20 && this.wordIsOnBoard(word) === -1) {
+        if (this.words.length < 20 && this.wordIsOnBoard(word) === -1) {
             $('.display-modal-btn').css({
                 'pointer-events': 'auto',
                 'background-color': 'grey'
@@ -50,8 +51,7 @@ class Board {
             this.domElement.append(newWord.render());
             this.words.push(newWord);
             return true;
-        } 
-        else {
+        } else {
             $('.display-modal-btn').css('pointer-events', 'none');
             $('.display-modal-btn').css('cursor', 'auto');
             return false;
@@ -64,17 +64,16 @@ class Board {
      */
     deleteWord(word) {
         let wordIndex = this.wordIsOnBoard(word);
-        if(wordIndex >= 0) {
+        if (wordIndex >= 0) {
             this.words.splice(wordIndex, 1);
         }
         this.callbacks.deleteImage(word);
-        if(this.callbacks.checkIfEmpty()){
+        if (this.callbacks.checkIfEmpty()) {
             $('.clear-board').css({
                 'pointer-events': 'none',
                 'background-color': 'gray'
             });
-        }
-        else{
+        } else {
             $('.clear-board').css({
                 'pointer-events': 'auto',
                 'background-color': 'rgb(80, 124, 168)'
@@ -89,7 +88,7 @@ class Board {
      * @returns {number} - index of the word if it exists in the array, -1 if it isn't in the array
      */
     wordIsOnBoard(word) {
-        for(let index in this.words) {
+        for (let index in this.words) {
             if (this.words[index].word === word) {
                 return index;
             }
@@ -132,9 +131,8 @@ class Board {
                     if (response === "wrong API key") {
                     } else {
                         this.clearBoard();
-                        for(let index = 0; index < response.length; index++)
-                        {
-                            if (response[index] !== ''){
+                        for (let index = 0; index < response.length; index++) {
+                            if (response[index] !== '') {
                                 this.addWord(response[index]);
                             }
                         }
@@ -189,7 +187,7 @@ class BoardWord {
      * Passes the word to a callback in Controller to be made into an Image
      */
     handleClick() {
-        if(this.sendToImageCallback(this.word)){
+        if (this.sendToImageCallback(this.word)) {
             $(".app-instructions").show();
         }
     }
@@ -218,7 +216,7 @@ class BoardWord {
         this.domElement.remove();
         event.stopPropagation();
         this.deleteCallback(this.word);
-        if(this.checkBoardNotFull()){
+        if (this.checkBoardNotFull()) {
             $('.display-modal-btn').css({
                 'pointer-events': 'auto',
                 'cursor': 'pointer',
