@@ -125,6 +125,7 @@ class Board {
                     key: localStorage.getItem('wordAPIKey'),
                     number: 25
                 },
+
                 success: response => {
                     if (response !== "wrong API key") {
                         this.clearBoard();
@@ -135,6 +136,7 @@ class Board {
                         }
                     }
                 },
+
                 complete: () => {
                     this.callbacks.checkIfEmpty();
                     $('.image-wrapper').show();
