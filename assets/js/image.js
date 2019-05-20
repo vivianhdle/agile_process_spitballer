@@ -15,7 +15,9 @@ class Image {
             showRelatedWords: callback.showRelatedWords,
             decrementQueue: callback.decrementQueue,
             deleteImageFromArray: callback.deleteImageFromArray,
-            deleteRelatedAppsAndWords: callback.deleteRelatedAppsAndWords
+            deleteRelatedAppsAndWords: callback.deleteRelatedAppsAndWords,
+            checkIfLoadingApps: callback.checkIfLoadingApps,
+            changeAppLoadingStatus: callback.changeAppLoadingStatus
         }
         this.images = [];
         this.getImage();
@@ -34,18 +36,21 @@ class Image {
      * Reveals refresh button on hover
      */
     handleClick() {
-        this.callbacks.showApps(this.word);
-        this.callbacks.showRelatedWords(this.word);
-        $(".image-wrapper > div").removeClass("selected");
-        this.domElement.addClass("selected");
-        
-        $(".image-refresh-button").css("visibility", "hidden");
-        this.domElement.find(".image-refresh-button").css("visibility", "visible");
-        
-        $('.relevant').show('slow');
-        $('.app-instructions').remove();
-        $(".app-container>*").show();
-        $('.syn i').removeClass('flipped');
+        if (!this.callbacks.checkIfLoadingApps()) {
+            this.callbacks.changeAppLoadingStatus(true);
+            this.callbacks.showApps(this.word);
+            this.callbacks.showRelatedWords(this.word);
+            $(".image-wrapper > div").removeClass("selected");
+            this.domElement.addClass("selected");
+
+            $(".image-refresh-button").css("visibility", "hidden");
+            this.domElement.find(".image-refresh-button").css("visibility", "visible");
+
+            $('.relevant').show('slow');
+            $('.app-instructions').remove();
+            $(".app-container>*").show();
+            $('.syn i').removeClass('flipped');
+        }
     }
 
     /**

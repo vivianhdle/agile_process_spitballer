@@ -14,6 +14,7 @@ class Controller{
         this.imageHolder = null;
         this.relatedApps = null;
         this.queue = 0;
+        this.appsLoading = false;
 
         this.displayAreas = {
             relevant:$(options.displayAreas.relevant),
@@ -58,6 +59,8 @@ class Controller{
         this.toggleRandomModal=this.toggleRandomModal.bind(this);
         this.deleteRelatedAppsAndWords = this.deleteRelatedAppsAndWords.bind(this);
         this.checkIfNotFull = this.checkIfNotFull.bind(this);
+        this.checkIfLoadingApps = this.checkIfLoadingApps.bind(this);
+        this.changeAppLoadingStatus = this.changeAppLoadingStatus.bind(this);
     }
 
     /**
@@ -264,6 +267,14 @@ class Controller{
         this.queue = this.queue > 0 ? this.queue - 1 : 0;
     }
 
+    checkIfLoadingApps() {
+        return this.appsLoading;
+    }
+
+    changeAppLoadingStatus(status) {
+        this.appsLoading = status;
+    }
+
     /**
      * Randomizes the board
      */
@@ -333,7 +344,9 @@ class Controller{
             showApps: this.showApps,
             showRelatedWords: this.showRelatedWords,
             decrementQueue: this.decrementQueue,
-            deleteRelatedAppsAndWords: this.deleteRelatedAppsAndWords
+            deleteRelatedAppsAndWords: this.deleteRelatedAppsAndWords,
+            checkIfLoadingApps: this.checkIfLoadingApps,
+            changeAppLoadingStatus: this.changeAppLoadingStatus
         });
 
         $(this.displayAreas.relevant).hide();
@@ -351,7 +364,8 @@ class Controller{
         this.relatedApps = new RelatedApps({
             appArea:this.displayAreas.appArea,
             titleArea:this.displayAreas.appTitleArea,
-            appContainer:this.displayAreas.appContainer
+            appContainer:this.displayAreas.appContainer,
+            changeAppLoadingStatus: this.changeAppLoadingStatus
         });
 
         $('.image-random-div').hide();

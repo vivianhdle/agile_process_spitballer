@@ -12,6 +12,7 @@ class RelatedApps{
             titleArea: $(options.titleArea),
             appContainer: $(options.appContainer)
         };
+        this.changeAppLoadingStatus = options.changeAppLoadingStatus;
         this.data = {
             trackName: null,
             artWork: null,
@@ -84,6 +85,7 @@ class RelatedApps{
                 })
             );
         }
+        this.changeAppLoadingStatus(false);
         this.marker = 3;
         this.checkScrolls();
     }

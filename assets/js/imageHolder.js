@@ -22,7 +22,9 @@ class imageHolder
             showRelatedWords: options.showRelatedWords,
             decrementQueue: options.decrementQueue,
             deleteImageFromArray: this.deleteImageFromArray,
-            deleteRelatedAppsAndWords: options.deleteRelatedAppsAndWords
+            deleteRelatedAppsAndWords: options.deleteRelatedAppsAndWords,
+            checkIfLoadingApps: options.checkIfLoadingApps,
+            changeAppLoadingStatus: options.changeAppLoadingStatus
         }
     }
 
