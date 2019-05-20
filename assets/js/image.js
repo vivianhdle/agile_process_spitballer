@@ -67,7 +67,7 @@ class Image {
         let deleteButton = $('<div>', {'class': 'imgCloseButton'}).on('click', this.deleteSelf).append(
             $('<span>', {'class': 'imgCloseText'}).text('x')
         );
-        let refreshButton = $('<div>', {'class': 'image-refresh-button'}).on('click', (event) => {
+        let refreshButton = $('<div>', {'class': 'image-refresh-button'}).on('click', event => {
             event.stopPropagation();
             this.refreshImage(event);
         });
@@ -96,7 +96,7 @@ class Image {
                 per_page: 50,
             },
             dataType: "jsonp",
-            success: (response) => {
+            success: response => {
                 let imageURL;
                 if (response.totalHits > 0) {
                     imageURL = response.hits[Math.floor(Math.random() * response.hits.length)].webformatURL;

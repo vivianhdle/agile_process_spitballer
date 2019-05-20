@@ -112,9 +112,8 @@ class Controller {
                 'background-color': 'rgb(80, 124, 168)'
             });
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -218,9 +217,8 @@ class Controller {
         if (this.imageHolder.handleWordClick(word)) {
             $('.instructions').hide();
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -243,21 +241,16 @@ class Controller {
      * Clears the images and selects 3 random words from the board to pin
      */
     select3Images() {
-        if (this.board.words.length === 0) {
-            return
-        } else {
-            if (this.queue === 0) {
-                this.queue = 3;
-                this.imageHolder.clear();
-                $('.instructions').hide();
-                let imagesToAdd = this.board.selectAtRandom();
-                for (let index in imagesToAdd) {
-                    this.imageHolder.handleWordClick(imagesToAdd[index]);
-                }
-                $(".app-instructions").show();
+        if (this.board.words.length > 0 && this.queue === 0) {
+            this.queue = 3;
+            this.imageHolder.clear();
+            $('.instructions').hide();
+            let imagesToAdd = this.board.selectAtRandom();
+            for (let index in imagesToAdd) {
+                this.imageHolder.handleWordClick(imagesToAdd[index]);
             }
+            $(".app-instructions").show();
         }
-
     }
 
     decrementQueue() {

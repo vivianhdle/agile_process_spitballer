@@ -127,7 +127,7 @@ class Board {
                     key: localStorage.getItem('wordAPIKey'),
                     number: 25
                 },
-                success: (response) => {
+                success: response => {
                     if (response === "wrong API key") {
                     } else {
                         this.clearBoard();
