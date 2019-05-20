@@ -102,7 +102,7 @@ class RelevantWords {
             this.displayNoneFound('synonyms')
         } else {
             for (let item in this.synonyms) {
-                let newWord = new Synonym(this.synonyms[item], this.callbacks.putWordOnBoard);
+                const newWord = new Synonym(this.synonyms[item], this.callbacks.putWordOnBoard);
                 this.displayAreas.synonymArea.append(newWord.render());
             }
         }
@@ -118,7 +118,7 @@ class RelevantWords {
             this.displayNoneFound('adjectives')
         } else {
             for (let item in this.adjectives) {
-                let newWord = new Adjective(this.adjectives[item], this.callbacks.putWordOnBoard);
+                const newWord = new Adjective(this.adjectives[item], this.callbacks.putWordOnBoard);
                 this.displayAreas.adjectiveArea.append(newWord.render());
             }
         }

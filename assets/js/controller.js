@@ -104,7 +104,7 @@ class Controller {
         if (this.board.addWord(word)) {
             $('.image-wrapper').show();
             $('.image-random-div').show();
-            let ideaslength = $(".ideaCard").length;
+            const ideaslength = $(".ideaCard").length;
             if (ideaslength === 1) {
                 this.newGenerator.generateWords();
             }
@@ -122,8 +122,8 @@ class Controller {
      */
     addUserInputWord() {
         $(".modal_inner > p").text("Add your own word onto the board");
-        let modalValue = $("input[name='word']").val();
-        let pattern = /^[a-z]/gmi;
+        const modalValue = $("input[name='word']").val();
+        const pattern = /^[a-z]/gmi;
 
         if (modalValue && pattern.test(modalValue)) {
             this.putWordOnBoard(modalValue);
@@ -247,7 +247,7 @@ class Controller {
             this.imageHolder.clear();
             $('.instructions').hide();
 
-            let imagesToAdd = this.board.selectAtRandom();
+            const imagesToAdd = this.board.selectAtRandom();
             for (let index in imagesToAdd) {
                 this.imageHolder.handleWordClick(imagesToAdd[index]);
             }

@@ -61,19 +61,19 @@ class Image {
      * @param {string} imageURL - the URL of the image received from the image API
      */
     render(imageURL) {
-        let imageContainer = $("<div>", {class: "images-container"});
-        let imageDiv = $("<div>", {class: "image"}).append(
+        const imageContainer = $("<div>", {class: "images-container"});
+        const imageDiv = $("<div>", {class: "image"}).append(
             $('<img>', {class: 'image-inner'}).on('load', this.onImageLoad).attr('src', imageURL)
         );
-        let wordDiv = $("<div>", {class: "word"}).text(this.word).css({"border-top": "1px solid black"});
-        let deleteButton = $('<div>', {'class': 'imgCloseButton'}).on('click', this.deleteSelf).append(
+        const wordDiv = $("<div>", {class: "word"}).text(this.word).css({"border-top": "1px solid black"});
+        const deleteButton = $('<div>', {'class': 'imgCloseButton'}).on('click', this.deleteSelf).append(
             $('<span>', {'class': 'imgCloseText'}).text('x')
         );
-        let refreshButton = $('<div>', {'class': 'image-refresh-button'}).on('click', event => {
+        const refreshButton = $('<div>', {'class': 'image-refresh-button'}).on('click', event => {
             event.stopPropagation();
             this.refreshImage(event);
         });
-        let refreshIcon = $("<i>", {"class": "fas fa-redo"});
+        const refreshIcon = $("<i>", {"class": "fas fa-redo"});
         refreshButton.append(refreshIcon);
         imageContainer.append(
             $('<div>', {'class': 'spinner image-spinner'}).append(
@@ -119,7 +119,7 @@ class Image {
         if (this.images.length > 0) {
             $(event.currentTarget).find('i').addClass('spinn');
 
-            let image = $(this.domElement).find(".image-inner");
+            const image = $(this.domElement).find(".image-inner");
             image.attr('src', this.images[Math.floor(Math.random() * this.images.length)].webformatURL);
         }
     }

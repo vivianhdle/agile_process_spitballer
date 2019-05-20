@@ -63,7 +63,7 @@ class Board {
      * @param {string} word - the word to be deleted from the words array
      */
     deleteWord(word) {
-        let wordIndex = this.wordIsOnBoard(word);
+        const wordIndex = this.wordIsOnBoard(word);
         if (wordIndex >= 0) {
             this.words.splice(wordIndex, 1);
         }
@@ -79,7 +79,6 @@ class Board {
                 'background-color': 'rgb(80, 124, 168)'
             });
         }
-
     }
 
     /**
@@ -147,12 +146,12 @@ class Board {
     }
 
     selectAtRandom() {
-        let limit = Math.min(3, this.words.length);
+        const limit = Math.min(3, this.words.length);
         let results = [];
-        let words = this.words.slice();
+        const words = this.words.slice();
 
         for (let index = 0; index < limit; index++) {
-            let choice = Math.floor(Math.random() * words.length);
+            const choice = Math.floor(Math.random() * words.length);
             results.push(words.splice(choice, 1)[0].word);
         }
 

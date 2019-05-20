@@ -1,6 +1,6 @@
 $(document).ready(initializeApp);
 
-var mainController;
+let mainController;
 
 function initializeApp() {
     mainController = new Controller({
