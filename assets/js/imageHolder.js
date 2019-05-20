@@ -14,7 +14,6 @@ class imageHolder {
         this.clear = this.clear.bind(this);
         this.checkInstructions = this.checkInstructions.bind(this);
 
-
         this.callbacks = {
             showApps: callbacks.showApps,
             showRelatedWords: callbacks.showRelatedWords,

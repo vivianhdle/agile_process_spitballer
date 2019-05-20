@@ -19,7 +19,6 @@ class IdeaGenerator {
         this.addEventHandler();
     }
 
-
     /**
      * Adds event handler on Generate Random Ideas button.
      * On click calls generateWords function.
