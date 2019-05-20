@@ -64,10 +64,10 @@ class Image {
             $('<img>', {class: 'image-inner'}).on('load', this.onImageLoad).attr('src', imageURL)
         );
         let wordDiv = $("<div>", {class: "word"}).text(this.word).css({"border-top": "1px solid black"});
-        let deleteButton = $('<div>', {'class': 'imgCloseButton'}).click(this.deleteSelf).append(
+        let deleteButton = $('<div>', {'class': 'imgCloseButton'}).on('click', this.deleteSelf).append(
             $('<span>', {'class': 'imgCloseText'}).text('x')
         );
-        let refreshButton = $('<div>', {'class': 'image-refresh-button'}).click((event) => {
+        let refreshButton = $('<div>', {'class': 'image-refresh-button'}).on('click', (event) => {
             event.stopPropagation();
             this.refreshImage(event);
         });

@@ -82,12 +82,12 @@ class Controller {
         $('.clear-board-modal').on('click', this.toggleClearModal);
 
         /* ====================== MODAL ======================= */
-        $(".display-modal-btn[data-target]").click(function () {
+        $(".display-modal-btn[data-target]").on('click', function () {
             $("#" + this.dataset.target).toggleClass("-open");
             $(".modal_inner > p").text("Add your own word onto the board");
         });
 
-        $(".modal").click(function (event) {
+        $(".modal").on('click', function (event) {
             if (event.target === this) {
                 $(this).toggleClass("-open")
             }

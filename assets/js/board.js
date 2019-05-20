@@ -199,11 +199,11 @@ class BoardWord {
     render() {
         this.domElement = $('<div>', {'class': 'spit-board-word'}).append(
             $('<div>', {'class': 'wordInner'}).text(this.word),
-            $('<div>', {'class': 'wordCloseButton'}).click(this.deleteSelf).append(
+            $('<div>', {'class': 'wordCloseButton'}).on('click', this.deleteSelf).append(
                 $('<span>', {'class': 'wordCloseText'}).text('X')
             )
         );
-        this.domElement.click(this.handleClick);
+        this.domElement.on('click', this.handleClick);
         return this.domElement;
     }
 

@@ -177,7 +177,7 @@ class ideaCard {
             $('<div>').text(this.word)
         );
 
-        this.domElement.click(this.handleClick);
+        this.domElement.on('click', this.handleClick);
         return this.domElement;
     }
 }
