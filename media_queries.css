@@ -1,3 +1,9 @@
+@media screen and (orientation: portrait) {
+    .portrait-warning {
+        display: initial;
+    }
+}
+
 /* ========== MOBILE =========== */
 /* iPhone 8 and lower */
 @media screen and (orientation: landscape) and (max-device-width: 736px) {

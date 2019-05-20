@@ -19,6 +19,26 @@ button {
     outline: 0;
 }
 
+.instructions {
+    position: absolute;
+    font-size: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner {
+    position: absolute;
+    opacity: .5;
+}
+
+.spinner img {
+    height: 100%;
+    animation: spinn 1s infinite linear;
+    object-fit: contain;
+    width: 100%;
+}
+
 .portrait-warning {
     display: none;
     height: 100vh;
@@ -91,7 +111,27 @@ button {
 
 .spitboard-container {
     width: 60%;
-    /*height: 100%;*/
+}
+
+.button-container {
+    width: 8%;
+    display: inline-block;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+.options {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.options > * {
+    display: flex;
+    justify-content: center;
 }
 
 .clear-board, .randomize-board, .display-modal-btn {
@@ -109,49 +149,13 @@ button {
     margin-top: 0;
 }
 
-.display-modal-btn {
-    /*top: 24.5%;*/
-}
-
-.clear-board {
-    /*top: 31%;*/
-}
-
-.randomize-board {
-    /*top: 37.5%;*/
-}
-
 .spit-board {
     position: relative;
     height: 100%;
     width: 90%;
-    /*background-size: cover;*/
-    /*background-position: center;*/
     display: inline-block;
     padding: 1rem 0;
     box-sizing: border-box;
-}
-
-.button-container {
-    width: 8%;
-    display: inline-block;
-    height: 100%;
-    vertical-align: bottom;
-}
-
-.options {
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%);
-    flex-direction: column;
-    /*justify-content: center;*/
-    display: flex;
-    align-items: center;
-}
-
-.options > * {
-    display: flex;
-    justify-content: center;
 }
 
 .spit-board-word {
@@ -162,7 +166,6 @@ button {
     font-size: 1.25rem;
     position: relative;
     display: inline-block;
-    /*box-sizing: border-box;*/
     transform: scale(.9);
     transition: transform .15s ease-in-out;
     cursor: pointer;
@@ -186,8 +189,6 @@ button {
     position: absolute;
     right: 5px;
     top: 5px;
-    /*color: white;*/
-    /*border-radius: 100%;*/
     padding: 5px;
     opacity: 0;
     transition: all .15s ease-in-out;
@@ -209,41 +210,13 @@ button {
     opacity: 1;
 }
 
-.image-refresh-button {
-    font-size: 1rem;
-    /*text-align: center;*/
-    height: 4.5vh;
-    width: 4.5vh;
-    position: absolute;
-    right: 0;
-    margin: 0 .25rem;
-    top: 58%;
-    border-radius: 5px;
-    color: white;
-    background-color: rgb(80, 124, 168);
-    border: .5px solid white;
-    transition: all .15s ease-in-out;
-    visibility: visible;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.image-refresh-button:hover {
-    background-color: black;
-}
-
 .idea-container {
     width: 40%;
-    /*height: 100%;*/
-    /*vertical-align: top;*/
     display: flex;
 }
 
 .ideas {
     width: 50%;
-    /*height: 100%;*/
-    /*vertical-align: top;*/
     padding-right: 5%;
 }
 
@@ -262,7 +235,6 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    /*line-height: 100%;*/
     transition: all .10s linear;
     background-color: rgb(80, 124, 168);
 }
@@ -285,7 +257,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*box-sizing: border-box;*/
     font-size: 1.25rem;
     background-color: rgba(34, 76, 112, 0.5);
     border-radius: 10px;
@@ -300,12 +271,7 @@ button {
 }
 
 .relevant {
-    /*display: flex;*/
-    /*height: 100%;*/
     width: 50%;
-    /*flex-direction: column;*/
-    /*overflow-y: scroll;*/
-    /*align-items: center;*/
     box-sizing: border-box;
     background-color: rgba(241, 188, 163, 0.473);
     color: rgb(112, 112, 109);
@@ -319,19 +285,6 @@ button {
     cursor: pointer;
 }
 
-.syn > div, .adj > div {
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*box-sizing: border-box;*/
-    font-size: 1.25rem;
-    text-align: center;
-}
-
-.syn, .adj {
-    /*width: 100%;*/
-}
-
 .synonyms, .adjectives {
     transform: scale(.9);
     transition: transform .15s ease-in-out;
@@ -342,10 +295,56 @@ button {
     cursor: pointer;
 }
 
+.syn > div, .adj > div {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
 .bottom-half {
     height: 40%;
     display: flex;
     position: relative;
+}
+
+.image-random-div {
+    width: 4.5%;
+    height: 100%;
+    position: relative;
+}
+
+.random3 {
+    height: 3rem;
+    width: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(80, 124, 168);
+    color: white;
+    transition: all .15s ease-in-out;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.random3:hover, .randomize-board:hover, .clear-board:hover, .display-modal-btn:hover, #scroll-left:hover, #scroll-right:hover {
+    background-color: black;
+    color: white;
+}
+
+.random3:hover i, .randomize-board:hover i, .clear-board:hover i, .display-modal-btn:hover i, #scroll-left:hover i, #scroll-right:hover i {
+    animation: barrelRoll .5s;
+}
+
+.image-wrapper {
+    width: 55%;
+    display: flex;
+    position: relative;
+    padding: 1rem 0;
+    margin-right: .5%;
 }
 
 .images-container {
@@ -354,7 +353,6 @@ button {
     width: 33.33%;
     border: 1px solid black;
     box-sizing: border-box;
-    /*vertical-align: top;*/
     font-size: 1.75rem;
     cursor: pointer;
     border-radius: 10px;
@@ -364,9 +362,22 @@ button {
     padding-bottom: .5rem;
 }
 
+.selected {
+    border: 8px solid rgb(80, 124, 168);
+}
+
+.image-spinner {
+    height: 80%;
+}
+
 .images-container > .image {
     height: 80%;
-    /*width: 100%;*/
+}
+
+.image-inner {
+    object-fit: cover;
+    height: 100%;
+    width: 100%
 }
 
 .images-container > .word {
@@ -374,13 +385,29 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*background-color: rgba(95, 87, 87, 0);*/
 }
 
-.image-inner {
-    object-fit: cover;
-    height: 100%;
-    width: 100%
+.image-refresh-button {
+    font-size: 1rem;
+    height: 4.5vh;
+    width: 4.5vh;
+    position: absolute;
+    right: 0;
+    margin: 0 .25rem;
+    top: 58%;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(80, 124, 168);
+    border: .5px solid white;
+    transition: all .15s ease-in-out;
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-refresh-button:hover {
+    background-color: black;
 }
 
 .imgCloseButton {
@@ -419,37 +446,37 @@ button {
     height: 95%;
     width: 40%;
     font-size: 1.25rem;
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*top: 5%;*/
     font-family: 'Walter Turncoat', sans-serif;
-    /*box-sizing: border-box;*/
     position: relative;
     display: flex;
     align-items: center;
-    /*justify-content: center;*/
     text-align: center;
     margin-right: 0.5%;
-}
-
-.apps {
-    height: 100%;
-    width: 80%;
-    /*position: relative;*/
-    display: flex;
-    white-space: nowrap;
-    justify-content: center;
 }
 
 .arrow {
     width: 10%;
 }
 
+#scroll-left, #scroll-right {
+    border: none;
+    font-size: 1.5rem;
+    background-color: rgb(80, 124, 168);
+    border-radius: 10px;
+    color: white;
+}
+
+.apps {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+}
+
 .app {
     width: 100%;
     max-width: 33.33%;
-    /*height: 100%;*/
-    /*box-sizing: border-box;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -459,7 +486,6 @@ button {
 .app-title {
     width: 100%;
     height: 20%;
-    /*margin: 0 4%;*/
     text-overflow: ellipsis;
     overflow: hidden;
     color: rgb(51, 83, 116);
@@ -473,62 +499,6 @@ button {
     top: 15%;
 }
 
-.image-random-div {
-    width: 4.5%;
-    height: 100%;
-    position: relative;
-}
-
-.random3 {
-    height: 3rem;
-    width: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    /*word-wrap: break-word;*/
-    background-color: rgb(80, 124, 168);
-    color: white;
-    transition: all .15s ease-in-out;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-}
-
-.random3:hover, .randomize-board:hover, .clear-board:hover, .display-modal-btn:hover, #scroll-left:hover, #scroll-right:hover {
-    background-color: black;
-    color: white;
-}
-
-.random3:hover i, .randomize-board:hover i, .clear-board:hover i, .display-modal-btn:hover i, #scroll-left:hover i, #scroll-right:hover i {
-    animation: barrelRoll .5s;
-}
-
-.image-wrapper {
-    width: 55%;
-    /*height: 100%;*/
-    display: flex;
-    position: relative;
-    /*box-sizing: border-box;*/
-    padding: 1rem 0;
-    margin-right: .5%;
-}
-
-.selected {
-    border: 8px solid rgb(80, 124, 168);
-}
-
-.instructions {
-    position: absolute;
-    font-size: 2rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .app-instructions {
     top: 50%;
     left: 50%;
@@ -538,27 +508,11 @@ button {
     font-size: 1.5rem;
 }
 
-.flipped {
-    transform: rotate(180deg);
-}
-
-@keyframes spinn {
-    0%   {transform: rotate(0deg)}
-    100% {transform: rotate(359deg)}
-}
-
-@keyframes barrelRoll {
-    0%   {transform: rotateX(0deg)}
-    100% {transform: rotateX(360deg)}
-}
-
-@keyframes barrelRoll2 {
-    0% {  transform: rotateX(0deg)   translate(-50%, -50%)}
-    100% {transform: rotateX(360deg) translate(-50%, -50%)}
-}
-
-.spinn {
-    animation: spinn .4s infinite linear;
+.apps-spinner {
+    height: 80%;
+    top: 10%;
+    width: 40%;
+    right: 0;
 }
 
 /* MODAL  */
@@ -568,7 +522,6 @@ button {
     padding: 1rem 1.5rem;
     border-radius: 10px;
     font-weight: bold;
-    /*text-transform: uppercase;*/
     background-color: rgb(80, 124, 168);
     color: #ffffff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -585,7 +538,6 @@ button {
     right: 0;
     bottom: 0;
     left: 0;
-    /*padding: 1.5rem;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -607,7 +559,6 @@ button {
     font-family: Helvetica, sans-serif;
 }
 
-
 .modal_inner > input {
     width: 90%;
     padding: .5rem;
@@ -621,14 +572,6 @@ button {
 .modal.-open .modal_inner, .clear-board-modal.-open .clear-board-content, .rerandomize-board.-open .rerandomize-content {
     opacity: 1;
     transform: scale(1);
-}
-
-#scroll-left, #scroll-right {
-    border: none;
-    font-size: 1.5rem;
-    background-color: rgb(80, 124, 168);
-    border-radius: 10px;
-    color: white;
 }
 
 .fa-snowplow, .randomize-modal, .modal-edit {
@@ -660,29 +603,6 @@ button {
     padding-top: 1rem;
 }
 
-.spinner {
-    position: absolute;
-    opacity: .5;
-}
-
-.spinner img {
-    height: 100%;
-    animation: spinn 1s infinite linear;
-    object-fit: contain;
-    width: 100%;
-}
-
-.image-spinner {
-    height: 80%;
-}
-
-.apps-spinner {
-    height: 80%;
-    top: 10%;
-    width: 40%;
-    right: 0;
-}
-
 .hidden {
     display: none;
 }
@@ -692,10 +612,17 @@ button {
     color: red;
 }
 
-@media screen and (orientation: portrait) {
-    .portrait-warning {
-        display: initial;
-    }
+.flipped {
+    transform: rotate(180deg);
+}
+
+.spinn {
+    animation: spinn .4s infinite linear;
+}
+
+@keyframes barrelRoll {
+    0%   {transform: rotateX(0deg)}
+    100% {transform: rotateX(360deg)}
 }
 
 @keyframes shake {
@@ -703,4 +630,9 @@ button {
     20%, 80% {transform: translate3d(2px, 0, 0)}
     30%, 50%, 70% {transform: translate3d(-4px, 0, 0)}
     40%, 60% {transform: translate3d(4px, 0, 0)}
+}
+
+@keyframes spinn {
+    0%   {transform: rotate(0deg)}
+    100% {transform: rotate(359deg)}
 }
