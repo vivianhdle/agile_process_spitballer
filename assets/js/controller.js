@@ -256,14 +256,25 @@ class Controller {
         }
     }
 
+    /**
+     * Decrements the queue used to ensure that only 3 images are loading at max
+     */
     decrementQueue() {
         this.queue = this.queue > 0 ? this.queue - 1 : 0;
     }
 
+    /**
+     * Returns the loadingApps flag, used to ensure that only one word's apps are loading at any time
+     * @returns {boolean} - whether or not another word's apps are already loading
+     */
     checkIfLoadingApps() {
         return this.appsLoading;
     }
 
+    /**
+     * Changes the loadingApps flag to allow loading apps for another word
+     * @param status - whether or not another word's apps are already loading
+     */
     changeAppLoadingStatus(status) {
         this.appsLoading = status;
     }

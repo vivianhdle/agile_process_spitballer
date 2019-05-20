@@ -142,6 +142,10 @@ class RelevantWords {
         }
     }
 
+    /**
+     * resets the relevant words area when a word is removed from one of the other classes
+     * @param word - the word that is being removed
+     */
     removeRelatedWords(word) {
         if (this.word === word) {
             this.synonyms = [];

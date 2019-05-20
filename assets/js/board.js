@@ -145,6 +145,10 @@ class Board {
         );
     }
 
+    /**
+     * Selects up to 3 words at random from the board
+     * @returns {Array} - array with the randomly selected words
+     */
     selectAtRandom() {
         const limit = Math.min(3, this.words.length);
         let results = [];

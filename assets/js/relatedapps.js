@@ -164,6 +164,9 @@ class RelatedApps {
 
     }
 
+    /**
+     * activates and deactivates the relevant app buttons
+     */
     checkScrolls() {
         if (this.marker === 3 && this.apps.length > 3) {
             $('#scroll-left').css({

@@ -53,8 +53,11 @@ class imageHolder {
         }
     }
 
+    /**
+     * Toggles the instructions on imageHolder based on whether or not images are present
+     */
     checkInstructions() {
-        if (this.imageCards.length === 0) { //&& there are words on the board
+        if (this.imageCards.length === 0) {
             $('.image-wrapper>.instructions').show();
         } else {
             $('.image-wrapper>.instructions').hide();

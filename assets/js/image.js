@@ -132,6 +132,10 @@ class Image {
         this.callbacks.deleteImageFromArray(this.word);
     }
 
+    /**
+     * Event handler that is called when images are finished loading
+     * @param event
+     */
     onImageLoad(event) {
         $(event.target).parent().parent().find('.spinner').addClass('hidden');
         $(event.target).parent().parent().find('i').removeClass('spinn');
