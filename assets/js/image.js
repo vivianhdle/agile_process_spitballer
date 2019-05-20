@@ -10,6 +10,7 @@ class Image {
     constructor(word, callback) {
         this.word = word;
         this.domElement = null;
+
         this.callbacks = {
             showApps: callback.showApps,
             showRelatedWords: callback.showRelatedWords,
@@ -18,7 +19,8 @@ class Image {
             deleteRelatedAppsAndWords: callback.deleteRelatedAppsAndWords,
             checkIfLoadingApps: callback.checkIfLoadingApps,
             changeAppLoadingStatus: callback.changeAppLoadingStatus
-        }
+        };
+
         this.images = [];
         this.getImage();
 
@@ -40,6 +42,7 @@ class Image {
             this.callbacks.changeAppLoadingStatus(true);
             this.callbacks.showApps(this.word);
             this.callbacks.showRelatedWords(this.word);
+
             $(".image-wrapper > div").removeClass("selected");
             this.domElement.addClass("selected");
 
@@ -59,7 +62,6 @@ class Image {
      */
     render(imageURL) {
         let imageContainer = $("<div>", {class: "images-container"});
-        // let imageDiv = $("<div>", { class: "image" }).css("background-image", `url(${imageURL})`);
         let imageDiv = $("<div>", {class: "image"}).append(
             $('<img>', {class: 'image-inner'}).on('load', this.onImageLoad).attr('src', imageURL)
         );

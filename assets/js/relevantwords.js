@@ -9,22 +9,22 @@ class RelevantWords {
         this.displayAreas = {
             synonymArea: options.synonymArea,
             adjectiveArea: options.adjectiveArea
-        }
+        };
+
         this.callbacks = {
             putWordOnBoard: options.callbacks.putWordOnBoard
-        }
+        };
+
         this.synonyms = [];
         this.adjectives = [];
         this.word = null;
-        //==========================================================
-        //BIND
+
         this.getSynonyms = this.getSynonyms.bind(this);
         this.gotSynonyms = this.gotSynonyms.bind(this);
         this.displaySynonyms = this.displaySynonyms.bind(this);
         this.displayAdjectives = this.displayAdjectives.bind(this);
         this.getAdjectives = this.getAdjectives.bind(this);
         this.gotAdjectives = this.gotAdjectives.bind(this);
-        //===========================================================
     }
 
     /**
@@ -42,7 +42,7 @@ class RelevantWords {
      */
     getSynonyms(word) {
         this.word = word;
-        var ajaxOptions = {
+        const ajaxOptions = {
             url: "https://api.datamuse.com/words",
             method: "get",
             dataType: "json",
@@ -50,7 +50,7 @@ class RelevantWords {
                 rel_syn: word
             },
             success: this.gotSynonyms
-        }
+        };
         $.ajax(ajaxOptions)
     }
 
@@ -70,7 +70,7 @@ class RelevantWords {
      * @param {string} word - search this word for adjectives
      */
     getAdjectives(word) {
-        var ajaxOptions = {
+        const ajaxOptions = {
             url: "https://api.datamuse.com/words",
             method: "get",
             dataType: "json",
@@ -78,7 +78,7 @@ class RelevantWords {
                 rel_jjb: word
             },
             success: this.gotAdjectives
-        }
+        };
         $.ajax(ajaxOptions)
     }
 
@@ -102,7 +102,7 @@ class RelevantWords {
             this.displayNoneFound('synonyms')
         } else {
             for (let item in this.synonyms) {
-                let newWord = new Synonym(this.synonyms[item], this.callbacks.putWordOnBoard)
+                let newWord = new Synonym(this.synonyms[item], this.callbacks.putWordOnBoard);
                 this.displayAreas.synonymArea.append(newWord.render());
             }
         }
@@ -118,11 +118,10 @@ class RelevantWords {
             this.displayNoneFound('adjectives')
         } else {
             for (let item in this.adjectives) {
-                let newWord = new Adjective(this.adjectives[item], this.callbacks.putWordOnBoard)
+                let newWord = new Adjective(this.adjectives[item], this.callbacks.putWordOnBoard);
                 this.displayAreas.adjectiveArea.append(newWord.render());
             }
         }
-
         this.adjectives = [];
     }
 
@@ -134,12 +133,12 @@ class RelevantWords {
         const noWord = $('<div>', {
             class: type,
             text: `NO ${type.toUpperCase()} FOUND`
-        })
+        });
+
         if (type === 'synonyms') {
             this.displayAreas.synonymArea.append(noWord);
         } else {
             this.displayAreas.adjectiveArea.append(noWord.css('display', 'none'));
-
         }
     }
 
@@ -163,8 +162,8 @@ class Synonym {
      * @param {function} callback - the callback to put the word on the controller
      */
     constructor(word, callback) {
-        this.word = word
-        this.putWordOnBoard = callback
+        this.word = word;
+        this.putWordOnBoard = callback;
         this.domElement = null;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -190,9 +189,10 @@ class Synonym {
         this.domElement = $('<div>', {
             text: this.word,
             class: 'synonyms'
-        })
+        });
+
         this.domElement.on('click', this.handleClick);
-        return this.domElement
+        return this.domElement;
     }
 }
 
@@ -207,7 +207,7 @@ class Adjective {
      */
     constructor(word, callback) {
         this.word = word;
-        this.putWordOnBoard = callback
+        this.putWordOnBoard = callback;
         this.domElement = null;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -236,7 +236,8 @@ class Adjective {
             css: {
                 display: 'none'
             }
-        })
+        });
+
         this.domElement.on('click', this.handleClick);
         return this.domElement
     }

@@ -12,6 +12,7 @@ class Controller {
         this.board = null;
         this.imageHolder = null;
         this.relatedApps = null;
+
         this.queue = 0;
         this.appsLoading = false;
 
@@ -245,10 +246,12 @@ class Controller {
             this.queue = 3;
             this.imageHolder.clear();
             $('.instructions').hide();
+
             let imagesToAdd = this.board.selectAtRandom();
             for (let index in imagesToAdd) {
                 this.imageHolder.handleWordClick(imagesToAdd[index]);
             }
+
             $(".app-instructions").show();
         }
     }

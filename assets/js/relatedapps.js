@@ -15,7 +15,7 @@ class RelatedApps {
 
         this.callbacks = {
             changeAppLoadingStatus: options.callbacks.changeAppLoadingStatus
-        }
+        };
 
         this.data = {
             trackName: null,
@@ -23,9 +23,10 @@ class RelatedApps {
             link: null
         };
 
-        this.word;
+        this.word = null;
         this.apps = [];
         this.marker = 3;
+
         this.getRelatedApps = this.getRelatedApps.bind(this);
         this.gotRelatedApps = this.gotRelatedApps.bind(this);
         this.scrollBackwards = this.scrollBackwards.bind(this);
@@ -38,12 +39,13 @@ class RelatedApps {
      * @param {string} word - a string that will be pumped into the itunes app store search
      */
     getRelatedApps(word) {
-        this.word = word
+        this.word = word;
         this.removeRelatedApps(word);
         $('.apps-spinner').removeClass('hidden');
         $('.arrow').hide();
         $('.app-instructions').remove();
-        var ajaxOptions = {
+
+        const ajaxOptions = {
             url: "https://itunes.apple.com/search?",
             method: "post",
             dataType: "json",
@@ -55,7 +57,6 @@ class RelatedApps {
             },
             success: this.gotRelatedApps
         };
-
         $.ajax(ajaxOptions);
     }
 
@@ -75,6 +76,7 @@ class RelatedApps {
                 this.data.link = this.apps[appIndex].trackViewUrl;
                 this.displayAreas.appArea.append(this.render());
             }
+
             if (this.apps.length > 3) {
                 $('.arrow').show();
             } else {

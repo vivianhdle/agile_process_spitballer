@@ -58,8 +58,9 @@ class IdeaGenerator {
                                     checkIfEmpty: this.callbacks.checkIfEmpty,
                                     checkIfNotFull: this.callbacks.checkIfNotFull
                                 }
-                            })
+                            });
                         }
+
                         $(".ideas").append(newIdeaCard.render());
                     }
                 }
@@ -109,7 +110,7 @@ class IdeaAPIKey {
                     callback();
                 }
             }
-        })
+        });
     }
 
     /**
@@ -119,9 +120,7 @@ class IdeaAPIKey {
     getKey() {
         return this.key;
     }
-
 }
-
 
 /**
  * Class representing an idea card with a random word.
@@ -134,6 +133,7 @@ class ideaCard {
     constructor(options) {
         this.word = options.word;
         this.domElement = null;
+
         this.callbacks = {
             putWordOnBoard: options.callbacks.putWordOnBoard,
             checkIfEmpty: options.callbacks.checkIfEmpty,
@@ -163,6 +163,7 @@ class ideaCard {
                     'background-color': 'gray'
                 });
             }
+
             this.callbacks.checkIfEmpty();
             this.domElement.remove();
         }
@@ -173,11 +174,10 @@ class ideaCard {
      * this.domElement is a new div element that has the random word from API call.
      */
     render() {
-        this.domElement = $('<div>', {class: 'ideaCard'}).append(
+        this.domElement = $('<div>', {class: 'ideaCard'}).on('click', this.handleClick).append(
             $('<div>').text(this.word)
         );
 
-        this.domElement.on('click', this.handleClick);
         return this.domElement;
     }
 }

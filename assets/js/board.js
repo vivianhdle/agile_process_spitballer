@@ -114,8 +114,7 @@ class Board {
         return this.domElement;
     }
 
-
-    randomFillBoard(callback = null) {
+    randomFillBoard() {
         $('.image-random-div').show();
         $(".word-generator-button > i").addClass('spinn');
         $(".board-spinner").removeClass('hidden');
@@ -128,8 +127,7 @@ class Board {
                     number: 25
                 },
                 success: response => {
-                    if (response === "wrong API key") {
-                    } else {
+                    if (response !== "wrong API key") {
                         this.clearBoard();
                         for (let index = 0; index < response.length; index++) {
                             if (response[index] !== '') {
