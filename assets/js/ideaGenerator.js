@@ -45,7 +45,6 @@ class IdeaGenerator {
             success: response => {
                 if (response === "wrong API key") {
                     this.apiKey.generateNewKey(this.generateWords);
-                    localStorage.setItem('wordAPIKey', this.apiKey.getKey());
                 } else {
                     $(".ideaCard").remove();
                     let newIdeaCard = null;
@@ -99,6 +98,7 @@ class IdeaAPIKey {
             method: 'get',
             datatype: 'text',
             success: response => {
+                localStorage.setItem('wordAPIKey', response);
                 this.key = response;
                 if (callback) {
                     callback();
