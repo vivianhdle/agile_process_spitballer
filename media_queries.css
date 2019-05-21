@@ -1,0 +1,47 @@
+@media screen and (orientation: portrait) {
+    .portrait-warning {
+        display: initial;
+    }
+}
+
+/* ========== MOBILE =========== */
+/* iPhone 8 and lower */
+@media screen and (orientation: landscape) and (max-device-width: 736px) {
+    .arrow {
+        height: 100%;
+        position: relative;
+    }
+
+    .scroll-left, .scroll-right {
+        padding: 0;
+        height: 80px;
+        width: 90%;
+        position: absolute;
+        top: 57%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* iPhone X */
+@media screen and (orientation: landscape) and (min-device-width: 737px) and (max-device-width: 812px) {
+
+}
+
+/* ========== TABLET =========== */
+@media screen and (min-width: 600px) {
+
+}
+
+/* ========== DESKTOP =========== */
+@media screen and (min-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1281px) {
+    html {
+        font-size: 22px;
+    }
+}
+
+    
