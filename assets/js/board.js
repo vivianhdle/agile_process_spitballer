@@ -34,9 +34,8 @@ class Board {
      * @returns {boolean} - true if the add succeeded and false if it failed
      */
     addWord(word) {
+        $('.display-modal-btn').addClass('disabled');
         if (this.words.length < 20 && this.wordIsOnBoard(word) === -1) {
-            $('.display-modal-btn').addClass('disabled');
-
             const newWord = new BoardWord({
                 word: word,
                 callbacks: {
@@ -48,10 +47,8 @@ class Board {
             this.domElement.append(newWord.render());
             this.words.push(newWord);
             return true;
-        } else {
-            $('.display-modal-btn').addClass('disabled');
-            return false;
         }
+        return false;
     }
 
     /**
@@ -107,34 +104,33 @@ class Board {
         $('.image-random-div').show();
         $(".word-generator-button > i").addClass('spinn');
         $(".board-spinner").removeClass('hidden');
-        $.ajax(
-            {
-                url: "https://random-word-api.herokuapp.com/word",
-                method: "get",
-                data: {
-                    key: localStorage.getItem('wordAPIKey'),
-                    number: 25
-                },
 
-                success: response => {
-                    if (response !== "wrong API key") {
-                        this.clearBoard();
-                        for (let index = 0; index < response.length; index++) {
-                            if (response[index] !== '') {
-                                this.addWord(response[index]);
-                            }
+        $.ajax({
+            url: "https://random-word-api.herokuapp.com/word",
+            method: "get",
+            data: {
+                key: localStorage.getItem('wordAPIKey'),
+                number: 25
+            },
+
+            success: response => {
+                if (response !== "wrong API key") {
+                    this.clearBoard();
+                    for (let index = 0; index < response.length; index++) {
+                        if (response[index] !== '') {
+                            this.addWord(response[index]);
                         }
                     }
-                },
-
-                complete: () => {
-                    this.callbacks.checkIfEmpty();
-                    $('.image-wrapper').show();
-                    $(".word-generator-button > i").removeClass('spinn');
-                    $(".board-spinner").addClass('hidden');
                 }
+            },
+
+            complete: () => {
+                this.callbacks.checkIfEmpty();
+                $('.image-wrapper').show();
+                $(".word-generator-button > i").removeClass('spinn');
+                $(".board-spinner").addClass('hidden');
             }
-        );
+        });
     }
 
     /**

@@ -45,6 +45,7 @@ class IdeaGenerator {
             success: response => {
                 if (response === "wrong API key") {
                     this.apiKey.generateNewKey(this.generateWords);
+                    localStorage.setItem('wordAPIKey', this.apiKey.getKey());
                 } else {
                     $(".ideaCard").remove();
                     let newIdeaCard = null;
@@ -59,18 +60,12 @@ class IdeaGenerator {
                                 }
                             });
                         }
-
                         $(".ideas").append(newIdeaCard.render());
                     }
+                    $(".word-generator-button > i").removeClass('spinn');
                 }
-            },
-
-            complete: () => {
-                localStorage.setItem('wordAPIKey', this.apiKey.getKey());
-                $(".word-generator-button > i").removeClass('spinn');
             }
         });
-
         $('.spit-board').show('slow');
     }
 }

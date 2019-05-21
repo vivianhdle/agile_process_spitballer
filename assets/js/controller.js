@@ -171,7 +171,6 @@ class Controller {
     startButton() {
         $('.landing-page').remove();
         this.newGenerator.generateWords();
-
         $('.clear-board').addClass('disabled');
     }
 
@@ -228,7 +227,7 @@ class Controller {
      */
     select3Images() {
         if (this.board.words.length > 0 && this.queue === 0) {
-            this.queue = 3;
+            this.queue = Math.min(this.board.words.length, 3);
             this.imageHolder.clear();
             $('.instructions').hide();
 

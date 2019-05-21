@@ -57,31 +57,37 @@ class Image {
     }
 
     /**
+     * Creates the DOM element and a spinner, will be added to once image API responds
+     */
+    preRender() {
+        this.domElement = $("<div>", {class: "images-container"}).append(
+            $('<div>', {'class': 'spinner image-spinner'}).append(
+                $('<img>', {'src': './assets/images/spinner.png'})
+            ));
+        $(".image-wrapper").append(this.domElement);
+    }
+
+    /**
      * Creates the DOM element and its children, adds click handlers, and appends it to the DOM
      * @param {string} imageURL - the URL of the image received from the image API
      */
     render(imageURL) {
-        const imageContainer = $("<div>", {class: "images-container"});
         const imageDiv = $("<div>", {class: "image"}).append(
             $('<img>', {class: 'image-inner'}).on('load', this.onImageLoad).attr('src', imageURL)
         );
         const wordDiv = $("<div>", {class: "word"}).text(this.word).css({"border-top": "1px solid black"});
-        const deleteButton = $('<div>', {'class': 'imgCloseButton'}).on('click', this.deleteSelf).append(
-            $('<span>', {'class': 'imgCloseText'}).text('x')
-        );
         const refreshButton = $('<div>', {'class': 'image-refresh-button'}).on('click', event => {
             event.stopPropagation();
             this.refreshImage(event);
         });
         const refreshIcon = $("<i>", {"class": "fas fa-redo"});
+        const deleteButton = $('<div>', {'class': 'imgCloseButton'}).on('click', this.deleteSelf).append(
+            $('<span>', {'class': 'imgCloseText'}).text('x')
+        );
+
         refreshButton.append(refreshIcon);
-        imageContainer.append(
-            $('<div>', {'class': 'spinner image-spinner'}).append(
-                $('<img>', {'src': './assets/images/spinner.png'})
-            ), imageDiv, wordDiv, refreshButton, deleteButton);
+        this.domElement.append(imageDiv, wordDiv, refreshButton, deleteButton);
         refreshButton.css("visibility", "hidden");
-        this.domElement = imageContainer;
-        $(".image-wrapper").append(imageContainer);
         $(this.domElement).on("click", this.handleClick);
     }
 
@@ -89,6 +95,7 @@ class Image {
      * Calls the image API and sends the image URL to the render function
      */
     getImage() {
+        this.preRender();
         $.ajax({
             url: "https://pixabay.com/api/",
             method: "get",
@@ -107,6 +114,11 @@ class Image {
                 }
                 this.render(imageURL);
                 this.images = response.hits;
+            },
+            error: () => {
+                this.render("./assets/images/404.jpg");
+            },
+            complete: () => {
                 this.callbacks.decrementQueue();
             }
         });

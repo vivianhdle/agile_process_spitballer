@@ -31,7 +31,7 @@ class imageHolder {
      * @param {string} word - the word used to create a new Image
      */
     handleWordClick(word) {
-        if (this.indexOfCard(word) === null && this.imageCards.length < 3) {
+        if (this.imageCards.length < 3 && this.indexOfCard(word) === null) {
             const newCard = new Image(word, this.callbacks);
             this.imageCards.push(newCard);
             return true;

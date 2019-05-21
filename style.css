@@ -596,6 +596,7 @@ button {
 .no-clear:hover, .no-random:hover, .yes-clear:hover, .yes-random:hover {
     background-color: black;
 }
+
 .disabled{
     background-color:rgba(25, 25, 25, .2);
     pointer-events: none;
