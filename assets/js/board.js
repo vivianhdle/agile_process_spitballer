@@ -35,10 +35,7 @@ class Board {
      */
     addWord(word) {
         if (this.words.length < 20 && this.wordIsOnBoard(word) === -1) {
-            $('.display-modal-btn').css({
-                'pointer-events': 'auto',
-                'background-color': 'grey'
-            });
+            $('.display-modal-btn').addClass('disabled');
 
             const newWord = new BoardWord({
                 word: word,
@@ -52,8 +49,7 @@ class Board {
             this.words.push(newWord);
             return true;
         } else {
-            $('.display-modal-btn').css('pointer-events', 'none');
-            $('.display-modal-btn').css('cursor', 'auto');
+            $('.display-modal-btn').addClass('disabled');
             return false;
         }
     }
@@ -69,15 +65,9 @@ class Board {
         }
         this.callbacks.deleteImage(word);
         if (this.callbacks.checkIfEmpty()) {
-            $('.clear-board').css({
-                'pointer-events': 'none',
-                'background-color': 'gray'
-            });
+            $('.clear-board').addClass('disabled');
         } else {
-            $('.clear-board').css({
-                'pointer-events': 'auto',
-                'background-color': 'rgb(80, 124, 168)'
-            });
+            $('.clear-board').removeClass('disabled');
         }
     }
 
@@ -220,11 +210,7 @@ class BoardWord {
         event.stopPropagation();
         this.deleteCallback(this.word);
         if (this.checkBoardNotFull()) {
-            $('.display-modal-btn').css({
-                'pointer-events': 'auto',
-                'cursor': 'pointer',
-                'background-color': 'rgb(80, 124, 168)'
-            });
+            $('.display-modal-btn').removeClass('disabled');
         }
     }
 }

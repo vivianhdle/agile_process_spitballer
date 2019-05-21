@@ -330,12 +330,12 @@ button {
     justify-content: center;
 }
 
-.random3:hover, .randomize-board:hover, .clear-board:hover, .display-modal-btn:hover, #scroll-left:hover, #scroll-right:hover {
+.random3:hover, .randomize-board:hover, .clear-board:hover, .display-modal-btn:hover, .scroll-left:hover, .scroll-right:hover {
     background-color: black;
     color: white;
 }
 
-.random3:hover i, .randomize-board:hover i, .clear-board:hover i, .display-modal-btn:hover i, #scroll-left:hover i, #scroll-right:hover i {
+.random3:hover i, .randomize-board:hover i, .clear-board:hover i, .display-modal-btn:hover i, .scroll-left:hover i, .scroll-right:hover i {
     animation: barrelRoll .5s;
 }
 
@@ -452,13 +452,14 @@ button {
     align-items: center;
     text-align: center;
     margin-right: 0.5%;
+    justify-content: center;
 }
 
 .arrow {
     width: 10%;
 }
 
-#scroll-left, #scroll-right {
+.scroll-left, .scroll-right {
     border: none;
     font-size: 1.5rem;
     background-color: rgb(80, 124, 168);
@@ -597,6 +598,13 @@ button {
 
 .no-clear:hover, .no-random:hover, .yes-clear:hover, .yes-random:hover {
     background-color: black;
+}
+.disabled{
+    background-color:grey;
+    pointer-events: none;
+}
+.disabled::hover{
+    background-color:grey;
 }
 
 .modal-text {

@@ -14,8 +14,8 @@ function initializeApp() {
             yesClearBoard: '.yes-clear',
             noClearBoard: '.no-clear',
             addWordButton: '.add-button',
-            scrollLeft: '#scroll-left',
-            scrollRight: '#scroll-right',
+            scrollLeft: '.scroll-left',
+            scrollRight: '.scroll-right',
             imgCloseButton: '.imgCloseButton',
             yesRandomize: '.yes-random',
             noRandomize: '.no-random'

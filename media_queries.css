@@ -12,7 +12,7 @@
         position: relative;
     }
 
-    #scroll-left, #scroll-right {
+    .scroll-left, .scroll-right {
         padding: 0;
         height: 80px;
         width: 90%;

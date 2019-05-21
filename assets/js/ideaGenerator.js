@@ -151,16 +151,9 @@ class ideaCard {
     handleClick() {
         if (this.callbacks.putWordOnBoard(this.word)) {
             if (this.callbacks.checkIfNotFull()) {
-                $('.display-modal-btn').css({
-                    'pointer-events': 'auto',
-                    'cursor': 'pointer',
-                    'background-color': 'rgb(80, 124, 168)'
-                });
+                $('.display-modal-btn').removeClass('disabled');
             } else {
-                $('.display-modal-btn').css({
-                    'pointer-events': 'none',
-                    'background-color': 'gray'
-                });
+                $('.display-modal-btn').addClass('disabled');
             }
 
             this.callbacks.checkIfEmpty();

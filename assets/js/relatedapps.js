@@ -158,7 +158,7 @@ class RelatedApps {
             };
             this.apps = [];
             this.marker = 3;
-            $("#scroll-left, #scroll-right").hide();
+            $(".scroll-left, .scroll-right").hide();
             this.clearAppContainer();
         }
 
@@ -169,28 +169,13 @@ class RelatedApps {
      */
     checkScrolls() {
         if (this.marker === 3 && this.apps.length > 3) {
-            $('#scroll-left').css({
-                'pointer-events': 'none',
-                'background-color': 'gray'
-            });
-            $('#scroll-right').css({
-                'pointer-events': 'auto',
-                'background-color': 'rgb(80, 124, 168)'
-            })
+            $('.scroll-left').addClass('disabled');
+            $('.scroll-right').removeClass('disabled');
         } else if (this.marker === this.apps.length) {
-            $('#scroll-right').css({
-                'pointer-events': 'none',
-                'background-color': 'gray'
-            });
-            $('#scroll-left').css({
-                'pointer-events': 'auto',
-                'background-color': 'rgb(80, 124, 168)'
-            })
+            $('.scroll-right').addClass('disabled');
+            $('.scroll-left').removeClass('disabled');
         } else {
-            $('#scroll-left, #scroll-right').css({
-                'pointer-events': 'auto',
-                'background-color': 'rgb(80, 124, 168)'
-            })
+            $('.scroll-left, .scroll-right').removeClass('disabled');
         }
     }
 
@@ -199,7 +184,7 @@ class RelatedApps {
      * @returns a DOM element that has not been appended to the DOM
      */
     render() {
-        $("#scroll-left, #scroll-right").show();
+        $(".scroll-left, .scroll-right").show();
         const container = $('<div>', {
             'class': 'app'
         });

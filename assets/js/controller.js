@@ -81,6 +81,7 @@ class Controller {
         this.buttons.yesRandomize.on('click', this.shuffleBoard);
         this.buttons.noRandomize.on('click', this.toggleRandomModal);
         $('.clear-board-modal').on('click', this.toggleClearModal);
+        $('.rerandomize-board').on('click', this.toggleRandomModal);
 
         /* ====================== MODAL ======================= */
         $(".display-modal-btn[data-target]").on('click', function () {
@@ -108,10 +109,7 @@ class Controller {
             if (ideaslength === 1) {
                 this.newGenerator.generateWords();
             }
-            $('.clear-board').css({
-                'pointer-events': 'auto',
-                'background-color': 'rgb(80, 124, 168)'
-            });
+            $('.clear-board').removeClass('disabled');
             return true;
         }
         return false;
@@ -133,16 +131,9 @@ class Controller {
         }
         this.checkIfEmpty();
         if (this.checkIfNotFull()) {
-            $('.display-modal-btn').css({
-                'pointer-events': 'auto',
-                'cursor': 'pointer',
-                'background-color': 'rgb(80, 124, 168)'
-            });
+            $('.display-modal-btn').removeClass('disabled');
         } else {
-            $('.display-modal-btn').css({
-                'pointer-events': 'none',
-                'background-color': 'gray'
-            });
+            $('.display-modal-btn').addClass('disabled');
             $('#modal1').removeClass('-open');
         }
     }
@@ -170,10 +161,7 @@ class Controller {
             $('.rerandomize-board').toggleClass('-open');
         } else {
             this.board.randomFillBoard(this.select3Images);
-            $('.clear-board').css({
-                'pointer-events': 'auto',
-                'background-color': 'rgb(80, 124, 168)'
-            });
+            $('.clear-board').removeClass('disabled');
         }
     }
 
@@ -184,10 +172,7 @@ class Controller {
         $('.landing-page').remove();
         this.newGenerator.generateWords();
 
-        $('.clear-board').css({
-            'pointer-events': 'none',
-            'background-color': 'gray'
-        });
+        $('.clear-board').addClass('disabled');
     }
 
     /**
@@ -292,15 +277,8 @@ class Controller {
      * calls the clear board method in board, will clear the dom elements, and array
      */
     clearBoard() {
-        $('.clear-board').css({
-            'pointer-events': 'none',
-            'background-color': 'gray'
-        });
-        $('.display-modal-btn').css({
-            'pointer-events': 'auto',
-            'cursor': 'pointer',
-            'background-color': 'rgb(80, 124, 168)'
-        });
+        $('.clear-board').addClass('disabled');
+        $('.display-modal-btn').removeClass('disabled');
         this.board.clearBoard();
         this.toggleClearModal();
         this.imageHolder.clear();
