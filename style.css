@@ -7,7 +7,6 @@ body {
     background-size: cover;
     color: rgba(0, 0, 0, 0.788);
     font-family: 'Walter Turncoat', sans-serif;
-    background-image: url('./assets/images/background.png');
 }
 
 ::-webkit-scrollbar {
@@ -73,11 +72,14 @@ button {
 
 .landing-page {
     height: 100vh;
+    width:100vw;
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 3rem;
     text-align: center;
-    background-image: url('./assets/images/background.png');
+    background-image: url(./assets/images/background.png);
+    position: fixed;
+    z-index: 1;
 }
 
 .landing-page > button {
@@ -102,6 +104,10 @@ button {
 
 .hero-page {
     height: 100vh;
+    width:100vw;
+    min-width:970px;
+    min-height:485px;
+    background-image: url(./assets/images/background.png);
 }
 
 .top-half {
