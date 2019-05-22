@@ -23,21 +23,6 @@
     }
 }
 
-/* iPhone X */
-@media screen and (orientation: landscape) and (min-device-width: 737px) and (max-device-width: 812px) {
-
-}
-
-/* ========== TABLET =========== */
-@media screen and (min-width: 600px) {
-
-}
-
-/* ========== DESKTOP =========== */
-@media screen and (min-width: 1200px) {
-
-}
-
 @media screen and (min-width: 1281px) {
     html {
         font-size: 22px;
