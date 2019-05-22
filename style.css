@@ -104,6 +104,8 @@ button {
 
 .hero-page {
     height: 100vh;
+    min-width:970px;
+    min-height:350px;
     width:100vw;
     background-image: url(./assets/images/background.png);
 }
